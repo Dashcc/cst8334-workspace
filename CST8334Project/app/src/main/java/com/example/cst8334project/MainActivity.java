@@ -1,8 +1,9 @@
 package com.example.cst8334project;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
+
+import com.example.cst8334project.emailservice.SendEmailActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -10,7 +11,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //log.i("This is a test");
-        Log.i("MainActivity","Another test");
+        new SendEmailActivity(this, "Test email", "Test body").execute();
     }
 }
