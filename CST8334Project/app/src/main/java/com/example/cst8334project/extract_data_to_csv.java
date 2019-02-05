@@ -15,14 +15,17 @@ public class extract_data_to_csv extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_extract_data_to_csv);
+
+        startAc();
     }
 
-    private void startAc() {
-        String columnString = "\"PersonName\",\"Gender\",\"Street1\",\"postOffice\",\"Age\"";
-        //String dataString   =   "\"" + currentUser.userName +"\",\"" + currentUser.gender + "\",\"" + currentUser.street1 + "\",\"" + currentUser.postOFfice.toString()+ "\",\"" + currentUser.age.toString() + "\"";
-        String dataString = "\"" + "Dash Xu" + "\",\"" + "female" + "\",\"" + "Baseline rd" + "\",\"" + "POO" + "\",\"" + "21" + "\"";
-        String combinedString = columnString + "\n" + dataString;
 
+    String columnString = "\"PersonName\",\"Gender\",\"Street1\",\"postOffice\",\"Age\"";
+    //String dataString   =   "\"" + currentUser.userName +"\",\"" + currentUser.gender + "\",\"" + currentUser.street1 + "\",\"" + currentUser.postOFfice.toString()+ "\",\"" + currentUser.age.toString() + "\"";
+    String dataString = "\"" + "Dash Xu" + "\",\"" + "female" + "\",\"" + "Baseline rd" + "\",\"" + "POO" + "\",\"" + "21" + "\"";
+    String combinedString = columnString + "\n" + dataString;
+
+    protected void startAc() {
         File file = null;
         File root = Environment.getExternalStorageDirectory();
         if (root.canWrite()) {
@@ -46,10 +49,10 @@ public class extract_data_to_csv extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-    }
+
 
     Uri u1 = null;
-    u1  =Uri.fromFile(file);
+    u1 =Uri.fromFile(file);
 
     Intent sendIntent = new Intent(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_SUBJECT,"Person Details");
