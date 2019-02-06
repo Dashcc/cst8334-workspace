@@ -91,7 +91,7 @@ public class SendEmailActivity extends AsyncTask<Void, Void, Void> {
 
             // Create the email attachment part
             MimeBodyPart messageAttachmentPart = new MimeBodyPart();
-            DataSource dataSource = new FileDataSource(email.getCsvAttachmentFileName());
+            DataSource dataSource = new FileDataSource(email.getCsvAttachmentAbsolutePath());
             messageAttachmentPart.setDataHandler(new DataHandler(dataSource));
             messageAttachmentPart.setFileName(email.getCsvAttachmentFileName());
             multipart.addBodyPart(messageAttachmentPart);
