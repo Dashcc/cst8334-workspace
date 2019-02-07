@@ -4,8 +4,6 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.example.cst8334project.util.FileUtils;
-
 import java.lang.ref.WeakReference;
 import java.util.Date;
 
@@ -14,6 +12,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 import static com.example.cst8334project.emailservice.EmailConstants.*;
+import static com.example.cst8334project.util.FileUtils.*;
 
 /**
  * This class is responsible for sending emails in a background thread.
@@ -65,6 +64,8 @@ public class SendEmailActivity extends AsyncTask<Void, Void, Void> {
         });
 
         try {
+
+            Log.i("SendEmailActivity", "in process");
             // Create the MimeMessage object using the provided Session
             MimeMessage mimeMessage = new MimeMessage(session);
 
@@ -91,36 +92,44 @@ public class SendEmailActivity extends AsyncTask<Void, Void, Void> {
 
             // Create the email attachment part
             MimeBodyPart messageAttachmentPart = new MimeBodyPart();
-            DataSource dataSource = new FileDataSource(email.getCsvAttachmentAbsolutePath());
+            DataSource dataSource = new FileDataSource(getFilePath(context.get(),
+                    email.getCsvAttachmentOriginalFileName()));
             messageAttachmentPart.setDataHandler(new DataHandler(dataSource));
-            messageAttachmentPart.setFileName(email.getCsvAttachmentFileName());
+            messageAttachmentPart.setFileName(email.getCsvAttachmentNewFileName());
             multipart.addBodyPart(messageAttachmentPart);
 
             // Set the body part and the attachment part as a multipart
             mimeMessage.setContent(multipart);
 
-            // Send the email
-            Transport.send(mimeMessage);
-
             // Construct the logging message
-            String loggingMessage = String.format("%n Email sent from: %s %n" +
-                                                  "to: %s %n" +
-                                                  "with subject: %s %n" +
-                                                  "body: %s %n" +
-                                                  "attachment file name: %s %n" +
-                                                  "attachment body: %n" +
+            String loggingMessage = String.format("\n ************** Sending email ************** %n" +
+                                                  "FROM: %s %n" +
+                                                  "TO: %s %n" +
+                                                  "SUBJECT: %s %n" +
+                                                  "BODY: %s %n" +
+                                                  "ATTACHMENT FILE NAME: %s %n" +
+                                                  "ATTACHMENT BODY: %n" +
                                                   "%s %n" +
-                                                  "Sent at %s.",
+                                                  "TIMESTAMP: %s.",
                                                   SENDER_EMAIL_ADDRESS,
                                                   RECIPIENT_EMAIL_ADDRESS,
                                                   email.getSubject(),
                                                   email.getBody(),
-                                                  email.getCsvAttachmentFileName(),
-                                                  FileUtils.readTextFromFile(email.getCsvAttachmentAbsolutePath()),
+                                                  email.getCsvAttachmentNewFileName(),
+                                                  readTextFromFile(context.get(), "test.csv"),
                                                   new Date().toString());
 
-            // Log the sent email
+            // Log before sending the email
             Log.i("SendEmailActivity", loggingMessage);
+
+            // Send the email
+            Transport.send(mimeMessage);
+
+            // Log after the email has been sent
+            Log.i("SendEmailActivity", "Email sent at " + new Date().toString());
+
+            // Delete the CSV file from the internal storage directory after the email has been sent
+            deleteFileFromStorage(context.get(), "test.csv");
 
         } catch (MessagingException e) {
             Log.e("SendEmailActivity", "Error occurred while attempting to send email.", e);
@@ -128,5 +137,4 @@ public class SendEmailActivity extends AsyncTask<Void, Void, Void> {
 
         return null;
     }
-
 }
