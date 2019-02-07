@@ -11,18 +11,18 @@ public final class EmailConstants {
      * The email address that will be used by all volunteers to send emails to the Heart House
      * Hospice.
      */
-    public static final String SENDER_EMAIL_ADDRESS = "email";
+    public static final String SENDER_EMAIL_ADDRESS = "hearthousehospicevolunteer@gmail.com";
 
     /**
      * The password corresponding to the email address that will be used by all volunteers to send
      * emails to the Heart House Hospice.
      */
-    public static final String SENDER_EMAIL_PASSWORD = "password";
+    public static final String SENDER_EMAIL_PASSWORD = "hearthousehospice123";
 
     /**
      * The receiving email address belonging to the Heart House Hospice.
      */
-    public static final String RECIPIENT_EMAIL_ADDRESS = "abc123@hearthousehospice.com";
+    public static final String RECIPIENT_EMAIL_ADDRESS = "hearthousehospicestaff@gmail.com";
 
     /**
      * The SMTP properties that facilitate sending emails.
@@ -37,6 +37,7 @@ public final class EmailConstants {
         EMAIL_PROPERTIES.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         EMAIL_PROPERTIES.put("mail.smtp.auth", "true");
         EMAIL_PROPERTIES.put("mail.smtp.port", "465");
+        //EMAIL_PROPERTIES.put("mail.debug", "true");
     }
 
     /**
