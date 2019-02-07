@@ -2,7 +2,6 @@ package com.example.cst8334project;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.example.cst8334project.emailservice.Email;
 import com.example.cst8334project.emailservice.SendEmailActivity;
@@ -15,12 +14,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // A CSV file to create
+        final String fileName = "test.csv";
+
+        // Write text to the file
+        FileUtils.writeTextToFile(this, fileName, "Country,Capital\nCanada,Ottawa");
+
+        // Create the Email object and attach the created file
         Email email = new Email();
         email.setSubject("Subject");
         email.setBody("Body");
-        email.setCsvAttachmentAbsolutePath(this.getFilesDir().getPath() + "/Data.csv");
-        email.setCsvAttachmentFileName("Information for Volunteer John");
+        email.setCsvAttachmentOriginalFileName(fileName);
+        email.setCsvAttachmentNewFileName("Information for Volunteer John.csv");
 
+        // Send the email
         new SendEmailActivity(this, email).execute();
     }
 }
