@@ -16,14 +16,14 @@ public class Email {
     private String body;
 
     /**
-     * The name of the original CSV attachment file.
-     */
-    private String csvAttachmentOriginalFileName;
-
-    /**
      * The name to use for the CSV attachment file in the email.
      */
-    private String csvAttachmentNewFileName;
+    private String csvAttachmentFileName;
+
+    /**
+     * The text for the CSV attachment.
+     */
+    private String attachmentText;
 
     public String getSubject() {
         return subject;
@@ -41,19 +41,19 @@ public class Email {
         this.body = body;
     }
 
-    public String getCsvAttachmentOriginalFileName() {
-        return csvAttachmentOriginalFileName;
+    public String getCsvAttachmentFileName() {
+        return csvAttachmentFileName;
     }
 
-    public void setCsvAttachmentOriginalFileName(String csvAttachmentOriginalFileName) {
-        this.csvAttachmentOriginalFileName = csvAttachmentOriginalFileName;
+    public void setCsvAttachmentFileName(String csvAttachmentFileName) {
+        this.csvAttachmentFileName = csvAttachmentFileName;
     }
 
-    public String getCsvAttachmentNewFileName() {
-        return csvAttachmentNewFileName;
+    public String getAttachmentText() {
+        return attachmentText;
     }
 
-    public void setCsvAttachmentNewFileName(String csvAttachmentNewFileName) {
-        this.csvAttachmentNewFileName = csvAttachmentNewFileName;
+    public void setAttachmentText(String attachmentText) {
+        this.attachmentText = attachmentText;
     }
 }
