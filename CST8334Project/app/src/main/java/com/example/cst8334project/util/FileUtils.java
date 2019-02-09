@@ -23,15 +23,16 @@ public final class FileUtils {
     private static final String CLASS_NAME = FileUtils.class.getSimpleName();
 
     /**
-     * Read the text from {@link File} identified by the given absolute path and return it as a String.
+     * Read the text from {@link File} identified by the given file name and return it as a String.
      *
-     * @param fileName the name of the text file
+     * @param context  the {@link Context} of the application
+     * @param fileName the name of the text file to read
      * @return a String that represents the text from the file
      */
     public static String readTextFromFile(Context context, String fileName) {
         // Method parameter validation
         if (context == null || StringUtils.isBlank(fileName)) {
-            Log.w("FileUtils", "Cannot read a file with a null context or null/empty file name.");
+            Log.w(CLASS_NAME, "Cannot read a file with a null context or null/empty file name.");
             return null;
         }
 
@@ -98,8 +99,8 @@ public final class FileUtils {
 
         boolean deleted = context.deleteFile(fileName);
 
-        Log.i(CLASS_NAME,(deleted ? "Successfully deleted " : "Failed to delete ")
-                + "file with file name: " + fileName);
+        Log.i(CLASS_NAME, (deleted ? "Successfully deleted" : "Failed to delete")
+                + " file with file name: " + fileName);
     }
 
     /**
@@ -114,11 +115,15 @@ public final class FileUtils {
     public static String getFilePath(Context context, String fileName) {
         // Method parameter validation
         if (context == null || StringUtils.isBlank(fileName)) {
-            Log.e(CLASS_NAME, "Cannot get file path with null context or null/empty file name.");
-            return null;
+            throw new IllegalArgumentException("Cannot get file path with null context or null/empty file name.");
         }
 
-        return context.getFilesDir().getPath() + "/" + fileName;
+        Log.i(CLASS_NAME, "Received request to get the absolute path for file with file name: " + fileName);
+
+        String absolutePath = context.getFilesDir().getPath() + "/" + fileName;
+        Log.i(CLASS_NAME, "The absolute path for file with file name: " + fileName
+                + " is: " + absolutePath);
+        return absolutePath;
     }
 
     /**
