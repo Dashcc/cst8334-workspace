@@ -4,6 +4,11 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.cst8334project.userhistoryservice.Visit;
+import com.example.cst8334project.userhistoryservice.VisitService;
+import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
+import com.example.cst8334project.util.FileUtils;
+
 import java.lang.ref.WeakReference;
 import java.util.Date;
 
@@ -15,9 +20,26 @@ import static com.example.cst8334project.emailservice.EmailConstants.*;
 import static com.example.cst8334project.util.FileUtils.*;
 
 /**
- * This class is responsible for sending emails in a background thread.
+ * This class is responsible for sending emails in a background thread. It also adds the visit to
+ * the user's history.
  */
 public class SendEmailActivity extends AsyncTask<Void, Void, Void> {
+
+    /**
+     * The name of this class for logging purposes.
+     */
+    private static final String CLASS_NAME = SendEmailActivity.class.getSimpleName();
+
+    /**
+     * The name of the temporary CSV file that will be created and populated for each email. After
+     * the email has been sent, the file will be deleted.
+     */
+    private static final String TEMP_CSV_FILE_NAME = "TEMP.csv";
+
+    /**
+     * Provides service level methods for {@link Visit}s.
+     */
+    private final VisitService visitService;
 
     /**
      * A {@link WeakReference} to the {@link Context} of the current state of the application.
@@ -30,28 +52,76 @@ public class SendEmailActivity extends AsyncTask<Void, Void, Void> {
     private final Email email;
 
     /**
-     * All-args constructor.
+     * The {@link Visit} corresponding to the email.
+     */
+    private final Visit visit;
+
+    /**
+     * Construct a new {@link SendEmailActivity} with the given {@link Context}, the
+     * {@link Email} to be sent, and the {@link Visit} to be added to the user's history.
      *
      * @param context the {@link Context} of the application; can be provided to this
      *                constructor by setting 'this' as a parameter from a class
      *                that extends {@link android.app.Activity}
      * @param email   the email to be sent
+     * @param visit   the {@link Visit} corresponding to the email
      */
-    public SendEmailActivity(Context context, Email email) {
+    public SendEmailActivity(Context context, Email email, Visit visit) {
         this.context = new WeakReference<>(context);
         this.email = email;
+        this.visit = visit;
+        this.visitService = new VisitServiceImpl(this.context.get());
     }
 
+    /**
+     * This method is executed before the email is sent. It is responsible for creating the temporary
+     * CSV file to be used for the email attachment, write the provided email attachment text to it,
+     * and log the email.
+     */
     @Override
     protected void onPreExecute() {
-        super.onPreExecute();
-        //TODO: Implement some kind of indicator before sending the email?
+        // Create the temporary CSV file and write the attachment text to it
+        FileUtils.writeTextToFile(context.get(), TEMP_CSV_FILE_NAME, email.getAttachmentText());
+
+        // Construct the logging message
+        String loggingMessage = String.format("************** Sending email ************** %n" +
+                                              "TIMESTAMP: %s %n" +
+                                              "FROM: %s %n" +
+                                              "TO: %s %n" +
+                                              "SUBJECT: %s %n" +
+                                              "BODY: %s %n" +
+                                              "ATTACHMENT FILE NAME: %s %n" +
+                                              "ATTACHMENT BODY: %n" +
+                                              "%s",
+                                              new Date().toString(),
+                                              SENDER_EMAIL_ADDRESS,
+                                              RECIPIENT_EMAIL_ADDRESS,
+                                              email.getSubject(),
+                                              email.getBody(),
+                                              email.getCsvAttachmentFileName(),
+                                              readTextFromFile(context.get(), TEMP_CSV_FILE_NAME));
+
+        // Log before sending the email
+        Log.i(CLASS_NAME, loggingMessage);
     }
 
+    /**
+     * This method is executed after the email has been successfully sent. It is responsible for
+     * logging the sent email, deleting the temporary CSV file that was created, and adding the
+     * {@link Visit} to the user's history.
+     *
+     * @param aVoid The result of the operation computed by doInBackground.
+     */
     @Override
     protected void onPostExecute(Void aVoid) {
-        super.onPostExecute(aVoid);
-        //TODO: Implement some kind of indicator after sending the email?
+        // Log after the email has been sent
+        Log.i(CLASS_NAME, "************* Email sent at *************\n" + new Date().toString());
+
+        // Delete the temporary CSV file from the user's directory after the email has been sent
+        deleteFileFromStorage(context.get(), TEMP_CSV_FILE_NAME);
+
+        // Add the Visit to the user's history
+        visitService.addVisit(visit);
     }
 
     @Override
@@ -64,8 +134,6 @@ public class SendEmailActivity extends AsyncTask<Void, Void, Void> {
         });
 
         try {
-
-            Log.i("SendEmailActivity", "in process");
             // Create the MimeMessage object using the provided Session
             MimeMessage mimeMessage = new MimeMessage(session);
 
@@ -92,47 +160,19 @@ public class SendEmailActivity extends AsyncTask<Void, Void, Void> {
 
             // Create the email attachment part
             MimeBodyPart messageAttachmentPart = new MimeBodyPart();
-            DataSource dataSource = new FileDataSource(getFilePath(context.get(),
-                    email.getCsvAttachmentOriginalFileName()));
+            DataSource dataSource = new FileDataSource(getFilePath(context.get(), TEMP_CSV_FILE_NAME));
             messageAttachmentPart.setDataHandler(new DataHandler(dataSource));
-            messageAttachmentPart.setFileName(email.getCsvAttachmentNewFileName());
+            messageAttachmentPart.setFileName(email.getCsvAttachmentFileName());
             multipart.addBodyPart(messageAttachmentPart);
 
             // Set the body part and the attachment part as a multipart
             mimeMessage.setContent(multipart);
 
-            // Construct the logging message
-            String loggingMessage = String.format("\n ************** Sending email ************** %n" +
-                                                  "FROM: %s %n" +
-                                                  "TO: %s %n" +
-                                                  "SUBJECT: %s %n" +
-                                                  "BODY: %s %n" +
-                                                  "ATTACHMENT FILE NAME: %s %n" +
-                                                  "ATTACHMENT BODY: %n" +
-                                                  "%s %n" +
-                                                  "TIMESTAMP: %s.",
-                                                  SENDER_EMAIL_ADDRESS,
-                                                  RECIPIENT_EMAIL_ADDRESS,
-                                                  email.getSubject(),
-                                                  email.getBody(),
-                                                  email.getCsvAttachmentNewFileName(),
-                                                  readTextFromFile(context.get(), "test.csv"),
-                                                  new Date().toString());
-
-            // Log before sending the email
-            Log.i("SendEmailActivity", loggingMessage);
-
             // Send the email
             Transport.send(mimeMessage);
 
-            // Log after the email has been sent
-            Log.i("SendEmailActivity", "Email sent at " + new Date().toString());
-
-            // Delete the CSV file from the internal storage directory after the email has been sent
-            deleteFileFromStorage(context.get(), "test.csv");
-
         } catch (MessagingException e) {
-            Log.e("SendEmailActivity", "Error occurred while attempting to send email.", e);
+            Log.e(CLASS_NAME, "Error occurred while attempting to send email.", e);
         }
 
         return null;
