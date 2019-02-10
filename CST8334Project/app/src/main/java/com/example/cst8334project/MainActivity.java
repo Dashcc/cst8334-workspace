@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void createFile(){
 
-        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(),"File.txt");
+        File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath(),"File.csv");
 
         FileOutputStream fos = null;
         try {
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
     String columnString = "\"PersonName\",\"Gender\",\"Street1\",\"postOffice\",\"Age\"";
     //String dataString   =   "\"" + currentUser.userName +"\",\"" + currentUser.gender + "\",\"" + currentUser.street1 + "\",\"" + currentUser.postOFfice.toString()+ "\",\"" + currentUser.age.toString() + "\"";
-    String dataString = "\"" + "Dash Xu" + "\",\"" + "female" + "\",\"" + "Baseline rd" + "\",\"" + "POO" + "\",\"" + "21" + "\"";
+    String dataString = "\"" + "Dash Xu" + "\",\"" + "female" + "\",\"" + "Baseline" + "\",\"" + "POO" + "\",\"" + "21" + "\"";
     String combinedString = columnString + "\n" + dataString;
 
 //    public void makeFile(){
