@@ -41,6 +41,12 @@ public final class EmailConstants {
     }
 
     /**
+     * The name of the temporary CSV file that will be created and populated for each email. After
+     * the email has been sent, the file will be deleted.
+     */
+    public static final String TEMP_CSV_FILE_NAME = "TEMP.csv";
+
+    /**
      * Prevent instantiation.
      */
     private EmailConstants() {

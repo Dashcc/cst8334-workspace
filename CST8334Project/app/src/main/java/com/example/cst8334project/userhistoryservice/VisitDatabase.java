@@ -29,7 +29,7 @@ public abstract class VisitDatabase extends RoomDatabase {
      * Get the singleton instance of the {@link VisitDatabase}.
      *
      * @param context the {@link Context} for the application
-     * @return
+     * @return the singleton instance of the {@link VisitDatabase}
      */
     public static synchronized VisitDatabase getInstance(Context context) {
         if (instance == null) {

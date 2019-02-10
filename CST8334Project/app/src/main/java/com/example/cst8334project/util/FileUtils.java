@@ -86,7 +86,7 @@ public final class FileUtils {
      * Delete a file identified by the given file name from the internal storage directory.
      *
      * @param context  the {@link Context} of the application
-     * @param fileName the name of the file
+     * @param fileName the name of the file to delete from the internal storage directory
      */
     public static void deleteFileFromStorage(Context context, String fileName) {
         // Method parameter validation
@@ -112,7 +112,7 @@ public final class FileUtils {
      * @return the absolute path to the directory on the filesystem where the file with the
      * given name is stored
      */
-    public static String getFilePath(Context context, String fileName) {
+    public static String getAbsoluteFilePath(Context context, String fileName) {
         // Method parameter validation
         if (context == null || StringUtils.isBlank(fileName)) {
             throw new IllegalArgumentException("Cannot get file path with null context or null/empty file name.");

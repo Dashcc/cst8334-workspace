@@ -51,13 +51,13 @@ public class VisitServiceImpl implements VisitService {
 
     @Override
     public void deleteVisitById(int id) {
-        Log.i(CLASS_NAME, "Deleting Visit by id: " + id);
+        Log.i(CLASS_NAME, "Deleting Visit by id: " + id + " from user's history.");
         visitDAO.deleteVisitById(id);
     }
 
     @Override
     public void deleteVisit(Visit visit) {
-        Log.i(CLASS_NAME, "Deleting Visit: " + visit);
+        Log.i(CLASS_NAME, "Deleting Visit: " + visit + " from user's history.");
         visitDAO.deleteVisit(visit);
     }
 
@@ -74,12 +74,12 @@ public class VisitServiceImpl implements VisitService {
         Log.i(CLASS_NAME, "Fetching all Visits in descending created by date");
         List<Visit> allVisits = visitDAO.findAllVisits();
         Log.i(CLASS_NAME, "List of Visits: " + allVisits);
-        return visitDAO.findAllVisits();
+        return allVisits;
     }
 
     @Override
     public int numberOfVisits() {
-        Log.i(CLASS_NAME, "Fetching the number of Visits");
+        Log.i(CLASS_NAME, "Fetching the number of Visits in the user's history.");
         int count = visitDAO.visitCount();
         Log.i(CLASS_NAME, "The number of total Visits is: " + count);
         return count;
@@ -88,7 +88,7 @@ public class VisitServiceImpl implements VisitService {
     @Override
     public void clearAllVisits() {
         visitDAO.deleteAllVisits();
-        Log.i(CLASS_NAME, "Cleared all Visits");
+        Log.i(CLASS_NAME, "Cleared all Visits from the user's history.");
     }
 
     /**
