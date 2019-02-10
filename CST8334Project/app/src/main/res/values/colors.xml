@@ -2,5 +2,14 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#F0A6A6</color>
+
+    <!-- White color  -->
+    <color name="color_white">#ffffff</color>
+    <color name="color_purple">#000066</color>
+    <!-- Background color for the family members category -->
+    <color name="Bisque">#e0ffff</color>
+    <color name="Hex_Blue">#00004c</color>
+    <color name="Hex_Gray90">#f7f7f7</color>
+
 </resources>

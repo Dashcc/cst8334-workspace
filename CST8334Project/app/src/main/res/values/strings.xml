@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">CST8334Project</string>
+    <string name="welcome_page"> Welcome To </string>
+    <string name="welcome_page1"> Heart House Hospice</string>
+    <string name="ButtonText">Log On</string>
+
+    <string name="username">User Name</string>
+    <string name="Hint">User Name/Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+
+
+    <string name="report_form">Volunteer Report Form</string>
+    <string name="name">Name:</string>
+    <string name="reportingMonth">Reporting Month:</string>
+    <string name="date">Date:</string>
+    <string name="numberOfPeople">Number of people supported during visit: </string>
+    <string name="visitingTime">Visiting Time: </string>
+    <string name="visitingActivities">Visiting Activities: </string>
+
+    <string name="inHome">In Home:</string>
+    <string name="bereavement">Bereavement :</string>
+    <string name="spiritualCare">Spiritual Care:</string>
+    <string name="tt">TT:</string>
+    <string name="reiki">Reiki:</string>
+    <string name="aromatherapy">Aromatherapy:</string>
+    <string name="handArmmassage">Hand/Arm Massage:</string>
+
+
+    <string name="notes">Notes: </string>
+
+    <string name="submit">Submit: </string>
 </resources>
