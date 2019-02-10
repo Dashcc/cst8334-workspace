@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CST8334Project</string>
+    <string name="enter_username">Enter your username here</string>
+    <string name="enter_pass">Enter your password here</string>
+    <string name="signin">Sign In</string>
+    <string name="success">You successfully logged in!</string>
+    <string name="fail">The username or password you entered was incorrect</string>
 </resources>
