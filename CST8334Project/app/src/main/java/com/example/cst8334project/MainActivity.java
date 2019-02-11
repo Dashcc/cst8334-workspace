@@ -161,7 +161,7 @@ public class MainActivity extends Activity {
     String dataString = "\"" + "Dash Xu" + "\",\"" + "female" + "\",\"" + "Baseline station" + "\",\"" + "POst" + "\",\"" + "21" + "\"";
     String combinedString = columnString + "\n" + dataString;
 
-}
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
