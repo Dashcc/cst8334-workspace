@@ -2,6 +2,7 @@ package com.example.cst8334project;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -9,9 +10,22 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.cst8334project.emailservice.Email;
+import com.example.cst8334project.emailservice.SendEmailActivity;
+import com.example.cst8334project.userhistoryservice.Visit;
+
+import java.util.Date;
+
 public class VolunteerInfoActivity extends Activity {
     ProgressDialog progressDialog;
     String name,date,numberOfPeople,time,note;
+    String inHome = "no";
+    String bereav = "no";
+    String spirit = "no";
+    String tt = "no";
+    String reiki = "no";
+    String aroma = "no";
+    String massage = "no";
 
     EditText editName, editDate, editPeople, editTime,editNote;
     Button btnSubmit;
@@ -64,6 +78,38 @@ public class VolunteerInfoActivity extends Activity {
     }
         public void onLoginSuccess() {
 
+            // The subject of the email
+            final String emailSubject = "Volunteer Visit - " + new Date().toString();
+
+            // The body of the email
+            final String emailBody = "Please find attached the information for a volunteer visit.";
+
+            // The text to write to the CSV file
+            final String emailAttachmentText = "Name, Date, Number of People, Time, In Home, Bereavement, Spiritual Care, TT, Reiki, Aromatherapy, Hand/Arm Massage, Note\n" +
+                    ""+name+", "+date+", "+numberOfPeople+", "+time+", "+inHome+", "+bereav+", "+spirit+", "+tt+", "+reiki+", "+aroma+", "+massage+", "+note;
+
+            // The CSV attachment file name
+            final String emailAttachmentFileName = "HHH - " + emailSubject + ".csv";
+
+            // Create the Email object and add the subject, body, and attachment text along
+            // with a name for the attachment file
+            Email email = new Email();
+            email.setSubject(emailSubject);
+            email.setBody(emailBody);
+            email.setAttachmentText(emailAttachmentText);
+            email.setCsvAttachmentFileName(emailAttachmentFileName);
+
+            // Create the Visit object corresponding to the email
+            Visit visit = new Visit();
+            visit.setUserNote("This visit was OK.");
+
+            // Send the Email and add the Visit to the user history
+            new SendEmailActivity(this, email, visit).execute();
+
+            Intent intent = new Intent(VolunteerInfoActivity.this, VolunteerInfoActivity.class);
+
+            startActivity(intent);
+
         }
         public boolean validate(){
             boolean valid = true;
@@ -94,6 +140,33 @@ public class VolunteerInfoActivity extends Activity {
             numberOfPeople = editPeople.getText().toString().trim();
             time = editTime.getText().toString().trim();
             note = editNote.getText().toString().trim();
+            if(checkbox1.isChecked()){
+                inHome = "yes";
+            }
+
+            if(checkbox2.isChecked()){
+                bereav = "yes";
+            }
+
+            if(checkbox3.isChecked()){
+                spirit = "yes";
+            }
+
+            if(checkbox4.isChecked()){
+                 tt = "yes";
+            }
+
+            if(checkbox5.isChecked()){
+                 reiki = "yes";;
+            }
+
+            if(checkbox6.isChecked()){
+                aroma = "yes";
+            }
+
+            if(checkbox7.isChecked()){
+                massage= "yes";
+            }
 
         }
     }

@@ -31,7 +31,7 @@ public class extract_data_to_csv extends AppCompatActivity {
         if (root.canWrite()) {
             File dir = new File(root.getAbsolutePath() + "/PersonData");
             dir.mkdirs();
-            file = new File(dir, "Data.csv");
+            file = new File(dir, "Temp.csv");
             FileOutputStream out = null;
             try {
                 out = new FileOutputStream(file);

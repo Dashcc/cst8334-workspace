@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends Activity {
 
@@ -35,11 +36,29 @@ public class LoginActivity extends Activity {
 
                 username=edit_username.getText().toString();
                 password=edit_pass.getText().toString();
-                Intent intent = new Intent(LoginActivity.this, VolunteerInfoActivity.class);
-                startActivity(intent);
+
+                validate(username, password);
+//                Intent intent = new Intent(LoginActivity.this, VolunteerInfoActivity.class);
+//                startActivity(intent);
 
             }
         } );
+    }
+
+    private void validate(String username, String userpass){
+
+        if(username.equals("volun") && userpass.equals("123")){
+
+            Intent intent = new Intent(LoginActivity.this, VolunteerInfoActivity.class);
+
+            startActivity(intent);
+
+        }else{
+
+            Toast.makeText(this, "The username or password you entered was incorrect", Toast.LENGTH_SHORT).show();
+
+        }
+
     }
 
     protected void onStart() {

@@ -38,74 +38,6 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // The subject of the email
-        final String emailSubject = "Volunteer Visit - " + new Date().toString();
-
-        // The body of the email
-        final String emailBody = "Please find attached the information for a volunteer visit.";
-
-        // The text to write to the CSV file
-        final String emailAttachmentText = "Name, Duration, Location\nJohn, 90 minutes, Ottawa";
-
-        // The CSV attachment file name
-        final String emailAttachmentFileName = "HHH - " + emailSubject + ".csv";
-
-        // Create the Email object and add the subject, body, and attachment text along
-        // with a name for the attachment file
-        Email email = new Email();
-        email.setSubject(emailSubject);
-        email.setBody(emailBody);
-        email.setAttachmentText(emailAttachmentText);
-        email.setCsvAttachmentFileName(emailAttachmentFileName);
-
-        // Create the Visit object corresponding to the email
-        Visit visit = new Visit();
-        visit.setUserNote("This visit was OK.");
-
-        // Send the Email and add the Visit to the user history
-        new SendEmailActivity(this, email, visit).execute();
-
- if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-    != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1000);
-        }
-        createFile();
-
-//        name = findViewById(R.id.username);
-////        pass = findViewById(R.id.password);
-////        login = findViewById(R.id.signin);
-////
-////        login.setOnClickListener(new View.OnClickListener() {
-////            @Override
-////            public void onClick(View view) {
-////                validate(name.getText().toString().trim(), pass.getText().toString().trim());
-////            }
-////        });
-    }
-
-
-
-
-//    private void validate(String username, String userpass){
-//        if(username.equals("volun") && userpass.equals("123")){
-//            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-//            startActivity(intent);
-//        }else{
-//            Toast.makeText(this, "The username or password you entered was incorrect", Toast.LENGTH_SHORT).show();
-//        }
-//    }
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case 1000:
-                if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(this, "permission granted",Toast.LENGTH_SHORT).show();
-                }
-        }
-        // Log.i("MainActivity","Another test");
-
         Log.i(ACTIVITY_NAME, "In onCreate()");
 
         button = findViewById(R.id.button);
@@ -118,6 +50,29 @@ public class MainActivity extends Activity {
 
             }
         });
+
+ if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1000);
+        }
+        createFile();
+
+
+    }
+
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode) {
+            case 1000:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    Toast.makeText(this, "permission granted",Toast.LENGTH_SHORT).show();
+                }
+        }
+        // Log.i("MainActivity","Another test");
+
+
     }
 
     @Override

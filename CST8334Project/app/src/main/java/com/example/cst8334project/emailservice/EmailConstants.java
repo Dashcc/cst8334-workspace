@@ -37,7 +37,7 @@ public final class EmailConstants {
         EMAIL_PROPERTIES.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         EMAIL_PROPERTIES.put("mail.smtp.auth", "true");
         EMAIL_PROPERTIES.put("mail.smtp.port", "465");
-        //EMAIL_PROPERTIES.put("mail.debug", "true");
+//        EMAIL_PROPERTIES.put("mail.debug", "true");
     }
 
     /**
