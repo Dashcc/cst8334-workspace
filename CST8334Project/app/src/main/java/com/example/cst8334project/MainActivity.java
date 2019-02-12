@@ -74,6 +74,29 @@ public class MainActivity extends Activity {
         createFile();
     }
 
+        name = findViewById(R.id.username);
+        pass = findViewById(R.id.password);
+        login = findViewById(R.id.signin);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                validate(name.getText().toString().trim(), pass.getText().toString().trim());
+            }
+        });
+    }
+
+    private void validate(String username, String userpass){
+        if(username.equals("volun") && userpass.equals("123")){
+            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(this, "The username or password you entered was incorrect", Toast.LENGTH_SHORT).show();
+        }
+    }
+}
+}
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
