@@ -64,38 +64,36 @@ public class MainActivity extends Activity {
 
         // Send the Email and add the Visit to the user history
         new SendEmailActivity(this, email, visit).execute();
-        //log.i("This is a test");
-        Log.i("MainActivity","Another test");
 
  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
     != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1000);
         }
         createFile();
+
+//        name = findViewById(R.id.username);
+////        pass = findViewById(R.id.password);
+////        login = findViewById(R.id.signin);
+////
+////        login.setOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View view) {
+////                validate(name.getText().toString().trim(), pass.getText().toString().trim());
+////            }
+////        });
     }
 
-        name = findViewById(R.id.username);
-        pass = findViewById(R.id.password);
-        login = findViewById(R.id.signin);
 
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                validate(name.getText().toString().trim(), pass.getText().toString().trim());
-            }
-        });
-    }
 
-    private void validate(String username, String userpass){
-        if(username.equals("volun") && userpass.equals("123")){
-            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-            startActivity(intent);
-        }else{
-            Toast.makeText(this, "The username or password you entered was incorrect", Toast.LENGTH_SHORT).show();
-        }
-    }
-}
-}
+
+//    private void validate(String username, String userpass){
+//        if(username.equals("volun") && userpass.equals("123")){
+//            Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+//            startActivity(intent);
+//        }else{
+//            Toast.makeText(this, "The username or password you entered was incorrect", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
 
     @Override

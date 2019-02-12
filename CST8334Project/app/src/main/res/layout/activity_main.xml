@@ -20,6 +20,11 @@
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/enter_pass"
+        android:inputType="textPassword"/>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
