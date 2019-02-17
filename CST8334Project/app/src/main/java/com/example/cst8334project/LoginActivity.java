@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.cst8334project.authentication.VolunteerAuthenticationService;
+import com.example.cst8334project.authentication.VolunteerAuthenticationServiceImpl;
+
 public class LoginActivity extends Activity {
 
     protected static final String ACTIVITY_NAME = "LoginActivity";
@@ -19,6 +22,7 @@ public class LoginActivity extends Activity {
     EditText edit_pass;
     Button button;
 
+    private VolunteerAuthenticationService volunteerAuthenticationService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,8 @@ public class LoginActivity extends Activity {
        edit_pass = findViewById(R.id.edit_pass);
        button = findViewById(R.id.button);
 
+       volunteerAuthenticationService = new VolunteerAuthenticationServiceImpl();
+
        button.setOnClickListener(new View.OnClickListener() {
            @Override
             public void onClick(View View){
@@ -37,7 +43,8 @@ public class LoginActivity extends Activity {
                 username=edit_username.getText().toString();
                 password=edit_pass.getText().toString();
 
-                validate(username, password);
+                //validate(username, password);
+               authenticate(username, password);
 //                Intent intent = new Intent(LoginActivity.this, VolunteerInfoActivity.class);
 //                startActivity(intent);
 
@@ -45,7 +52,18 @@ public class LoginActivity extends Activity {
         } );
     }
 
+    private void authenticate(String username, String password) {
+
+        if (volunteerAuthenticationService.authenticate(username, password)) {
+            Intent intent = new Intent(LoginActivity.this, VolunteerInfoActivity.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "The username or password you entered was incorrect", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     private void validate(String username, String userpass){
+        volunteerAuthenticationService = new VolunteerAuthenticationServiceImpl();
 
         if(username.equals("volun") && userpass.equals("123")){
 
