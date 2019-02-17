@@ -10,9 +10,10 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.cst8334project.emailservice.Email;
-import com.example.cst8334project.emailservice.SendEmailActivity;
-import com.example.cst8334project.userhistoryservice.Visit;
+import com.example.cst8334project.domain.Email;
+import com.example.cst8334project.emailservice.EmailSenderAsyncTask;
+import com.example.cst8334project.domain.Visit;
+import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
 
 import java.util.Date;
 
@@ -30,7 +31,6 @@ public class VolunteerInfoActivity extends Activity {
     EditText editName, editDate, editPeople, editTime,editNote;
     Button btnSubmit;
     CheckBox checkbox1,checkbox2,checkbox3,checkbox4,checkbox5,checkbox6,checkbox7;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,12 +99,15 @@ public class VolunteerInfoActivity extends Activity {
             email.setAttachmentText(emailAttachmentText);
             email.setCsvAttachmentFileName(emailAttachmentFileName);
 
+            // Send the Email
+            new EmailSenderAsyncTask(this).execute(email);
+
             // Create the Visit object corresponding to the email
             Visit visit = new Visit();
             visit.setUserNote("This visit was OK.");
 
-            // Send the Email and add the Visit to the user history
-            new SendEmailActivity(this, email, visit).execute();
+            // Add the Visit to the user history
+            new VisitServiceImpl(this).addVisit(visit);
 
             Intent intent = new Intent(VolunteerInfoActivity.this, VolunteerInfoActivity.class);
 
