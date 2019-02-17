@@ -1,4 +1,4 @@
-package com.example.cst8334project.userhistoryservice;
+package com.example.cst8334project.domain;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
@@ -11,7 +11,7 @@ import java.util.Date;
  * A class that encapsulates the information stored in the user's visit history.
  */
 @Entity
-public class Visit implements Serializable {
+public class Visit {
 
     /**
      * The unique ID for this Visit.
