@@ -7,25 +7,20 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
-import com.example.cst8334project.emailservice.Email;
-import com.example.cst8334project.emailservice.SendEmailActivity;
-import com.example.cst8334project.userhistoryservice.Visit;
+import com.example.cst8334project.authentication.NewPasswordCheckerAsyncTask;
+import com.example.cst8334project.emailservice.UnsentEmailCheckerAsyncTask;
 
-import java.util.Date;
 import android.util.Log;
 import android.widget.Toast;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
 
 
 public class MainActivity extends Activity {
@@ -37,8 +32,10 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Log.i(ACTIVITY_NAME, "In onCreate()");
+
+        new NewPasswordCheckerAsyncTask(this).execute();
+        new UnsentEmailCheckerAsyncTask(this).execute();
 
         button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
