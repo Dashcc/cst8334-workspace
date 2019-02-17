@@ -3,10 +3,15 @@ package com.example.cst8334project.userhistoryservice;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.cst8334project.domain.Visit;
+import com.example.cst8334project.persistence.HHHDatabase;
+import com.example.cst8334project.persistence.VisitDAO;
+
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * The implementation of the {@link VisitService} interface.
@@ -29,13 +34,15 @@ public class VisitServiceImpl implements VisitService {
      * @param context the {@link Context} of the application
      */
     public VisitServiceImpl(Context context) {
-        this.visitDAO = VisitDatabase.getInstance(context).getVisitDAO();
+        this.visitDAO = HHHDatabase.getInstance(context).getVisitDAO();
     }
 
     @Override
     public void addVisit(Visit visit) {
         cleanVisitFields(visit);
-        visit.setCreatedDate(new Date());
+        Date date = new Date();
+        visit.setCreatedDate(date);
+        visit.setModifiedDate(date);
         Log.i(CLASS_NAME, "Adding Visit to user history: " + visit);
         long id = visitDAO.insertVisit(visit);
         Log.i(CLASS_NAME, "The id of the new Visit is: " + id);
@@ -43,6 +50,7 @@ public class VisitServiceImpl implements VisitService {
 
     @Override
     public void updateVisit(Visit visit) {
+        Objects.requireNonNull(visit, "Visit to be updated cannot be null.");
         cleanVisitFields(visit);
         visit.setModifiedDate(new Date());
         Log.i(CLASS_NAME, "Updating Visit: " + visit);
@@ -57,6 +65,7 @@ public class VisitServiceImpl implements VisitService {
 
     @Override
     public void deleteVisit(Visit visit) {
+        Objects.requireNonNull(visit, "Visit to be deleted cannot be null.");
         Log.i(CLASS_NAME, "Deleting Visit: " + visit + " from user's history.");
         visitDAO.deleteVisit(visit);
     }
