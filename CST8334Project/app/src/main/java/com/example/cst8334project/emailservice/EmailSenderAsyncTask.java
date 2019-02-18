@@ -64,6 +64,7 @@ public class EmailSenderAsyncTask extends AsyncTask<Email, Void, Void> {
             Log.e(CLASS_NAME, "Could not connect to the Google SMTP server. " +
                     "The email(s) will not be sent.");
 
+            // Add all the emails to the unsent emails data store
             for (Email email : emails) {
                 addEmailToUnsentEmails(email);
             }

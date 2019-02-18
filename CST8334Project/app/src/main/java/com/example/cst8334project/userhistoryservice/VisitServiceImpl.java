@@ -105,10 +105,8 @@ public class VisitServiceImpl implements VisitService {
      * the {@link Visit} into the database.
      *
      * @param visit the {@link Visit} to clean
-     * @return the "cleaned" Visit
      */
-    private Visit cleanVisitFields(Visit visit) {
+    private void cleanVisitFields(Visit visit) {
         visit.setUserNote(StringUtils.trimToEmpty(visit.getUserNote()));
-        return visit;
     }
 }

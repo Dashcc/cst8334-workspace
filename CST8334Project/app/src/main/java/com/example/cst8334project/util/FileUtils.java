@@ -170,7 +170,7 @@ public final class FileUtils {
     }
 
     /**
-     * Retrieve a string value corresponding to the given key from the {@link SharedPreferences}
+     * Retrieve the string value corresponding to the given key from the {@link SharedPreferences}
      * file for the application if it exists. Otherwise, the provided default value is returned.
      *
      * @param context      the {@link Context} of the application
