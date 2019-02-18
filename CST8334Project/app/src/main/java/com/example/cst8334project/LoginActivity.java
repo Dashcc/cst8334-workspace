@@ -9,8 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.cst8334project.authentication.VolunteerAuthenticationService;
-import com.example.cst8334project.authentication.VolunteerAuthenticationServiceImpl;
+import com.example.cst8334project.authentication.AuthenticationManager;
 
 public class LoginActivity extends Activity {
 
@@ -22,8 +21,6 @@ public class LoginActivity extends Activity {
     EditText edit_pass;
     Button button;
 
-    private VolunteerAuthenticationService volunteerAuthenticationService;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +30,6 @@ public class LoginActivity extends Activity {
        edit_username = findViewById(R.id.edit_username) ;
        edit_pass = findViewById(R.id.edit_pass);
        button = findViewById(R.id.button);
-
-       volunteerAuthenticationService = new VolunteerAuthenticationServiceImpl();
 
        button.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -53,8 +48,7 @@ public class LoginActivity extends Activity {
     }
 
     private void authenticate(String username, String password) {
-
-        if (volunteerAuthenticationService.authenticate(username, password)) {
+        if (AuthenticationManager.authenticate(username, password)) {
             Intent intent = new Intent(LoginActivity.this, VolunteerInfoActivity.class);
             startActivity(intent);
         } else {
@@ -63,7 +57,6 @@ public class LoginActivity extends Activity {
     }
 
     private void validate(String username, String userpass){
-        volunteerAuthenticationService = new VolunteerAuthenticationServiceImpl();
 
         if(username.equals("volun") && userpass.equals("123")){
 

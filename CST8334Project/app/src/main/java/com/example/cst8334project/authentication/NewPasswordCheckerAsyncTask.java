@@ -48,7 +48,7 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
     /**
      * A {@link WeakReference} to the {@link Context} of the current state of the application.
      */
-    private WeakReference<Context> context;
+    private final WeakReference<Context> context;
 
     /**
      * Construct a new {@link NewPasswordCheckerAsyncTask} with the given {@link Context}.
@@ -75,12 +75,12 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
         Log.i(CLASS_NAME, "Checking for new password from the client...");
 
         // Get the password stored in the file
-        String passwordFromFile = readFromSharedPreferences(context.get(), PASSWORD_KEY, LoginCredentialsManager.getPassword());
+        String passwordFromFile = readFromSharedPreferences(context.get(), PASSWORD_KEY, AuthenticationManager.getPassword());
 
         // If the device cannot connect to the IMAP server
         if (!ConnectionUtils.canConnectToIMAPServer(context.get())) {
             // Use the password stored in the file to authenticate the user
-            LoginCredentialsManager.setPassword(passwordFromFile);
+            AuthenticationManager.setPassword(passwordFromFile);
             Log.e(CLASS_NAME, "Could not connect to the Google IMAP server. " +
                     "Skipping password check and using the stored password: " + passwordFromFile);
             return false;
@@ -104,7 +104,7 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
 
             // If there aren't any messages, skip the password check and use the stored password
             if (messageCount == 0) {
-                LoginCredentialsManager.setPassword(passwordFromFile);
+                AuthenticationManager.setPassword(passwordFromFile);
                 Log.e(CLASS_NAME, "The inbox is empty. Skipping password check and using" +
                         " the stored password: " + passwordFromFile);
                 return false;
@@ -124,7 +124,7 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
                 String senderEmailAddress = ((InternetAddress) message.getFrom()[0]).getAddress();
 
                 // If the email is from the client (Heart House Hospice)
-                if (LoginCredentialsManager.isEmailFromClient(senderEmailAddress)) {
+                if (AuthenticationManager.isEmailFromClient(senderEmailAddress)) {
                     Log.i(CLASS_NAME, "Email from client found in inbox.");
 
                     // Extract the password from the email
@@ -134,7 +134,7 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
 
                     // Only set the password if it wasn't already changed
                     if (!passwordChanged) {
-                        LoginCredentialsManager.setPassword(password);
+                        AuthenticationManager.setPassword(password);
 
                         // Update the password in the file as well
                         writeToSharedPreferences(context.get(), PASSWORD_KEY, password);
@@ -155,7 +155,7 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
                     Log.i(CLASS_NAME, "Deleting email that is not from the client:\n");
 
                     MimeMessage mimeMessage = (MimeMessage) message;
-                    String from = ((InternetAddress) mimeMessage.getFrom()[0]).getAddress().toString();
+                    String from = ((InternetAddress) mimeMessage.getFrom()[0]).getAddress();
                     String subject = mimeMessage.getSubject();
                     String date = mimeMessage.getReceivedDate().toString();
 
@@ -191,7 +191,7 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
      */
     @Override
     protected void onPostExecute(Boolean passwordChanged) {
-        String password = LoginCredentialsManager.getPassword();
+        String password = AuthenticationManager.getPassword();
         Log.i(CLASS_NAME, "The password was" + (passwordChanged ? "" : " not")
                 + " changed. It is: " + password);
     }

@@ -7,14 +7,14 @@ import com.example.cst8334project.emailservice.EmailConstants;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * Package-private singleton that manages the login credentials for volunteers.
+ * Singleton that manages and authenticates the login credentials for volunteers.
  */
-final class LoginCredentialsManager {
+public final class AuthenticationManager {
 
     /**
      * The name of this class for logging purposes.
      */
-    private static final String CLASS_NAME = LoginCredentialsManager.class.getSimpleName();
+    private static final String CLASS_NAME = AuthenticationManager.class.getSimpleName();
 
     /**
      * The default username that will be used to authenticate volunteers if an
@@ -44,7 +44,7 @@ final class LoginCredentialsManager {
     static void setUsername(String username) {
         username = StringUtils.strip(username);
         Log.i(CLASS_NAME, "Setting the username to: " + username);
-        LoginCredentialsManager.username = username;
+        AuthenticationManager.username = username;
     }
 
     /**
@@ -53,7 +53,7 @@ final class LoginCredentialsManager {
     static void setPassword(String password) {
         password = StringUtils.strip(password);
         Log.i(CLASS_NAME, "Setting the password to: " + password);
-        LoginCredentialsManager.password = password;
+        AuthenticationManager.password = password;
     }
 
     /**
@@ -83,8 +83,41 @@ final class LoginCredentialsManager {
     }
 
     /**
+     * Authenticate the provided volunteer username and password.
+     *
+     * @param username the volunteer username
+     * @param password the volunteer password
+     * @return {@code true} if authentication succeeded, {@code false} otherwise
+     */
+    public static boolean authenticate(String username, String password) {
+        // Method parameter validation
+        if (StringUtils.isAnyBlank(username, password)) {
+            Log.e(CLASS_NAME, "Cannot authenticate volunteer " +
+                    "with null/empty username or password");
+            return false;
+        }
+
+        // Normalize the provided parameters
+        username = StringUtils.strip(username);
+        password = StringUtils.strip(password);
+
+        Log.i(CLASS_NAME, "Authenticating [username : password] = [" +
+                username + " : " + password + "].");
+
+        if (username.equals(getUserName()) && password.equals(getPassword())) {
+            Log.i(CLASS_NAME, "Authentication succeeded for [username : password] = [" +
+                    username + " : " + password + "].");
+            return true;
+        }
+
+        Log.e(CLASS_NAME, "Authentication failed for [username : password] = [" +
+                username + " : " + password + "].");
+        return false;
+    }
+
+    /**
      * Prevent instantiation.
      */
-    private LoginCredentialsManager() {
+    private AuthenticationManager() {
     }
 }
