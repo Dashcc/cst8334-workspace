@@ -35,4 +35,9 @@
     <string name="signin">Sign In</string>
     <string name="success">You successfully logged in!</string>
     <string name="fail">The username or password you entered was incorrect</string>
+
+    <string name="pick_time">Pick Time</string>
+    <string name="enter_location">Enter a Location</string>
+    <string name="create_event">Create Event</string>
+    <string name="enter_reminder">Reminder time (in minutes)</string>
 </resources>

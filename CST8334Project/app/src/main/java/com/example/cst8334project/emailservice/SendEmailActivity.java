@@ -3,6 +3,7 @@ package com.example.cst8334project.emailservice;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.cst8334project.userhistoryservice.*;
 
@@ -174,5 +175,6 @@ public class SendEmailActivity extends AsyncTask<Void, Void, Void> {
 
         // Add the Visit to the user's history
         visitService.addVisit(visit);
+        Toast.makeText(context.get(), "Email sent", Toast.LENGTH_LONG).show();
     }
 }
