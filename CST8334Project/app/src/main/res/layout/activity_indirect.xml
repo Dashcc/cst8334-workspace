@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/Hex_Gray90"
+    tools:context=".IndirectActivity">
+
+
+    <TextView
+        android:id="@+id/form2"
+        android:layout_width="wrap_content"
+        android:layout_height="93dp"
+        android:layout_gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/indirect_form"
+        android:textColor="@color/Hex_Blue"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/CB1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="@string/admin"
+            android:textColor="@color/Hex_Blue" />
+
+        <Button
+            android:id="@+id/edit_date"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2" />
+
+
+    </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/CB2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="@string/fundraisingEvent"
+            android:textColor="@color/Hex_Blue"
+            android:textStyle="italic" />
+
+    <CheckBox
+            android:id="@+id/CB3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="@string/board"
+            android:textColor="@color/Hex_Blue"
+            android:textStyle="italic" />
+
+        <CheckBox
+            android:id="@+id/CB4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="@string/training"
+            android:textStyle="italic" />
+
+        <CheckBox
+            android:id="@+id/CB5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            android:text="@string/outreach"
+            android:textColor="@color/Hex_Blue"
+            android:textStyle="italic" />
+
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_directSubmit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/submit"
+            android:textColor="@color/Hex_Blue"
+            android:textStyle="italic" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

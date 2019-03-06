@@ -8,22 +8,22 @@
     android:layout_centerHorizontal="true"
     tools:context="com.example.cst8334project.MainActivity">
 
-    <!--<EditText-->
-        <!--android:id="@+id/username"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:ems="10"-->
-        <!--android:hint="@string/enter_username"-->
-        <!--android:inputType="textPersonName"-->
-        <!--android:visibility="visible" />-->
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/enter_username"
+        android:inputType="textPersonName"
+        android:visibility="visible" />
 
-    <!--<EditText-->
-        <!--android:id="@+id/password"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:ems="10"-->
-        <!--android:hint="@string/enter_pass"-->
-        <!--android:inputType="textPassword"/>-->
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/enter_pass"
+        android:inputType="textPassword"/>
 
     <TextView
         android:id="@+id/textView"

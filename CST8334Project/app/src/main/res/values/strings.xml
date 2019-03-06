@@ -10,21 +10,34 @@
     <string name="login">Login</string>
 
 
-    <string name="report_form">Volunteer Report Form</string>
+    <string name="report_form">HHH Volunteering Report </string>
     <string name="name">Name:</string>
-    <string name="reportingMonth">Reporting Month:</string>
+    <!-- <string name="reportingMonth">Reporting Month:</string>-->
     <string name="date">Date:</string>
-    <string name="numberOfPeople">Number of people supported during visit: </string>
-    <string name="visitingTime">Visiting Time: </string>
-    <string name="visitingActivities">Visiting Activities: </string>
+    <string name="type">Type: </string>
+    <!--<string name="visitingTime">Visiting Time: </string>-->
+    <!--<string name="visitingActivities">Visiting Activities: </string>-->
 
-    <string name="inHome">In Home:</string>
-    <string name="bereavement">Bereavement :</string>
-    <string name="spiritualCare">Spiritual Care:</string>
-    <string name="tt">TT:</string>
-    <string name="reiki">Reiki:</string>
-    <string name="aromatherapy">Aromatherapy:</string>
-    <string name="handArmmassage">Hand/Arm Massage:</string>
+    <string name="direct">Direct</string>
+    <string name="direct_form">Direct Service</string>
+    <string name="option1">Option 1:</string>
+    <string name="option2">Option 2:</string>
+    <string name="inHome">In-Home</string>
+    <string name="inOffice">In-Office</string>
+
+    <string name="indirect">Indirect</string>
+    <string name="indirect_form">Indirect Service (No Clients)</string>
+    <string name="admin">Admin</string>
+    <string name="fundraisingEvent">FundraisingEvent</string>
+    <string name="board">Board</string>
+    <string name="training">Training</string>
+    <string name="outreach">Outreach</string>
+
+    <!--<string name="spiritualCare">Spiritual Care:</string>-->
+    <!-- <string name="tt">TT:</string>-->
+    <!--<string name="reiki">Reiki:</string>-->
+    <!-- <string name="aromatherapy">Aromatherapy:</string>-->
+    <!--<string name="handArmmassage">Hand/Arm Massage:</string>-->
 
 
     <string name="notes">Notes: </string>
