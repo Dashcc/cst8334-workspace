@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.example.cst8334project.domain.Email;
 import com.example.cst8334project.emailservice.EmailSenderAsyncTask;
@@ -36,6 +37,8 @@ public class VolunteerInfoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteer_info);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         // Progress dialog
         progressDialog = new ProgressDialog(this);
@@ -67,6 +70,7 @@ public class VolunteerInfoActivity extends Activity {
             }
         });
     }
+
         private void submitForm(){
              initialize();
              if (!validate()){
