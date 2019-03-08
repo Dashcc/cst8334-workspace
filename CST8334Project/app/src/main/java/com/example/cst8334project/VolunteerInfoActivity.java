@@ -4,12 +4,16 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.example.cst8334project.domain.Email;
 import com.example.cst8334project.emailservice.EmailSenderAsyncTask;
@@ -18,7 +22,7 @@ import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
 
 import java.util.Date;
 
-public class VolunteerInfoActivity extends Activity {
+public class VolunteerInfoActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     String name,date,numberOfPeople,time,note;
     String inHome = "no";
@@ -37,8 +41,6 @@ public class VolunteerInfoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteer_info);
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         // Progress dialog
         progressDialog = new ProgressDialog(this);
@@ -69,6 +71,25 @@ public class VolunteerInfoActivity extends Activity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_volunteerinfo, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.history:
+                Intent intent = new Intent(VolunteerInfoActivity.this, UserHistoryActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
         private void submitForm(){
@@ -108,7 +129,7 @@ public class VolunteerInfoActivity extends Activity {
 
             // Create the Visit object corresponding to the email
             Visit visit = new Visit();
-            visit.setUserNote("This visit was OK.");
+            visit.setUserNote(editNote.getText().toString());
 
             // Add the Visit to the user history
             new VisitServiceImpl(this).addVisit(visit);

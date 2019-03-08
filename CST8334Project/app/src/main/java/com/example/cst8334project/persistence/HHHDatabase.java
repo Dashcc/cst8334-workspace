@@ -20,7 +20,7 @@ public abstract class HHHDatabase extends RoomDatabase {
     /**
      * The name of the database.
      */
-    private static final String DATABASE_NAME = "HHH_DATABASE.db";
+     private static final String DATABASE_NAME = "HHH_DATABASE.db";
 
     /**
      * The singleton database instance.
