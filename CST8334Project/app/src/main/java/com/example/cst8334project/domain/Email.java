@@ -6,6 +6,8 @@ import android.arch.persistence.room.PrimaryKey;
 
 import java.util.Date;
 
+import static org.apache.commons.lang3.StringUtils.LF;
+
 /**
  * This class encapsulates an email message.
  */
@@ -13,7 +15,7 @@ import java.util.Date;
 public class Email {
 
     /**
-     * The unique id for this email.
+     * The unique ID for this email.
      */
     @PrimaryKey(autoGenerate = true)
     private int id;
@@ -98,12 +100,12 @@ public class Email {
 
     @Override
     public String toString() {
-        return "Email{" +
-                "subject='" + subject + '\'' +
-                ", body='" + body + '\'' +
-                ", csvAttachmentFileName='" + csvAttachmentFileName + '\'' +
-                ", attachmentText='" + attachmentText + '\'' +
-                ", emailTimestamp=" + emailTimestamp +
-                '}';
+        return LF + LF + "*** Email ***" + LF + LF +
+                "Subject: " + LF + subject + LF + LF +
+                "Body: " + LF + body + LF + LF +
+                "CSV Attachment File Name: " + LF + csvAttachmentFileName + LF + LF +
+                "Attachment Text: " + LF + attachmentText + LF + LF +
+                "Email Timestamp: " + LF + emailTimestamp + LF + LF +
+                "*** Email ***";
     }
 }

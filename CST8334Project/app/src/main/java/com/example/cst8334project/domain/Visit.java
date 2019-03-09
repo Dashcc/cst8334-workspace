@@ -4,7 +4,8 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.io.Serializable;
+import static org.apache.commons.lang3.StringUtils.LF;
+
 import java.util.Date;
 
 /**
@@ -71,9 +72,10 @@ public class Visit {
 
     @Override
     public String toString() {
-        return "Visit{userNote='" + userNote + '\'' +
-                ", createdDate=" + createdDate +
-                ", modifiedDate=" + modifiedDate +
-                '}';
+        return LF + LF + "*** Visit ***" + LF +
+                "User Note: " + LF + userNote + LF + LF +
+                "Created Date: " + LF + createdDate + LF + LF +
+                "Last Modified Date: " + LF + modifiedDate + LF + LF +
+                "*** Visit ***";
     }
 }
