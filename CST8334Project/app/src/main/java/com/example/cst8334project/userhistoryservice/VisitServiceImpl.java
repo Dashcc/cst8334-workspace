@@ -42,7 +42,6 @@ public class VisitServiceImpl implements VisitService {
         cleanVisitFields(visit);
         Date date = new Date();
         visit.setCreatedDate(date);
-        visit.setModifiedDate(date);
         Log.i(CLASS_NAME, "Adding Visit to user history: " + visit);
         long id = visitDAO.insertVisit(visit);
         Log.i(CLASS_NAME, "The id of the new Visit is: " + id);
@@ -52,7 +51,6 @@ public class VisitServiceImpl implements VisitService {
     public void updateVisit(Visit visit) {
         Objects.requireNonNull(visit, "Visit to be updated cannot be null.");
         cleanVisitFields(visit);
-        visit.setModifiedDate(new Date());
         Log.i(CLASS_NAME, "Updating Visit: " + visit);
         visitDAO.updateVisit(visit);
     }

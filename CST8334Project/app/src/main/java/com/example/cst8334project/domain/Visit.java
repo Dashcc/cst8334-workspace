@@ -20,22 +20,28 @@ public class Visit {
     private int id;
 
     /**
-     * The note that the user can add for this Visit.
-     */
-    @ColumnInfo(name = "user_note")
-    private String userNote;
-
-    /**
      * The created at date for this Visit entry
      */
     @ColumnInfo(name = "created_at")
     private Date createdDate;
 
     /**
-     * The last modified date for this Visit entry
+     * The visit time for this Visit entry
      */
-    @ColumnInfo(name = "modified_at")
-    private Date modifiedDate;
+    @ColumnInfo(name = "visit_time")
+    private String visitTime;
+
+    /**
+     * The number of clients served for this Visit entry
+     */
+    @ColumnInfo(name = "number_people")
+    private String numberPeople;
+
+    /**
+     * The note that the user can add for this Visit.
+     */
+    @ColumnInfo(name = "user_note")
+    private String userNote;
 
     public int getId() {
         return id;
@@ -53,6 +59,21 @@ public class Visit {
         this.userNote = userNote;
     }
 
+    public String getVisitTime() {
+        return visitTime;
+    }
+    public void setVisitTime(String visitTime) {
+        this.visitTime = visitTime;
+    }
+
+    public String getNumberPeople() {
+        return numberPeople;
+    }
+
+    public void setNumberPeople(String numberPeople) {
+        this.numberPeople = numberPeople;
+    }
+
     public Date getCreatedDate() {
         return createdDate;
     }
@@ -61,19 +82,4 @@ public class Visit {
         this.createdDate = createdDate;
     }
 
-    public Date getModifiedDate() {
-        return modifiedDate;
-    }
-
-    public void setModifiedDate(Date modifiedDate) {
-        this.modifiedDate = modifiedDate;
-    }
-
-    @Override
-    public String toString() {
-        return "Visit{userNote='" + userNote + '\'' +
-                ", createdDate=" + createdDate +
-                ", modifiedDate=" + modifiedDate +
-                '}';
-    }
 }

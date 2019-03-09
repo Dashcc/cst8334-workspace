@@ -29,17 +29,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/visitNote"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="8dp"
-                    android:textAllCaps="true"
-                    android:textColor="@android:color/black" />
-
-                <TextView
-                    android:id="@+id/visitCreateDate"
+                    android:id="@+id/visit_create_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
@@ -50,12 +40,31 @@
                     android:maxLines="1" />
 
                 <TextView
-                    android:id="@+id/visitModifiedDate"
+                    android:id="@+id/visit_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/visit_number_people"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/visit_note"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:textAllCaps="true"
                     android:textColor="@android:color/black" />
 
             </LinearLayout>

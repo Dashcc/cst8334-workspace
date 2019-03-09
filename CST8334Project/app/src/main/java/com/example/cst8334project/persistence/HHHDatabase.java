@@ -1,10 +1,13 @@
 package com.example.cst8334project.persistence;
 
+import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
+import android.arch.persistence.room.migration.Migration;
 import android.content.Context;
+import android.support.annotation.NonNull;
 
 import com.example.cst8334project.domain.Email;
 import com.example.cst8334project.domain.Visit;
@@ -13,7 +16,7 @@ import com.example.cst8334project.util.Converters;
 /**
  * The database for storing, retrieving, and modifying the domain objects for this application.
  */
-@Database(entities = {Visit.class, Email.class}, version = 1, exportSchema = false)
+@Database(entities = {Visit.class, Email.class}, version = 2, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class HHHDatabase extends RoomDatabase {
 
@@ -47,9 +50,7 @@ public abstract class HHHDatabase extends RoomDatabase {
      * @return the fully constructed {@link HHHDatabase} instance
      */
     private static HHHDatabase createDatabase(Context context) {
-        return Room.databaseBuilder(context, HHHDatabase.class, DATABASE_NAME)
-                .allowMainThreadQueries()
-                .build();
+        return Room.databaseBuilder(context, HHHDatabase.class, DATABASE_NAME).allowMainThreadQueries().build();
     }
 
     /**

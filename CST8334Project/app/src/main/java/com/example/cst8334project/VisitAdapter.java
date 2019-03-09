@@ -34,24 +34,30 @@ public class VisitAdapter extends RecyclerView.Adapter<VisitAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int listPosition) {
-        TextView note = holder.note;
-        note.setText("Note: " + visitList.get(listPosition).getUserNote());
         TextView createDate = holder.createdDate;
         createDate.setText("Created: " + visitList.get(listPosition).getCreatedDate().toString());
-        TextView modifiedDate = holder.lastModified;
-        modifiedDate.setText("last modified: " + visitList.get(listPosition).getModifiedDate().toString());
+        TextView visitTime = holder.visitTime;
+        visitTime.setText("Visit Time: : " + visitList.get(listPosition).getVisitTime());
+        TextView numberPeople = holder.numberPeople;
+        numberPeople.setText("Number of clients: " + visitList.get(listPosition).getNumberPeople());
+        TextView note = holder.note;
+        note.setText("Note: " + visitList.get(listPosition).getUserNote());
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView note;
         public TextView createdDate;
-        public TextView lastModified;
+        public TextView visitTime;
+        public TextView numberPeople;
+        public TextView note;
+
         public ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            note = (TextView) itemView.findViewById(R.id.visitNote);
-            createdDate = (TextView) itemView.findViewById(R.id.visitCreateDate);
-            lastModified = (TextView) itemView.findViewById(R.id.visitModifiedDate);
+
+            createdDate = (TextView) itemView.findViewById(R.id.visit_create_date);
+            visitTime = (TextView) itemView.findViewById(R.id.visit_time);
+            numberPeople = (TextView) itemView.findViewById(R.id.visit_number_people);
+            note = (TextView) itemView.findViewById(R.id.visit_note);
         }
         @Override
         public void onClick(View view) {

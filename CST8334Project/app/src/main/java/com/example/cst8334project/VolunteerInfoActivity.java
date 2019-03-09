@@ -130,6 +130,8 @@ public class VolunteerInfoActivity extends AppCompatActivity {
             // Create the Visit object corresponding to the email
             Visit visit = new Visit();
             visit.setUserNote(editNote.getText().toString());
+            visit.setNumberPeople(editPeople.getText().toString());
+            visit.setVisitTime(editTime.getText().toString());
 
             // Add the Visit to the user history
             new VisitServiceImpl(this).addVisit(visit);
