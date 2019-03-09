@@ -4,7 +4,8 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.io.Serializable;
+import static org.apache.commons.lang3.StringUtils.LF;
+
 import java.util.Date;
 
 /**

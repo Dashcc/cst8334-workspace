@@ -28,6 +28,7 @@ public interface EmailDAO {
      * Delete the given {@link Email} from the data store.
      *
      * @param email the {@link Email} to delete
+     * @return {@code 1} if the {@link Email} was deleted, {@code 0} otherwise
      */
     @Delete
     int deleteEmail(Email email);

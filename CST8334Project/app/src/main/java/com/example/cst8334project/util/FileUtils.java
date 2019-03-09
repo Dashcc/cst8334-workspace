@@ -190,7 +190,7 @@ public final class FileUtils {
                 + " and default value: " + defaultValue);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         String result = sharedPreferences.getString(key, defaultValue);
-        Log.i(CLASS_NAME, "Result from SharedPrefences for key: " + key + " is: " + result);
+        Log.i(CLASS_NAME, "Result from SharedPreferences for key: " + key + " is: " + result);
         return result;
     }
 

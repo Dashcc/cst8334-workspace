@@ -84,32 +84,14 @@ public class EmailSenderAsyncTask extends AsyncTask<Email, Void, Void> {
             // Create the temporary CSV file and write the attachment text to it
             writeTextToFile(context.get(), TEMP_CSV_FILE_NAME, email.getAttachmentText());
 
-            // Construct the logging message
-            String loggingMessage = String.format("************** Attempting to send email ************** %n" +
-                                                 "TIMESTAMP: %s %n" +
-                                                 "FROM: %s %n" +
-                                                 "TO: %s %n" +
-                                                 "SUBJECT: %s %n" +
-                                                 "BODY: %s %n" +
-                                                 "ATTACHMENT FILE NAME: %s %n" +
-                                                 "ATTACHMENT BODY: %n" +
-                                                 "%s",
-                                                 new Date().toString(),
-                                                 SENDER_EMAIL_ADDRESS,
-                                                 RECIPIENT_EMAIL_ADDRESS,
-                                                 email.getSubject(),
-                                                 email.getBody(),
-                                                 email.getCsvAttachmentFileName(),
-                                                 readTextFromFile(context.get(), TEMP_CSV_FILE_NAME));
-
             // Log before sending the email
-            Log.i(CLASS_NAME, loggingMessage);
+            Log.i(CLASS_NAME, "*** Attempting to send Email: ***" + email);
 
             try {
                 // Send the email
                 Transport.send(getMimeMessageForEmail(session, email));
 
-                Log.i(CLASS_NAME, "************* Email sent at *************\n" + new Date().toString());
+                Log.i(CLASS_NAME, "Email sent at: " + new Date().toString());
 
                 // Delete the sent email from the unsent email datastore if it exists there
                 emailService.deleteSentEmail(email);

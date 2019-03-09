@@ -42,6 +42,10 @@ public final class AuthenticationManager {
      * @param username the username to set
      */
     static void setUsername(String username) {
+        if (StringUtils.isBlank(username)) {
+            Log.e(CLASS_NAME, "Cannot set a new username when a blank/empty username is provided.");
+            return;
+        }
         username = StringUtils.strip(username);
         Log.i(CLASS_NAME, "Setting the username to: " + username);
         AuthenticationManager.username = username;
@@ -51,6 +55,10 @@ public final class AuthenticationManager {
      * @param password the password to set
      */
     static void setPassword(String password) {
+        if (StringUtils.isBlank(password)) {
+            Log.e(CLASS_NAME, "Cannot set a new password when a blank/empty password is provided.");
+            return;
+        }
         password = StringUtils.strip(password);
         Log.i(CLASS_NAME, "Setting the password to: " + password);
         AuthenticationManager.password = password;
