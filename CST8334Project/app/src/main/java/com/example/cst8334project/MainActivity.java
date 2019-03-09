@@ -34,9 +34,6 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         Log.i(ACTIVITY_NAME, "In onCreate()");
 
-        new NewPasswordCheckerAsyncTask(this).execute();
-        new UnsentEmailCheckerAsyncTask(this).execute();
-
         button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
 
