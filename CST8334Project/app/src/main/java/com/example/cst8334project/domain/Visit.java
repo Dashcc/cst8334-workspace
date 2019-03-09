@@ -83,4 +83,14 @@ public class Visit {
         this.createdDate = createdDate;
     }
 
+    @Override
+    public String toString() {
+        return "Visit{" +
+                "id=" + id +
+                ", createdDate=" + createdDate +
+                ", visitTime='" + visitTime + '\'' +
+                ", numberPeople='" + numberPeople + '\'' +
+                ", userNote='" + userNote + '\'' +
+                '}';
+    }
 }
