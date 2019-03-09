@@ -75,7 +75,8 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
         Log.i(CLASS_NAME, "Checking for new password from the client...");
 
         // Get the password stored in the file
-        String passwordFromFile = readFromSharedPreferences(context.get(), PASSWORD_KEY, AuthenticationManager.getPassword());
+        String passwordFromFile = readFromSharedPreferences(context.get(), PASSWORD_KEY,
+                AuthenticationManager.getPassword());
 
         // If the device cannot connect to the IMAP server
         if (!ConnectionUtils.canConnectToIMAPServer(context.get())) {
@@ -93,9 +94,14 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
         Session session = Session.getInstance(IMAP_PROPERTIES);
 
         try {
+            /*
+               Obtain a handle to the IMAPS message store and connect using the login credentials
+               for the email account that listens for new passwords.
+            */
             Store store = session.getStore("imaps");
             store.connect(PASSWORD_LISTENER_EMAIL_ADDRESS, PASSWORD_LISTENER_EMAIL_PASSWORD);
 
+            // Obtain a handle to the inbox folder in the message store
             Folder inbox = store.getFolder("inbox");
             inbox.open(Folder.READ_WRITE);
 
@@ -117,9 +123,7 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
             ArrayUtils.reverse(messages);
 
             // Iterate through the messages
-            for (int i = 0; i < messageCount; i++) {
-                Message message = messages[i];
-
+            for (Message message: messages) {
                 // Get the email address of the sender
                 String senderEmailAddress = ((InternetAddress) message.getFrom()[0]).getAddress();
 
@@ -141,13 +145,11 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
 
                         // Set the password changed flag to true
                         passwordChanged = true;
-                    }
-
-                    // Flag all messages other than the most recent to be deleted
-                    if (i > 0) {
+                    } else {
+                        // Else delete the (older) email since the password has been changed already
                         message.setFlag(Flags.Flag.DELETED, true);
                         Log.i(CLASS_NAME, "Deleting an older email from the client that " +
-                               "was received on: " + message.getReceivedDate());
+                                "was received on: " + message.getReceivedDate());
                     }
                 } else {
                     // Flag any emails that are not from the client to be deleted
@@ -178,7 +180,6 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
         } catch (MessagingException | IOException e) {
             Log.e(CLASS_NAME, "Error occurred while attempting to check for " +
                     "new passwords from the client.", e);
-            passwordChanged = false;
         }
 
         return passwordChanged;
