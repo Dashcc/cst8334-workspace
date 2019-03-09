@@ -1,26 +1,22 @@
 package com.example.cst8334project;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
-import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.NonNull;
-import android.os.Bundle;
-
-import com.example.cst8334project.authentication.NewPasswordCheckerAsyncTask;
-import com.example.cst8334project.emailservice.UnsentEmailCheckerAsyncTask;
-
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-
-import android.view.View;
-import android.widget.Button;
 
 
 public class MainActivity extends Activity {

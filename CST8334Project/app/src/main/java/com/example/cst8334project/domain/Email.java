@@ -13,7 +13,7 @@ import java.util.Date;
 public class Email {
 
     /**
-     * The unique timestamp for this email.
+     * The unique id for this email.
      */
     @PrimaryKey(autoGenerate = true)
     private int id;
