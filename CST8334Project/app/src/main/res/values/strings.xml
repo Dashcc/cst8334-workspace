@@ -38,4 +38,12 @@
     <string name="title_activity_user_history">UserHistoryActivity</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="pick_time">Pick Time</string>
+    <string name="enter_location">Enter a Location</string>
+    <string name="create_event">Create Event</string>
+    <string name="enter_reminder">Reminder time (in minutes)</string>
+    <string name="duration">Duration(hours)</string>
+    <string name="appointmentType">What type of appointment?</string>
+    <string name="appointmentDescription">Description</string>
 </resources>
