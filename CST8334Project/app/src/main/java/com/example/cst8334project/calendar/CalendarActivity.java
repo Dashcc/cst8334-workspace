@@ -1,8 +1,11 @@
 package com.example.cst8334project.calendar;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -10,146 +13,112 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 
 import com.example.cst8334project.R;
-import com.google.api.client.util.DateTime;
-import com.google.api.services.calendar.model.Event;
-
-import com.google.api.services.calendar.model.EventDateTime;
-import com.google.api.services.calendar.model.EventReminder;
+import com.example.cst8334project.VolunteerInfoActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 
-import com.google.api.client.auth.oauth2.Credential;
-import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
-import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
-import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
-import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
-import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.JsonFactory;
-import com.google.api.client.json.jackson2.JacksonFactory;
+//import android.provider.CalendarContract;
 
-import com.google.api.client.util.store.FileDataStoreFactory;
-import com.google.api.services.calendar.Calendar;
-import com.google.api.services.calendar.CalendarScopes;
-
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.security.GeneralSecurityException;
-import java.util.Collections;
-import java.util.List;
-
-public class CalendarActivity extends Activity {
-    // Refer to the Java quickstart on how to setup the environment:
-// https://developers.google.com/calendar/quickstart/java
-// Change the scope to CalendarScopes.CALENDAR and delete any stored
-// credentials.
-    private  TimePicker timePicker1;
+public class CalendarActivity extends AppCompatActivity {
+    private TimePicker timePicker1;
     private DatePicker datePicker;
     private EditText location;
-    private Button createEvent;
-    private static final String APPLICATION_NAME = "Heart House Hospice";
-    private static final JsonFactory JSON_FACTORY = JacksonFactory.getDefaultInstance();
-    private static final String TOKENS_DIRECTORY_PATH = "tokens";
+    private EditText title;
+    private EditText duration;
+    private EditText description;
+    private boolean eventCreated = false;
 
-    private static final List<String> SCOPES = Collections.singletonList(CalendarScopes.CALENDAR);
-    private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
+    private Button createEvent;
+    private static final int MY_PERMISSIONS_REQUEST_WRITE_CALENDAR = 1;
+    protected static final String ACTIVITY_NAME = "CalendarActivity";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.e(ACTIVITY_NAME, "In OnCreate()");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         timePicker1 = (TimePicker) findViewById(R.id.timePicker1);
-        datePicker =(DatePicker)findViewById(R.id.datePicker1);
-        location= (EditText)findViewById(R.id.location);
-        createEvent = (Button)findViewById(R.id.create_event);
+        datePicker = (DatePicker) findViewById(R.id.datePicker1);
+        location = (EditText) findViewById(R.id.location);
+        title = (EditText) findViewById(R.id.type);
+        duration = (EditText) findViewById(R.id.duration);
+        description = (EditText) findViewById(R.id.description);
+
+        createEvent = (Button) findViewById(R.id.create_event);
         createEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View View) {
+                newEvent();
 
-                try {
-                    newEvent();
-//                Intent intent = new Intent(LoginActivity.this, VolunteerInfoActivity.class);
-//                startActivity(intent);
-
-                } catch (IOException i) {
-
-                } catch (GeneralSecurityException g) {
-
-                }
             }
-        } );
+        });
     }
 
-    @TargetApi(23)
-    private void newEvent() throws IOException, GeneralSecurityException {
-        String apptLocation = location.getText().toString();
-        int day= datePicker.getDayOfMonth();
-        int month = datePicker.getMonth();
-        int year = datePicker.getYear();
-        int hour = timePicker1.getHour();
-        int min = timePicker1.getMinute();
+    @Override
+    protected void onStop() {
+        Log.i(ACTIVITY_NAME, "In OnStop()");
+        eventCreated = true;
+        super.onStop();
+    }
 
-        Date dateStart;
-        // Build a new authorized API client service.
-        final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
-        Calendar service = new Calendar.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
-                .setApplicationName(APPLICATION_NAME)
-                .build();
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
-        String dateInString =day+"-" +month+"-"+year +" "+hour+":"+min+":00";  //"31-08-1982 10:20:56";
-        try {
-            dateStart = sdf.parse(dateInString);
-        }catch (ParseException p){
-            dateStart = new Date();
+    @Override
+    protected void onResume() {
+        Log.i(ACTIVITY_NAME, "In OnResume()");
+
+        if (eventCreated) {
+            Intent intent = new Intent(CalendarActivity.this, VolunteerInfoActivity.class);
+            startActivity(intent);
         }
 
-        Event event = new Event()
-            .setSummary("HHH appointment")
-            .setLocation(apptLocation)
-            .setDescription("HHH appointment");
-
-
-        DateTime startDateTime = new DateTime(dateStart);
-
-        EventDateTime start = new EventDateTime()
-            .setDateTime(startDateTime)
-            .setTimeZone("America/Toronto");
-    event.setStart(start);
-
-        EventReminder[] reminderOverrides = new EventReminder[] {
-                new EventReminder().setMethod("popup").setMinutes(10),
-        };
-        Event.Reminders reminders = new Event.Reminders()
-                .setUseDefault(false)
-                .setOverrides(Arrays.asList(reminderOverrides));
-        event.setReminders(reminders);
-
-        String calendarId = "primary";
-        event = service.events().insert(calendarId, event).execute();
-
-
-
-
+        super.onResume();
     }
-    private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT) throws IOException {
-        // Load client secrets.
-        InputStream in = CalendarActivity.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
-        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
 
-        // Build flow and trigger user authorization request.
-        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
-                HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
-                .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
-                .setAccessType("offline")
-                .build();
-        LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
-        return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
+    private void newEvent() {
+
+        String apptLocation = location.getText().toString();
+        String type = title.getText().toString();
+        String desc = description.getText().toString();
+
+        Integer endTime;
+        try {
+            endTime = new Integer(duration.getText().toString());
+        } catch (Exception e) {
+            endTime = 1;
+        }
+
+        int day = datePicker.getDayOfMonth();
+        int month = datePicker.getMonth();
+        int year = datePicker.getYear();
+        int hour = timePicker1.getCurrentHour();
+        int min = timePicker1.getCurrentMinute();
+
+
+        Date dtstart;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+        String dateInString = day + "-" + month + "-" + year + " " + hour + ":" + min + ":00";  //"31-08-1982 10:20:56";
+        try {
+            dtstart = sdf.parse(dateInString);
+        } catch (ParseException p) {
+            dtstart = new Date();
+        }
+
+        Intent intent = new Intent(Intent.ACTION_INSERT)
+                .setData(CalendarContract.Events.CONTENT_URI)
+                .putExtra(CalendarContract.Events.CALENDAR_ID, 1)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, dtstart.getTime())
+                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, dtstart.getTime() + 3600000 * endTime)
+                .putExtra(CalendarContract.Events.TITLE, type)
+                .putExtra(CalendarContract.Events.DESCRIPTION, desc)
+                .putExtra(CalendarContract.Events.EVENT_LOCATION, apptLocation)
+                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY)
+                .putExtra(CalendarContract.Events.HAS_ALARM, 1);
+
+        startActivityForResult(intent, 1);
+
     }
 
 

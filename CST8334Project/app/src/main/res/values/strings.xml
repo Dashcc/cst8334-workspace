@@ -40,4 +40,7 @@
     <string name="enter_location">Enter a Location</string>
     <string name="create_event">Create Event</string>
     <string name="enter_reminder">Reminder time (in minutes)</string>
+    <string name="duration">Duration(hours)</string>
+    <string name="appointmentType">What type of appointment?</string>
+    <string name="appointmentDescription">Description</string>
 </resources>
