@@ -28,7 +28,7 @@ public class HeartHouseHospiceApp extends Application {
 
         applicationContext = this;
 
-        new NewPasswordCheckerAsyncTask(applicationContext).execute();
+        new NewPasswordCheckerAsyncTask().execute();
         new UnsentEmailCheckerAsyncTask().execute();
     }
 

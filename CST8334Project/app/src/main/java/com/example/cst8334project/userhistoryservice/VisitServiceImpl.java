@@ -1,9 +1,7 @@
 package com.example.cst8334project.userhistoryservice;
 
-import android.content.Context;
 import android.util.Log;
 
-import com.example.cst8334project.config.HeartHouseHospiceApp;
 import com.example.cst8334project.domain.Visit;
 import com.example.cst8334project.persistence.HHHDatabase;
 import com.example.cst8334project.persistence.VisitDAO;
@@ -13,11 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 /**
  * The implementation of the {@link VisitService} interface as an enum.
