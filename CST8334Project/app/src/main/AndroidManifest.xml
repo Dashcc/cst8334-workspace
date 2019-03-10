@@ -17,26 +17,13 @@
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
         <activity android:name=".LoginActivity" />
 
-        <activity
-            android:name=".UserHistoryActivity"
-            android:label="User History" />
+        <activity android:name=".UserHistoryActivity" android:label="User History" />
 
         <activity android:name=".VolunteerInfoActivity" />
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name=".calendar.CalendarActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
+        <activity android:name=".calendar.CalendarActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
