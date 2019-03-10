@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.cst8334project.authentication.AuthenticationManager;
+
 public class LoginActivity extends Activity {
 
     protected static final String ACTIVITY_NAME = "LoginActivity";
@@ -18,7 +20,6 @@ public class LoginActivity extends Activity {
     EditText edit_username;
     EditText edit_pass;
     Button button;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +38,22 @@ public class LoginActivity extends Activity {
                 username=edit_username.getText().toString();
                 password=edit_pass.getText().toString();
 
-                validate(username, password);
+                //validate(username, password);
+               authenticate(username, password);
 //                Intent intent = new Intent(LoginActivity.this, VolunteerInfoActivity.class);
 //                startActivity(intent);
 
             }
         } );
+    }
+
+    private void authenticate(String username, String password) {
+        if (AuthenticationManager.authenticate(username, password)) {
+            Intent intent = new Intent(LoginActivity.this, VolunteerInfoActivity.class);
+            startActivity(intent);
+        } else {
+            Toast.makeText(this, "The username or password you entered was incorrect", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void validate(String username, String userpass){

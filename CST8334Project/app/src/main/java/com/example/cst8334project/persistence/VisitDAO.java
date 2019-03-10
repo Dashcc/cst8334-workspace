@@ -1,10 +1,12 @@
-package com.example.cst8334project.userhistoryservice;
+package com.example.cst8334project.persistence;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
+
+import com.example.cst8334project.domain.Visit;
 
 import java.util.List;
 

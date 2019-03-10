@@ -1,5 +1,7 @@
 package com.example.cst8334project.userhistoryservice;
 
+import com.example.cst8334project.domain.Visit;
+
 import java.util.List;
 
 /**

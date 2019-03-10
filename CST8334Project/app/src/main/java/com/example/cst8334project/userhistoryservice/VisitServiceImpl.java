@@ -1,17 +1,27 @@
 package com.example.cst8334project.userhistoryservice;
 
-import android.content.Context;
 import android.util.Log;
+
+import com.example.cst8334project.domain.Visit;
+import com.example.cst8334project.persistence.HHHDatabase;
+import com.example.cst8334project.persistence.VisitDAO;
 
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.*;
 
 /**
- * The implementation of the {@link VisitService} interface.
+ * The implementation of the {@link VisitService} interface as an enum.
  */
-public class VisitServiceImpl implements VisitService {
+public enum VisitServiceImpl implements VisitService {
+
+    /**
+     * The singleton instance for this service's implementation.
+     */
+    INSTANCE;
 
     /**
      * The name of this class for logging purposes.
@@ -24,71 +34,139 @@ public class VisitServiceImpl implements VisitService {
     private final VisitDAO visitDAO;
 
     /**
-     * Construct an instance of {@link VisitServiceImpl} for the given {@link Context}.
-     *
-     * @param context the {@link Context} of the application
+     * The {@link ExecutorService} object used to execute {@link VisitDAO} methods on a separate
+     * thread.
      */
-    public VisitServiceImpl(Context context) {
-        this.visitDAO = VisitDatabase.getInstance(context).getVisitDAO();
+    private final ExecutorService executor;
+
+    /**
+     * Private constructor that constructs an instance of {@link VisitServiceImpl}.
+     */
+    VisitServiceImpl() {
+        this.visitDAO = HHHDatabase.getInstance().getVisitDAO();
+        this.executor = Executors.newSingleThreadExecutor();
     }
 
     @Override
-    public void addVisit(Visit visit) {
-        cleanVisitFields(visit);
-        visit.setCreatedDate(new Date());
-        Log.i(CLASS_NAME, "Adding Visit to user history: " + visit);
-        long id = visitDAO.insertVisit(visit);
-        Log.i(CLASS_NAME, "The id of the new Visit is: " + id);
+    public void addVisit(final Visit visit) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                cleanVisitFields(visit);
+                Date date = new Date();
+                visit.setCreatedDate(date);
+                Log.i(CLASS_NAME, "Adding Visit to user history: " + visit);
+                long id = visitDAO.insertVisit(visit);
+                Log.i(CLASS_NAME, "The id of the new Visit is: " + id);
+            }
+        });
     }
 
     @Override
-    public void updateVisit(Visit visit) {
-        cleanVisitFields(visit);
-        visit.setModifiedDate(new Date());
-        Log.i(CLASS_NAME, "Updating Visit: " + visit);
-        visitDAO.updateVisit(visit);
+    public void updateVisit(final Visit visit) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                Objects.requireNonNull(visit, "Visit to be updated cannot be null.");
+                cleanVisitFields(visit);
+                Log.i(CLASS_NAME, "Updating Visit: " + visit);
+                visitDAO.updateVisit(visit);
+            }
+        });
     }
 
     @Override
-    public void deleteVisitById(int id) {
-        Log.i(CLASS_NAME, "Deleting Visit by id: " + id + " from user's history.");
-        visitDAO.deleteVisitById(id);
+    public void deleteVisitById(final int id) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                Log.i(CLASS_NAME, "Deleting Visit by id: " + id + " from user's history.");
+                visitDAO.deleteVisitById(id);
+            }
+        });
     }
 
     @Override
-    public void deleteVisit(Visit visit) {
-        Log.i(CLASS_NAME, "Deleting Visit: " + visit + " from user's history.");
-        visitDAO.deleteVisit(visit);
+    public void deleteVisit(final Visit visit) {
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                Objects.requireNonNull(visit, "Visit to be deleted cannot be null.");
+                Log.i(CLASS_NAME, "Deleting Visit: " + visit + " from user's history.");
+                visitDAO.deleteVisit(visit);
+            }
+        });
     }
 
     @Override
-    public Visit findVisitById(int id) {
-        Log.i(CLASS_NAME, "Finding Visit by id: " + id);
-        Visit visit = visitDAO.findVisitById(id);
-        Log.i(CLASS_NAME, "Visit with id: " + id + " is: " + visit);
-        return visit;
+    public Visit findVisitById(final int id) {
+        Future<Visit> visitFuture = executor.submit(new Callable<Visit>() {
+            @Override
+            public Visit call() {
+                Log.i(CLASS_NAME, "Finding Visit by id: " + id);
+                Visit visit = visitDAO.findVisitById(id);
+                Log.i(CLASS_NAME, "Visit with id: " + id + " is: " + visit);
+                return visit;
+            }
+        });
+
+        try {
+            return visitFuture.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.e(CLASS_NAME, "Encountered an error when trying to find Visit by id: " + id, e);
+            return null;
+        }
     }
 
     @Override
     public List<Visit> findAllVisits() {
-        Log.i(CLASS_NAME, "Fetching all Visits in descending created by date");
-        List<Visit> allVisits = visitDAO.findAllVisits();
-        Log.i(CLASS_NAME, "List of Visits: " + allVisits);
-        return allVisits;
+        Future<List<Visit>> visitFutures = executor.submit(new Callable<List<Visit>>() {
+            @Override
+            public List<Visit> call() {
+                Log.i(CLASS_NAME, "Fetching all Visits in descending created by date");
+                List<Visit> allVisits = visitDAO.findAllVisits();
+                Log.i(CLASS_NAME, "List of Visits: " + allVisits);
+                return allVisits;
+            }
+        });
+
+        try {
+            return visitFutures.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.e(CLASS_NAME, "Encountered an error when trying to find all Visits.", e);
+            return null;
+        }
     }
 
     @Override
     public int numberOfVisits() {
-        Log.i(CLASS_NAME, "Fetching the number of Visits in the user's history.");
-        int count = visitDAO.visitCount();
-        Log.i(CLASS_NAME, "The number of total Visits is: " + count);
-        return count;
+        Future<Integer> visitCountFuture = executor.submit(new Callable<Integer>() {
+            @Override
+            public Integer call() {
+                Log.i(CLASS_NAME, "Fetching the number of Visits in the user's history.");
+                int count = visitDAO.visitCount();
+                Log.i(CLASS_NAME, "The number of total Visits is: " + count);
+                return count;
+            }
+        });
+
+        try {
+            return visitCountFuture.get();
+        } catch (InterruptedException | ExecutionException e) {
+            Log.e(CLASS_NAME, "Encountered an error when trying to find the number of Visits.", e);
+            return -1;
+        }
     }
 
     @Override
     public void clearAllVisits() {
-        visitDAO.deleteAllVisits();
-        Log.i(CLASS_NAME, "Cleared all Visits from the user's history.");
+        executor.execute(new Runnable() {
+            @Override
+            public void run() {
+                visitDAO.deleteAllVisits();
+                Log.i(CLASS_NAME, "Cleared all Visits from the user's history.");
+            }
+        });
     }
 
     /**
@@ -96,10 +174,8 @@ public class VisitServiceImpl implements VisitService {
      * the {@link Visit} into the database.
      *
      * @param visit the {@link Visit} to clean
-     * @return the "cleaned" Visit
      */
-    private Visit cleanVisitFields(Visit visit) {
+    private void cleanVisitFields(Visit visit) {
         visit.setUserNote(StringUtils.trimToEmpty(visit.getUserNote()));
-        return visit;
     }
 }
