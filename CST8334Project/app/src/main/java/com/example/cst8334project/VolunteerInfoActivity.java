@@ -62,7 +62,7 @@ public class VolunteerInfoActivity extends Activity {
         });
     }
 
-            protected void onStart() {
+    protected void onStart() {
                 super.onStart();
                 Log.i(ACTIVITY_NAME,"In onStart()");
             }

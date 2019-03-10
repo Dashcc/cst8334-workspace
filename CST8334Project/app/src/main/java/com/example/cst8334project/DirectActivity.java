@@ -28,7 +28,7 @@ public class DirectActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(DirectActivity.this, InHome.class);
+                Intent intent = new Intent(DirectActivity.this, InHomeActivity.class);
                 startActivityForResult(intent,50);
 
             }
@@ -36,7 +36,7 @@ public class DirectActivity extends Activity {
         inOffice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DirectActivity.this, InOffice.class);
+                Intent intent = new Intent(DirectActivity.this, InOfficeActivity.class);
                 startActivityForResult(intent,50);
 
             }

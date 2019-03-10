@@ -23,7 +23,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/username"
         android:inputType="textPersonName"
-        android:textColor="#fbf9f9"/>
+        android:textColor="#fbf9f9"
+        android:fontFamily="@font/times_new_roman_normal" />
 
     <EditText
 
@@ -33,6 +34,7 @@
         android:inputType="textPassword"
         android:hint="@string/password"
         android:textColor="#fbf9f9"
+        android:fontFamily="@font/times_new_roman_normal"
         />
 
     <Button
@@ -40,6 +42,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login"
+        android:textStyle="bold"
+        android:fontFamily="@font/times_new_roman_normal"
         />
 
 

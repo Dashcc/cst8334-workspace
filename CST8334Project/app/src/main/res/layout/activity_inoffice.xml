@@ -1,9 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".InOffice">
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/Hex_Gray90"
+    tools:context=".InOfficeActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/officeForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/inOffice_head"
+        android:textColor="@color/Hex_Blue"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/times_new_roman_normal"/>
+
+    <CheckBox
+        android:id="@+id/CB1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_below="@+id/officeForm"
+        android:layout_marginTop="47dp"
+        android:text="@string/spa"
+        android:textColor="@color/Hex_Blue"
+        android:textSize="18sp"
+
+        android:fontFamily="@font/times_new_roman_normal"/>
+
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/officeForm"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="47dp"
+        android:ems="10"
+        android:hint="Time in Hours/Minute"
+        android:textColor="@color/Hex_Blue"
+        android:textSize="15sp"
+        android:fontFamily="@font/times_new_roman_normal"/>
+
+    <CheckBox
+        android:id="@+id/CB2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_below="@+id/CB1"
+        android:layout_marginTop="47dp"
+        android:text="@string/dayProgram"
+        android:textColor="@color/Hex_Blue"
+        android:textSize="18sp"
+        android:fontFamily="@font/times_new_roman_normal"/>
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText1"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:fontFamily="@font/times_new_roman_normal"
+        android:hint="Time in Hours/Minute"
+        android:textColor="@color/Hex_Blue"
+        android:textSize="15sp"
+        />
+
+    <CheckBox
+        android:id="@+id/CB3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_below="@+id/CB2"
+        android:layout_marginTop="47dp"
+        android:text="@string/ct"
+        android:textColor="@color/Hex_Blue"
+        android:textSize="18sp"
+        android:fontFamily="@font/times_new_roman_normal"/>
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText2"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:hint="Time in Hours/Minute"
+        android:textColor="@color/Hex_Blue"
+        android:textSize="15sp"
+        android:fontFamily="@font/times_new_roman_normal"/>
+
+    <CheckBox
+        android:id="@+id/CB4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_below="@+id/CB3"
+        android:layout_marginTop="47dp"
+        android:text="@string/training1"
+        android:textColor="@color/Hex_Blue"
+        android:textSize="18sp"
+        android:fontFamily="@font/times_new_roman_normal"/>
+
+    <EditText
+        android:id="@+id/editText4"
+        android:layout_width="160dp"
+        android:layout_height="55dp"
+        android:layout_below="@+id/editText3"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:hint="Time in Hours/Minute"
+        android:textColor="@color/Hex_Blue"
+        android:textSize="15sp"
+        android:fontFamily="@font/times_new_roman_normal"/>
+
+    <CheckBox
+        android:id="@+id/CB5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_below="@+id/CB4"
+        android:layout_marginTop="47dp"
+        android:text="@string/outreach1"
+        android:textColor="@color/Hex_Blue"
+        android:textSize="18sp"
+        android:fontFamily="@font/times_new_roman_normal"/>
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText4"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:hint="Time in Hours/Minute"
+        android:textColor="@color/Hex_Blue"
+        android:textSize="15sp"
+        android:fontFamily="@font/times_new_roman_normal"
+        />
+
+
+    <Button
+        android:id="@+id/btn_directSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="74dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="155dp"
+        android:text="@string/submit"
+        android:textColor="@color/Hex_Blue"
+        android:textStyle="bold"
+        android:fontFamily="@font/times_new_roman_normal"/>
+
+</RelativeLayout>

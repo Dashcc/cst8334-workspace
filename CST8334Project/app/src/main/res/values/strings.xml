@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">CST8334Project</string>
-    <string name="welcome_page"> Welcome To </string>
-    <string name="welcome_page1"> Heart House Hospice</string>
+    <string name="welcome_page">HEART HOUSE </string>
+    <string name="welcome_page1">H o s p i c e</string>
     <string name="ButtonText">Log On</string>
 
     <string name="username">User Name</string>
@@ -23,24 +23,45 @@
     <string name="option1">Option 1:</string>
     <string name="option2">Option 2:</string>
     <string name="inHome">In-Home</string>
+
+    <string name="inHome_head">In-Home</string>
+    <string name="client_name">Client Name:</string>
+    <string name="client_type">Client Type: </string>
+    <string name="palliative">Palliative </string>
+    <string name="caregiver">Caregiver </string>
+    <string name="bereaved">Bereaved </string>
+    <string name="numberOfPerson">Number of Person Supported: </string>
+    <string name="numberOfVisit">Visit Activities (more than one): </string>
+    <string name="companioning">Companioning  </string>
+    <string name="comp_therapy">Comp Therapy: </string>
+    <string name="reiki">Reiki </string>
+    <string name="tt">TT </string>
+    <string name="aroma">Aroma </string>
+    <string name="respite">Respite </string>
+    <string name="spiritual">Spiritual </string>
+    <string name="note">Notes: </string>
+
+
+
+
+
     <string name="inOffice">In-Office</string>
+    <string name="inOffice_head">In-Office (More than one)</string>
+    <string name="spa">SPA</string>
+    <string name="dayProgram">Day Program</string>
+    <string name="ct">CT</string>
+    <string name="training1">Training</string>
+    <string name="outreach1">Outreach</string>
 
     <string name="indirect">Indirect</string>
     <string name="indirect_form">Indirect Service (No Clients)</string>
     <string name="admin">Admin</string>
-    <string name="fundraisingEvent">FundraisingEvent</string>
     <string name="board">Board</string>
     <string name="training">Training</string>
+    <string name="fundraising">Fundraising</string>
     <string name="outreach">Outreach</string>
 
-    <!--<string name="spiritualCare">Spiritual Care:</string>-->
-    <!-- <string name="tt">TT:</string>-->
-    <!--<string name="reiki">Reiki:</string>-->
-    <!-- <string name="aromatherapy">Aromatherapy:</string>-->
-    <!--<string name="handArmmassage">Hand/Arm Massage:</string>-->
 
-
-    <string name="notes">Notes: </string>
 
     <string name="submit">Submit: </string>
     <string name="enter_username">Enter your username here</string>
