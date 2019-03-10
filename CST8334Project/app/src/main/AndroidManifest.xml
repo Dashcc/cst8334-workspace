@@ -7,31 +7,23 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <application
+    <application android:name=".config.HeartHouseHospiceApp"
         android:icon="@drawable/app"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".InOfficeActivity"></activity>
+        <activity android:name=".InOfficeActivity"/>
         <activity android:name=".InHomeActivity" />
         <activity android:name=".IndirectActivity" />
         <activity android:name=".DirectActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".VolunteerInfoActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+        <activity android:name=".VolunteerInfoActivity"/>
+        <activity android:name=".calendar.CalendarActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
