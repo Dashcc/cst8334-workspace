@@ -1,6 +1,5 @@
 package com.example.cst8334project.emailservice;
 
-import android.content.Context;
 import android.util.Log;
 
 import com.example.cst8334project.domain.Email;
@@ -16,9 +15,14 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 /**
- * The implementation of the {@link EmailService} interface.
+ * The implementation of the {@link EmailService} interface as an enum.
  */
-public class EmailServiceImpl implements EmailService {
+public enum EmailServiceImpl implements EmailService {
+
+    /**
+     * The singleton instance for this service's implementation.
+     */
+    INSTANCE;
 
     /**
      * The name of this class for logging purposes.
@@ -37,12 +41,10 @@ public class EmailServiceImpl implements EmailService {
     private final ExecutorService executor;
 
     /**
-     * Construct an instance of {@link EmailServiceImpl} for the given {@link Context}.
-     *
-     * @param context the {@link Context} of the application
+     * Private constructor that constructs the singleton instance of {@link EmailServiceImpl}.
      */
-    public EmailServiceImpl(Context context) {
-        this.emailDAO = HHHDatabase.getInstance(context).getEmailDAO();
+    EmailServiceImpl() {
+        this.emailDAO = HHHDatabase.getInstance().getEmailDAO();
         this.executor = Executors.newSingleThreadExecutor();
     }
 

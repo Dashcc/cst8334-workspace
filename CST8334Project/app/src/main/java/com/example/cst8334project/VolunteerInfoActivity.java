@@ -1,10 +1,8 @@
 package com.example.cst8334project;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,8 +14,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.cst8334project.domain.Email;
-import com.example.cst8334project.emailservice.EmailSenderAsyncTask;
 import com.example.cst8334project.domain.Visit;
+import com.example.cst8334project.emailservice.EmailSenderAsyncTask;
 import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
 
 import java.util.Date;
@@ -134,7 +132,7 @@ public class VolunteerInfoActivity extends AppCompatActivity {
             visit.setVisitTime(editTime.getText().toString());
 
             // Add the Visit to the user history
-            new VisitServiceImpl(this).addVisit(visit);
+            VisitServiceImpl.INSTANCE.addVisit(visit);
 
             Intent intent = new Intent(VolunteerInfoActivity.this, VolunteerInfoActivity.class);
 

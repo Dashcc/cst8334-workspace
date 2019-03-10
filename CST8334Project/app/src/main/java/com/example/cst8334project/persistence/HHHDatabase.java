@@ -4,8 +4,8 @@ import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
-import android.content.Context;
 
+import com.example.cst8334project.config.HeartHouseHospiceApp;
 import com.example.cst8334project.domain.Email;
 import com.example.cst8334project.domain.Visit;
 import com.example.cst8334project.util.Converters;
@@ -20,7 +20,7 @@ public abstract class HHHDatabase extends RoomDatabase {
     /**
      * The name of the database.
      */
-     private static final String DATABASE_NAME = "HHH_DATABASE.db";
+    private static final String DATABASE_NAME = "HHH_DATABASE.db";
 
     /**
      * The singleton database instance.
@@ -29,25 +29,21 @@ public abstract class HHHDatabase extends RoomDatabase {
 
     /**
      * Get the singleton instance of the {@link HHHDatabase}.
-     *
-     * @param context the {@link Context} for the application
-     * @return the singleton instance of the {@link HHHDatabase}
      */
-    public static synchronized HHHDatabase getInstance(Context context) {
+    public static synchronized HHHDatabase getInstance() {
         if (instance == null) {
-            instance = createDatabase(context);
+            instance = createDatabase();
         }
         return instance;
     }
 
     /**
-     * Create the database using the given {@link Context}.
+     * Create the database.
      *
-     * @param context the {@link Context} for the application
      * @return the fully constructed {@link HHHDatabase} instance
      */
-    private static HHHDatabase createDatabase(Context context) {
-        return Room.databaseBuilder(context, HHHDatabase.class, DATABASE_NAME).build();
+    private static HHHDatabase createDatabase() {
+        return Room.databaseBuilder(HeartHouseHospiceApp.getAppContext(), HHHDatabase.class, DATABASE_NAME).build();
     }
 
     /**
