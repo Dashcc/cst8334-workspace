@@ -3,6 +3,7 @@ package com.example.cst8334project.userhistoryservice;
 import android.content.Context;
 import android.util.Log;
 
+import com.example.cst8334project.config.HeartHouseHospiceApp;
 import com.example.cst8334project.domain.Visit;
 import com.example.cst8334project.persistence.HHHDatabase;
 import com.example.cst8334project.persistence.VisitDAO;
@@ -19,9 +20,14 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 /**
- * The implementation of the {@link VisitService} interface.
+ * The implementation of the {@link VisitService} interface as an enum.
  */
-public class VisitServiceImpl implements VisitService {
+public enum VisitServiceImpl implements VisitService {
+
+    /**
+     * The singleton instance for this service's implementation.
+     */
+    INSTANCE;
 
     /**
      * The name of this class for logging purposes.
@@ -40,12 +46,10 @@ public class VisitServiceImpl implements VisitService {
     private final ExecutorService executor;
 
     /**
-     * Construct an instance of {@link VisitServiceImpl} for the given {@link Context}.
-     *
-     * @param context the {@link Context} of the application
+     * Private constructor that constructs an instance of {@link VisitServiceImpl}.
      */
-    public VisitServiceImpl(Context context) {
-        this.visitDAO = HHHDatabase.getInstance(context).getVisitDAO();
+    VisitServiceImpl() {
+        this.visitDAO = HHHDatabase.getInstance().getVisitDAO();
         this.executor = Executors.newSingleThreadExecutor();
     }
 

@@ -5,6 +5,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
+import com.example.cst8334project.config.HeartHouseHospiceApp;
+
 import static com.example.cst8334project.emailservice.EmailConstants.*;
 
 import java.io.IOException;
@@ -32,8 +34,8 @@ public final class ConnectionUtils {
      *
      * @return {@code true} if the connection was successful, {@code false} otherwise
      */
-    public static boolean canConnectToSMTPServer(Context context) {
-        return canConnectToServer(context, SMTP_SERVER, SMTP_PORT);
+    public static boolean canConnectToSMTPServer() {
+        return canConnectToServer(SMTP_SERVER, SMTP_PORT);
     }
 
     /**
@@ -41,8 +43,8 @@ public final class ConnectionUtils {
      *
      * @return {@code true} if the connection was successful, {@code false} otherwise
      */
-    public static boolean canConnectToIMAPServer(Context context) {
-        return canConnectToServer(context, IMAP_SERVER, IMAP_PORT);
+    public static boolean canConnectToIMAPServer() {
+        return canConnectToServer(IMAP_SERVER, IMAP_PORT);
     }
 
     /**
@@ -53,9 +55,9 @@ public final class ConnectionUtils {
      * @param port     the port
      * @return {@code true} if the connection was successful, {@code false} otherwise
      */
-    private static boolean canConnectToServer(Context context, String hostname, int port) {
+    private static boolean canConnectToServer(String hostname, int port) {
         // First check if the device is actually online
-        if (!isOnline(context)) {
+        if (!isOnline()) {
             return false;
         }
 
@@ -76,10 +78,10 @@ public final class ConnectionUtils {
     /**
      * Determine if the device is currently connect to the internet.
      *
-     * @param context the {@link Context} of the application
      * @return {@code true} if the device is connected to the internet, {@code false} otherwise
      */
-    public static boolean isOnline(Context context) {
+    private static boolean isOnline() {
+        Context context = HeartHouseHospiceApp.getAppContext();
         Objects.requireNonNull(context, "Cannot check internet connection with null Context.");
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = cm.getActiveNetworkInfo();

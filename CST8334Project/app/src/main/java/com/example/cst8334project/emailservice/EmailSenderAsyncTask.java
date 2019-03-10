@@ -3,6 +3,7 @@ package com.example.cst8334project.emailservice;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.app.Activity;
 
 import com.example.cst8334project.domain.Email;
 import com.example.cst8334project.util.ConnectionUtils;
@@ -40,13 +41,13 @@ public class EmailSenderAsyncTask extends AsyncTask<Email, Void, Void> {
     /**
      * Construct a new {@link EmailSenderAsyncTask} with the given {@link Context}.
      *
-     * @param context the {@link Context} of the application; can be provided to this
-     *                constructor by setting 'this' as a parameter from a class
-     *                that extends {@link android.app.Activity}
+     * @param context the {@link Context} of the activity that instantiates this {@link AsyncTask};
+     *                can be provided to this constructor by setting 'this' as a parameter from a class
+     *                that extends {@link Activity}
      */
     public EmailSenderAsyncTask(Context context) {
         this.context = new WeakReference<>(context);
-        this.emailService = new EmailServiceImpl(this.context.get());
+        this.emailService = EmailServiceImpl.INSTANCE;
     }
 
     /**
@@ -60,7 +61,7 @@ public class EmailSenderAsyncTask extends AsyncTask<Email, Void, Void> {
     @Override
     protected Void doInBackground(Email... emails) {
         // Don't proceed if the device cannot connect to the GMail SMTP server
-        if (!ConnectionUtils.canConnectToSMTPServer(context.get())) {
+        if (!ConnectionUtils.canConnectToSMTPServer()) {
             Log.e(CLASS_NAME, "Could not connect to the Google SMTP server. " +
                     "The email(s) will not be sent.");
 

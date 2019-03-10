@@ -79,7 +79,7 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
                 AuthenticationManager.getPassword());
 
         // If the device cannot connect to the IMAP server
-        if (!ConnectionUtils.canConnectToIMAPServer(context.get())) {
+        if (!ConnectionUtils.canConnectToIMAPServer()) {
             // Use the password stored in the file to authenticate the user
             AuthenticationManager.setPassword(passwordFromFile);
             Log.e(CLASS_NAME, "Could not connect to the Google IMAP server. " +
