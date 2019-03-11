@@ -2,28 +2,28 @@ package com.example.cst8334project;
 
 import android.app.Activity;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.example.cst8334project.domain.Email;
+import com.example.cst8334project.emailservice.EmailSenderAsyncTask;
+import com.example.cst8334project.forms.IndirectServiceForm;
+import com.example.cst8334project.forms.util.FormUtils;
+
+import org.apache.commons.lang3.BooleanUtils;
 
 import java.util.Calendar;
 
 public class IndirectActivity extends Activity {
 
     TimePickerDialog picker;
-
-    String admin = "no";
-    String fundraisingEvent = "no";
-    String board = "no";
-    String training = "no";
-    String outreach = "no";
     CheckBox checkbox1, checkbox2, checkbox3, checkbox4, checkbox5;
 
     EditText eText1;
@@ -38,9 +38,8 @@ public class IndirectActivity extends Activity {
     int fundraisingEventHour, fundraisingEventMin;
     int outreachHour, outreachMin;
 
-
+    IndirectServiceForm indirectServiceForm;
     Button btnSubmit;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,14 +65,16 @@ public class IndirectActivity extends Activity {
         eText4.setInputType(InputType.TYPE_NULL);
         eText5.setInputType(InputType.TYPE_NULL);
 
+        // Get the IndirectServiceForm object from the intent extras
+        indirectServiceForm = (IndirectServiceForm) getIntent().getSerializableExtra(FormUtils.FORM_INTENT_OBJECT_NAME);
+
         checkbox1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!checkbox1.isChecked())
-                    {
-                        eText1.setText("");
-                        return;
-                    }
+                if (!checkbox1.isChecked()) {
+                    eText1.setText("");
+                    return;
+                }
 
                 final Calendar cal = Calendar.getInstance();
                 int hour = cal.get(Calendar.HOUR_OF_DAY);
@@ -94,8 +95,7 @@ public class IndirectActivity extends Activity {
         checkbox2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!checkbox2.isChecked())
-                {
+                if (!checkbox2.isChecked()) {
                     eText2.setText("");
                     return;
                 }
@@ -118,8 +118,7 @@ public class IndirectActivity extends Activity {
         checkbox3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!checkbox3.isChecked())
-                {
+                if (!checkbox3.isChecked()) {
                     eText3.setText("");
                     return;
                 }
@@ -142,8 +141,7 @@ public class IndirectActivity extends Activity {
         checkbox4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!checkbox4.isChecked())
-                {
+                if (!checkbox4.isChecked()) {
                     eText4.setText("");
                     return;
                 }
@@ -157,7 +155,7 @@ public class IndirectActivity extends Activity {
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
                                 eText4.setText(sHour + ":" + sMinute);
                                 fundraisingEventHour = sHour;
-                                fundraisingEventMin  = sMinute;
+                                fundraisingEventMin = sMinute;
                             }
                         }, hour, minutes, true);
                 picker.show();
@@ -166,8 +164,7 @@ public class IndirectActivity extends Activity {
         checkbox5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!checkbox5.isChecked())
-                {
+                if (!checkbox5.isChecked()) {
                     eText5.setText("");
                     return;
                 }
@@ -191,63 +188,65 @@ public class IndirectActivity extends Activity {
 
         btnSubmit = findViewById(R.id.btn_directSubmit);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
-
-
-                    Intent intent = new Intent(IndirectActivity.this, VolunteerInfoActivity.class);
-                    startActivityForResult(intent,50);
-
                 submitForm();
-
-
             }
         });
     }
-//
-    private void submitForm(){
+
+    private void submitForm() {
         initialize();
-        if (!validate()){
+        if (!validate()) {
             Toast.makeText(this, "Sign up has Failed", Toast.LENGTH_SHORT).show();
-        }
-        else {
+        } else {
             onLoginSuccess();
         }
     }
 
+    /**
+     * Create the {@link Email} object that corresponds to this form and send the email.
+     */
     public void onLoginSuccess() {
+        Email email = new Email();
+        email.setSubject("HHH InDirect Form");
+        email.setBody("Please find attached an InDirect Form data");
+        email.setCsvAttachmentFileName("InDirect.csv");
+        email.setAttachmentText(indirectServiceForm.getAttachmentText());
+
+        new EmailSenderAsyncTask(this).execute(email);
     }
 
+    /**
+     * Validate the {@link IndirectServiceForm} by ensuring that atleast one of the checkboxes is
+     * checked.
+     * @return {@code true} if at least one of the Indirect Form checkboxes is checked, false otherwise
+     */
     public boolean validate() {
-        return validate() ;
-
+        return BooleanUtils.or(new boolean[]{checkbox1.isChecked(), checkbox2.isChecked(),
+                checkbox3.isChecked(), checkbox4.isChecked(), checkbox5.isChecked()});
     }
 
-    private void initialize(){
-
-        if(checkbox1.isChecked()){
-            admin = "yes";
+    private void initialize() {
+        if (checkbox1.isChecked()) {
+            indirectServiceForm.addIndirectServiceType(IndirectServiceForm.IndirectServiceType.ADMIN, eText1.getText().toString());
         }
 
-        if(checkbox2.isChecked()){
-            fundraisingEvent = "yes";
+        if (checkbox2.isChecked()) {
+            indirectServiceForm.addIndirectServiceType(IndirectServiceForm.IndirectServiceType.BOARD, eText2.getText().toString());
         }
 
-        if(checkbox3.isChecked()){
-            board = "yes";
+        if (checkbox3.isChecked()) {
+            indirectServiceForm.addIndirectServiceType(IndirectServiceForm.IndirectServiceType.TRAINING, eText3.getText().toString());
         }
 
-        if(checkbox4.isChecked()){
-            training = "yes";
+        if (checkbox4.isChecked()) {
+            indirectServiceForm.addIndirectServiceType(IndirectServiceForm.IndirectServiceType.FUNDRAISING, eText4.getText().toString());
         }
 
-        if(checkbox5.isChecked()){
-            outreach = "yes";
+        if (checkbox5.isChecked()) {
+            indirectServiceForm.addIndirectServiceType(IndirectServiceForm.IndirectServiceType.OUTREACH, eText5.getText().toString());
         }
-
-
-
     }
 }
 
