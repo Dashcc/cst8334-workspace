@@ -1,15 +1,17 @@
 package com.example.cst8334project;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
 import com.example.cst8334project.domain.Visit;
 import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
+
 import java.util.List;
 
 
@@ -24,7 +26,7 @@ public class UserHistoryActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_history);
 
-        visitServiceImp = new VisitServiceImpl(this);
+        visitServiceImp = VisitServiceImpl.INSTANCE;
         itemList = visitServiceImp.findAllVisits();
         VisitAdapter va = new VisitAdapter(R.layout.recyclerview_visits, itemList);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview_visits);

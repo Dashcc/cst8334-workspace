@@ -3,6 +3,9 @@ package com.example.cst8334project.emailservice;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.app.Activity;
+import android.view.Gravity;
+import android.widget.Toast;
 
 import com.example.cst8334project.domain.Email;
 import com.example.cst8334project.util.ConnectionUtils;
@@ -20,7 +23,7 @@ import static com.example.cst8334project.util.FileUtils.*;
 /**
  * This class is responsible for sending emails in a background thread.
  */
-public class EmailSenderAsyncTask extends AsyncTask<Email, Void, Void> {
+public class EmailSenderAsyncTask extends AsyncTask<Email, Void, Boolean> {
 
     /**
      * The name of this class for logging purposes.
@@ -40,13 +43,13 @@ public class EmailSenderAsyncTask extends AsyncTask<Email, Void, Void> {
     /**
      * Construct a new {@link EmailSenderAsyncTask} with the given {@link Context}.
      *
-     * @param context the {@link Context} of the application; can be provided to this
-     *                constructor by setting 'this' as a parameter from a class
-     *                that extends {@link android.app.Activity}
+     * @param context the {@link Context} of the activity that instantiates this {@link AsyncTask};
+     *                can be provided to this constructor by setting 'this' as a parameter from a class
+     *                that extends {@link Activity}
      */
     public EmailSenderAsyncTask(Context context) {
         this.context = new WeakReference<>(context);
-        this.emailService = new EmailServiceImpl(this.context.get());
+        this.emailService = EmailServiceImpl.INSTANCE;
     }
 
     /**
@@ -58,9 +61,9 @@ public class EmailSenderAsyncTask extends AsyncTask<Email, Void, Void> {
      * @return {@code true} if the email(s) were successfully sent, {@code false} otherwise
      */
     @Override
-    protected Void doInBackground(Email... emails) {
+    protected Boolean doInBackground(Email... emails) {
         // Don't proceed if the device cannot connect to the GMail SMTP server
-        if (!ConnectionUtils.canConnectToSMTPServer(context.get())) {
+        if (!ConnectionUtils.canConnectToSMTPServer()) {
             Log.e(CLASS_NAME, "Could not connect to the Google SMTP server. " +
                     "The email(s) will not be sent.");
 
@@ -69,7 +72,7 @@ public class EmailSenderAsyncTask extends AsyncTask<Email, Void, Void> {
                 addEmailToUnsentEmails(email);
             }
 
-            return null;
+            return false;
         }
 
         // Initialize a mail Session and authenticate the login credentials
@@ -82,7 +85,7 @@ public class EmailSenderAsyncTask extends AsyncTask<Email, Void, Void> {
         // Iterate through the emails
         for (Email email : emails) {
             // Create the temporary CSV file and write the attachment text to it
-            writeTextToFile(context.get(), TEMP_CSV_FILE_NAME, email.getAttachmentText());
+            writeTextToFile(TEMP_CSV_FILE_NAME, email.getAttachmentText());
 
             // Log before sending the email
             Log.i(CLASS_NAME, "*** Attempting to send Email: ***" + email);
@@ -99,13 +102,31 @@ public class EmailSenderAsyncTask extends AsyncTask<Email, Void, Void> {
             } catch (MessagingException e) {
                 Log.e(CLASS_NAME, "Error occurred while attempting to send email: " + email, e);
                 addEmailToUnsentEmails(email);
+                return false;
             }
 
             // Delete the temporary CSV file from the user's directory after the email has been sent
-            deleteFileFromStorage(context.get(), TEMP_CSV_FILE_NAME);
+            deleteFileFromStorage(TEMP_CSV_FILE_NAME);
         }
 
-        return null;
+        return true;
+    }
+
+    /**
+     * Display a toast message if this AsyncTask was called from an activity and if the singular
+     * email that was received from this activity was successfully sent.
+     *
+     * @param emailsSent whether the emails were successfully sent.
+     */
+    @Override
+    protected void onPostExecute(Boolean emailsSent) {
+        // Show a toast message if this AsyncTask was called from an activity
+        if (emailsSent && context.get() instanceof Activity) {
+            Activity activity = (Activity) context.get();
+            Toast toast = Toast.makeText(activity, "Email sent.", Toast.LENGTH_LONG);
+            toast.setGravity(Gravity.CENTER, 0, 0);
+            toast.show();
+        }
     }
 
     /**
@@ -143,7 +164,7 @@ public class EmailSenderAsyncTask extends AsyncTask<Email, Void, Void> {
 
         // Create the email attachment part
         MimeBodyPart messageAttachmentPart = new MimeBodyPart();
-        DataSource dataSource = new FileDataSource(getAbsoluteFilePath(context.get(), TEMP_CSV_FILE_NAME));
+        DataSource dataSource = new FileDataSource(getAbsoluteFilePath(TEMP_CSV_FILE_NAME));
         messageAttachmentPart.setDataHandler(new DataHandler(dataSource));
         messageAttachmentPart.setFileName(email.getCsvAttachmentFileName());
         multipart.addBodyPart(messageAttachmentPart);

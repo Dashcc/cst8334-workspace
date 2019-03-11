@@ -1,6 +1,5 @@
 package com.example.cst8334project.authentication;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -9,22 +8,13 @@ import com.example.cst8334project.util.ConnectionUtils;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.IOException;
-import java.lang.ref.WeakReference;
 import java.util.Objects;
 
-import static com.example.cst8334project.util.FileUtils.*;
-
-import javax.mail.Flags;
-import javax.mail.Folder;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Store;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+import javax.mail.*;
+import javax.mail.internet.*;
 
 import static com.example.cst8334project.emailservice.EmailConstants.*;
+import static com.example.cst8334project.util.FileUtils.*;
 
 /**
  * This class is responsible for checking whether the client has changed the password that will
@@ -46,22 +36,6 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
     private static final String PASSWORD_KEY = "hhh.pw";
 
     /**
-     * A {@link WeakReference} to the {@link Context} of the current state of the application.
-     */
-    private final WeakReference<Context> context;
-
-    /**
-     * Construct a new {@link NewPasswordCheckerAsyncTask} with the given {@link Context}.
-     *
-     * @param context the {@link Context} of the application; can be provided to this
-     *                constructor by setting 'this' as a parameter from a class
-     *                that extends {@link android.app.Activity}
-     */
-    public NewPasswordCheckerAsyncTask(Context context) {
-        this.context = new WeakReference<>(context);
-    }
-
-    /**
      * This method is executed in a background thread and is responsible for iterating through
      * the email messages in the email address designated by the client for the purposes of
      * changing the password used to authenticate volunteers. Only the most recent password
@@ -75,11 +49,10 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
         Log.i(CLASS_NAME, "Checking for new password from the client...");
 
         // Get the password stored in the file
-        String passwordFromFile = readFromSharedPreferences(context.get(), PASSWORD_KEY,
-                AuthenticationManager.getPassword());
+        String passwordFromFile = readFromSharedPreferences(PASSWORD_KEY, AuthenticationManager.getPassword());
 
         // If the device cannot connect to the IMAP server
-        if (!ConnectionUtils.canConnectToIMAPServer(context.get())) {
+        if (!ConnectionUtils.canConnectToIMAPServer()) {
             // Use the password stored in the file to authenticate the user
             AuthenticationManager.setPassword(passwordFromFile);
             Log.e(CLASS_NAME, "Could not connect to the Google IMAP server. " +
@@ -141,7 +114,7 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
                         AuthenticationManager.setPassword(password);
 
                         // Update the password in the file as well
-                        writeToSharedPreferences(context.get(), PASSWORD_KEY, password);
+                        writeToSharedPreferences(PASSWORD_KEY, password);
 
                         // Set the password changed flag to true
                         passwordChanged = true;

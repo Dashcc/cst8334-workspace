@@ -4,69 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    android:layout_centerHorizontal="true"
+    android:background="@drawable/final_logo"
     tools:context="com.example.cst8334project.MainActivity">
 
-    <!--<EditText-->
-        <!--android:id="@+id/username"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:ems="10"-->
-        <!--android:hint="@string/enter_username"-->
-        <!--android:inputType="textPersonName"-->
-        <!--android:visibility="visible" />-->
-
-    <!--<EditText-->
-        <!--android:id="@+id/password"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:ems="10"-->
-        <!--android:hint="@string/enter_pass"-->
-        <!--android:inputType="textPassword"/>-->
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/welcome_page"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:textColor="#fbf9f9"
-        android:textSize="30sp"
-        android:textStyle="italic"
-        />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/welcome_page1"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/textView"
-        android:textColor="#fbf9f9"
-        android:textSize="30sp"
-        android:textStyle="italic" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="67dp"
-        android:layout_height="54dp"
-        android:layout_above="@id/textView"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="179dp"
-        android:layout_marginBottom="54dp"
-        android:contentDescription="@string/welcome_page1"
-        android:src="@drawable/logo2" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="112dp"
-        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="36dp"
+        android:fontFamily="@font/times_new_roman_normal"
         android:text="@string/ButtonText"
         android:textStyle="bold"
         tools:ignore="MissingConstraints" />

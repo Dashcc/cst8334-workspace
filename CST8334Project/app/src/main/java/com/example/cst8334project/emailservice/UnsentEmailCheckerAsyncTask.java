@@ -1,13 +1,12 @@
 package com.example.cst8334project.emailservice;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.cst8334project.config.HeartHouseHospiceApp;
 import com.example.cst8334project.domain.Email;
 import com.example.cst8334project.util.ConnectionUtils;
 
-import java.lang.ref.WeakReference;
 import java.util.List;
 
 /**
@@ -25,11 +24,6 @@ public class UnsentEmailCheckerAsyncTask extends AsyncTask<Void, Void, Boolean> 
     private static final String CLASS_NAME = UnsentEmailCheckerAsyncTask.class.getSimpleName();
 
     /**
-     * A {@link WeakReference} to the {@link Context} of the current state of the application.
-     */
-    private final WeakReference<Context> context;
-
-    /**
      * Provides service level methods for emails.
      */
     private final EmailService emailService;
@@ -40,15 +34,10 @@ public class UnsentEmailCheckerAsyncTask extends AsyncTask<Void, Void, Boolean> 
     private List<Email> unsentEmails;
 
     /**
-     * Construct a new {@link UnsentEmailCheckerAsyncTask} with the given {@link Context}.
-     *
-     * @param context the {@link Context} of the application; can be provided to this
-     *                constructor by setting 'this' as a parameter from a class
-     *                that extends {@link android.app.Activity}
+     * Construct a new instance of {@link UnsentEmailCheckerAsyncTask}.
      */
-    public UnsentEmailCheckerAsyncTask(Context context) {
-        this.context = new WeakReference<>(context);
-        this.emailService = new EmailServiceImpl(this.context.get());
+    public UnsentEmailCheckerAsyncTask() {
+        this.emailService = EmailServiceImpl.INSTANCE;
     }
 
     /**
@@ -65,7 +54,7 @@ public class UnsentEmailCheckerAsyncTask extends AsyncTask<Void, Void, Boolean> 
         Log.i(CLASS_NAME, "Checking for any unsent emails...");
 
         // Check if the device can connect to the SMTP server
-        if (!ConnectionUtils.canConnectToSMTPServer(context.get())) {
+        if (!ConnectionUtils.canConnectToSMTPServer()) {
             Log.e(CLASS_NAME, "Could not connect to the SMTP server. Skipping check for " +
                     "unsent emails.");
             return false;
@@ -97,7 +86,7 @@ public class UnsentEmailCheckerAsyncTask extends AsyncTask<Void, Void, Boolean> 
     protected void onPostExecute(Boolean canSendUnsentEmails) {
         // Send the unsent emails if there were any
         if (canSendUnsentEmails) {
-            new EmailSenderAsyncTask(context.get()).execute(unsentEmails.toArray(new Email[0]));
+            new EmailSenderAsyncTask(HeartHouseHospiceApp.getAppContext()).execute(unsentEmails.toArray(new Email[0]));
         }
     }
 }

@@ -5,21 +5,21 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-
     android:background="@color/Hex_Gray90"
     >
 
     <TextView
         android:id="@+id/form"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="61dp"
         android:layout_gravity="center"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="@string/report_form"
         android:textColor="@color/Hex_Blue"
         android:textSize="25sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="@font/times_new_roman_normal" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -31,18 +31,19 @@
             android:layout_height="63dp"
             android:layout_weight="0.25"
             android:text="@string/name"
-            android:textStyle="italic"
-            android:textSize="15sp"
-            android:textColor="@color/Hex_Blue"/>
+            android:textSize="20sp"
+            android:textColor="@color/Hex_Blue"
+            android:fontFamily="@font/times_new_roman_normal" />
 
         <EditText
             android:id="@+id/edit_name"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="63dp"
             android:layout_weight="0.35"
             android:ems="10"
             android:inputType="textPersonName"
-            android:textColor="@color/Hex_Blue" />
+            android:textColor="@color/Hex_Blue"
+            android:fontFamily="@font/times_new_roman_normal" />
 
     </LinearLayout>
 
@@ -57,16 +58,17 @@
             android:layout_weight="0.25"
             android:text="@string/date"
             android:textColor="@color/Hex_Blue"
-            android:textSize="15sp"
-            android:textStyle="italic" />
+            android:textSize="20sp"
+            android:fontFamily="@font/times_new_roman_normal" />
 
         <EditText
             android:id="@+id/edit_date"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="63dp"
             android:layout_weight="0.35"
             android:ems="10"
-            android:inputType="date" />
+            android:inputType="date"
+            android:fontFamily="@font/times_new_roman_normal" />
 
     </LinearLayout>
 
@@ -79,167 +81,43 @@
             android:layout_width="0dp"
             android:layout_height="63dp"
             android:layout_weight="0.25"
-            android:text="@string/numberOfPeople"
+            android:text="@string/type"
             android:textColor="@color/Hex_Blue"
-            android:textSize="15sp"
-            android:textStyle="italic" />
+            android:textSize="20sp"
+            android:fontFamily="@font/times_new_roman_normal" />
 
-        <EditText
-            android:id="@+id/edit_people"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.35"
-            android:ems="10"
-            android:inputType="number"
-            android:textColor="@color/Hex_Blue"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="63dp"
-            android:layout_weight="0.25"
-            android:text="@string/visitingTime"
-            android:textStyle="italic"
-            android:textSize="15sp"
-            android:textColor="@color/Hex_Blue"/>
-        <EditText
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.35"
-            android:ems="10"
-            android:id="@+id/edit_time"
-            android:inputType="time"
-            android:textColor="@color/Hex_Blue"/>
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.35"
-            android:text="@string/visitingActivities"
-            android:textColor="@color/Hex_Blue"
-            android:textSize="15sp"
-            android:textStyle="italic" />
-
-    </LinearLayout>
-
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        android:layout_gravity="fill"
-        android:columnCount="2"
-        android:rowCount="2">
-
-
-        <CheckBox
-            android:id="@+id/CB1"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="@string/inHome"
-            android:textColor="@color/Hex_Blue"
+            android:orientation="vertical"
+            >
 
-            />
+            <Button
+                android:id="@+id/direct_btn"
+                android:layout_width="242dp"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_weight="0.35"
+                android:ems="10"
+                android:text="@string/direct"
+                android:textColor="@color/Hex_Blue"
 
-        <CheckBox
-            android:id="@+id/CB2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="@string/bereavement"
-            android:textColor="@color/Hex_Blue"
-            android:textStyle="italic" />
+                android:fontFamily="@font/times_new_roman_normal" />
 
-        <CheckBox
-            android:id="@+id/CB3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="@string/spiritualCare"
-            android:textColor="@color/Hex_Blue"
-            android:textStyle="italic" />
-
-        <CheckBox
-            android:id="@+id/CB4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="@string/tt"
-            android:textStyle="italic" />
-
-        <CheckBox
-            android:id="@+id/CB5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="@string/reiki"
-            android:textColor="@color/Hex_Blue"
-            android:textStyle="italic" />
-
-        <CheckBox
-            android:id="@+id/CB6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="@string/aromatherapy"
-            android:textColor="@color/Hex_Blue"
-            android:textStyle="italic" />
-
-        <CheckBox
-            android:id="@+id/CB7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_columnWeight="1"
-            android:text="@string/handArmmassage"
-            android:textColor="@color/Hex_Blue"
-            android:textStyle="italic" />
-    </GridLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+            <Button
+                android:id="@+id/indirect_btn"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_columnWeight="1"
+                android:layout_weight="0.35"
+                android:ems="10"
+                android:text="@string/indirect"
+                android:textColor="@color/Hex_Blue"
+                android:fontFamily="@font/times_new_roman_normal" />
 
 
-        <EditText
-            android:id="@+id/edit_notes"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_weight="0.375"
-            android:ems="10"
-            android:hint="@string/notes"
-            android:inputType="text"
-            android:textColor="@color/Hex_Blue"
-            android:textStyle="italic" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="114dp"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/submit"
-            android:textColor="@color/Hex_Blue"
-            android:textStyle="italic" />
-
+        </LinearLayout>
 
     </LinearLayout>
 </LinearLayout>
+

@@ -5,6 +5,6 @@
     <item
         android:id="@+id/delete_history"
         android:orderInCategory="100"
-        android:title="Clear Hisotry"
+        android:title="Clear History"
         app:showAsAction="never" />
 </menu>
