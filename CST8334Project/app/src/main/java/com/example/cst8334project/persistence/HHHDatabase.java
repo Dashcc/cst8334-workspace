@@ -1,9 +1,11 @@
 package com.example.cst8334project.persistence;
 
+import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.TypeConverters;
+import android.arch.persistence.room.migration.Migration;
 
 import com.example.cst8334project.config.HeartHouseHospiceApp;
 import com.example.cst8334project.domain.Email;
@@ -13,7 +15,7 @@ import com.example.cst8334project.util.Converters;
 /**
  * The database for storing, retrieving, and modifying the domain objects for this application.
  */
-@Database(entities = {Visit.class, Email.class}, version = 2, exportSchema = false)
+@Database(entities = {Visit.class, Email.class}, version = 3, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class HHHDatabase extends RoomDatabase {
 
@@ -44,7 +46,16 @@ public abstract class HHHDatabase extends RoomDatabase {
      */
     private static HHHDatabase createDatabase() {
         return Room.databaseBuilder(HeartHouseHospiceApp.getAppContext(), HHHDatabase.class, DATABASE_NAME).build();
+        //return Room.databaseBuilder(HeartHouseHospiceApp.getAppContext(), HHHDatabase.class, DATABASE_NAME).fallbackToDestructiveMigration().build();
+
     }
+
+    static final Migration MIGRATION_2_3 = new Migration(2, 3){
+        @Override
+        public void migrate(SupportSQLiteDatabase database) {
+            database.execSQL("ALTER TABLE visit ADD COLUMN service_type VARCHAR2");
+        }
+    };
 
     /**
      * Get the {@link VisitDAO} object used to execute CRUD statements for {@link Visit}s.

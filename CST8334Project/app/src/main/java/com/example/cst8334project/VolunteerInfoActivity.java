@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class VolunteerInfoActivity extends Activity {
+public class VolunteerInfoActivity extends AppCompatActivity {
 
     protected static final String ACTIVITY_NAME = "VolunteerInfoActivity";
 
@@ -57,6 +57,25 @@ public class VolunteerInfoActivity extends Activity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_volunteerinfo, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.history:
+                Intent intent = new Intent(VolunteerInfoActivity.this, UserHistoryActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     protected void onStart() {

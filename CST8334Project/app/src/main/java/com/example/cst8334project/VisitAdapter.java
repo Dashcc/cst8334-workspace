@@ -37,7 +37,7 @@ public class VisitAdapter extends RecyclerView.Adapter<VisitAdapter.ViewHolder>{
         TextView createDate = holder.createdDate;
         createDate.setText("Created: " + visitList.get(listPosition).getCreatedDate().toString());
         TextView visitTime = holder.serviceType;
-        visitTime.setText("Visit Time: : " + visitList.get(listPosition).getServiceType());
+        visitTime.setText("Service Type: " + visitList.get(listPosition).getServiceType());
         TextView note = holder.note;
         note.setText("Note: " + visitList.get(listPosition).getUserNote());
     }
