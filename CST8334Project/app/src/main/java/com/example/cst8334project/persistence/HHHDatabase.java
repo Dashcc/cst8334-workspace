@@ -50,13 +50,6 @@ public abstract class HHHDatabase extends RoomDatabase {
 
     }
 
-    static final Migration MIGRATION_2_3 = new Migration(2, 3){
-        @Override
-        public void migrate(SupportSQLiteDatabase database) {
-            database.execSQL("ALTER TABLE visit ADD COLUMN service_type VARCHAR2");
-        }
-    };
-
     /**
      * Get the {@link VisitDAO} object used to execute CRUD statements for {@link Visit}s.
      *
