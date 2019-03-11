@@ -175,8 +175,8 @@ public final class FileUtils {
      */
     public static String readFromSharedPreferences(String key, String defaultValue) {
         // Method parameter validation
-        if (StringUtils.isAnyBlank(key, defaultValue)) {
-            throw new IllegalArgumentException("Cannot read from SharedPreferences with null/empty key or default value");
+        if (StringUtils.isBlank(key)) {
+            throw new IllegalArgumentException("Cannot read from SharedPreferences with null or empty key.");
         }
 
         Log.i(CLASS_NAME, "Received request to read from SharedPreferences with key: " + key
