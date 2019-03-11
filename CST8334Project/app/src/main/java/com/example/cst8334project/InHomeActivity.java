@@ -12,26 +12,24 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.cst8334project.domain.Email;
+import com.example.cst8334project.emailservice.EmailSenderAsyncTask;
+import com.example.cst8334project.forms.InHomeForm;
+import com.example.cst8334project.forms.util.FormUtils;
+
+import org.apache.commons.lang3.BooleanUtils;
+
 import java.util.Calendar;
 
 public class InHomeActivity extends Activity {
 
     TimePickerDialog picker;
-    String client_name,numberOfPerson,note;
-    String Palliative = "no";
-    String Caregiver = "no";
-    String Bereaved = "no";
-    String Reiki = "no";
-    String TT = "no";
-    String Aroma = "no";
-    String Companioning  = "no";
-    String Respite = "no";
-    String Spiritual = "no";
+    String client_name, numberOfPerson, note;
 
-    EditText editName,editPerson,editNote;
-    EditText eReiki,eTT,eAroma,eCompanioning,eRespite,eSpiritual;
+    EditText editName, editPerson, editNote;
+    EditText eReiki, eTT, eAroma, eCompanioning, eRespite, eSpiritual;
 
-    CheckBox CBPalliative,CBCaregiver,CBBereaved,CBReiki,CBTT,CBAroma,CBCompanioning,CBRespite,CBSpiritual;
+    CheckBox CBPalliative, CBCaregiver, CBBereaved, CBReiki, CBTT, CBAroma, CBCompanioning, CBRespite, CBSpiritual;
 
     int ReikiHour, ReikiMin;
     int TTHour, TTMin;
@@ -40,6 +38,7 @@ public class InHomeActivity extends Activity {
     int RespiteHour, RespiteMin;
     int SpiritualHour, SpiritualMin;
 
+    InHomeForm inHomeForm;
     Button btnSubmit;
 
     @Override
@@ -73,6 +72,9 @@ public class InHomeActivity extends Activity {
         eCompanioning.setInputType(InputType.TYPE_NULL);
         eRespite.setInputType(InputType.TYPE_NULL);
         eSpiritual.setInputType(InputType.TYPE_NULL);
+
+        // Obtain the InHomeForm object from the Intent extra
+        inHomeForm = (InHomeForm) getIntent().getSerializableExtra(FormUtils.FORM_INTENT_OBJECT_NAME);
 
         CBReiki.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -224,32 +226,47 @@ public class InHomeActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-
-                Intent intent = new Intent(InHomeActivity.this, VolunteerInfoActivity.class);
-                startActivityForResult(intent, 50);
-
                 submitForm();
             }
         });
     }
-        private void submitForm(){
-            initialize();
-            if (!validate()){
-                Toast.makeText(this, "Sign up has Failed", Toast.LENGTH_SHORT).show();
-            }
-            else {
-                onLoginSuccess();
-            }
+
+    private void submitForm() {
+        initialize();
+        if (!validate()) {
+            Toast.makeText(this, "Sign up has Failed", Toast.LENGTH_SHORT).show();
+        } else {
+            onLoginSuccess();
         }
-        public void onLoginSuccess(){
+    }
 
-                Intent intent = new Intent(InHomeActivity.this, VolunteerInfoActivity.class);
+    /**
+     * Construct the {@link Email} object that corresponds to the In Home form object and send the
+     * email.
+     */
+    public void onLoginSuccess() {
+        inHomeForm.setClientName(client_name);
+        inHomeForm.setNumberOfPersonsSupported(numberOfPerson);
+        inHomeForm.setNote(note);
 
-                startActivity(intent);
+        Email email = new Email();
+        email.setSubject("HHH InHome Form");
+        email.setBody("Please find attached an In Home Form data");
+        email.setCsvAttachmentFileName("InHomeCSV.csv");
+        email.setAttachmentText(inHomeForm.getAttachmentText());
 
-            }
+        new EmailSenderAsyncTask(this).execute(email);
 
-    public boolean validate(){
+        Intent intent = new Intent(InHomeActivity.this, VolunteerInfoActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Validate the In Home office form.
+     *
+     * @return {@code true} if validation succeeded, {@code false} otherwise
+     */
+    private boolean validate() {
         boolean valid = true;
         if (client_name.isEmpty() || client_name.length() > 30) {
             editName.setError("Please enter valid Name");
@@ -261,48 +278,54 @@ public class InHomeActivity extends Activity {
             valid = false;
 
         }
+
+        if (!BooleanUtils.or(new boolean[]{CBPalliative.isChecked(), CBCaregiver.isChecked(), CBBereaved.isChecked()})) {
+            CBPalliative.setError("At least one client type must be selected.");
+            valid = false;
+        }
+
         return valid;
     }
 
-    private void initialize(){
+    private void initialize() {
         client_name = editName.getText().toString().trim();
         numberOfPerson = editPerson.getText().toString().trim();
         note = editNote.getText().toString().trim();
 
-        if(CBPalliative.isChecked()){
-            Palliative = "yes";
+        if (CBPalliative.isChecked()) {
+            inHomeForm.addClientType(InHomeForm.ClientType.PALLIATIVE);
         }
 
-        if(CBCaregiver.isChecked()){
-            Caregiver = "yes";
+        if (CBCaregiver.isChecked()) {
+            inHomeForm.addClientType(InHomeForm.ClientType.CAREGIVER);
         }
 
-        if(CBBereaved.isChecked()){
-            Bereaved = "yes";
+        if (CBBereaved.isChecked()) {
+            inHomeForm.addClientType(InHomeForm.ClientType.BEREAVED);
         }
 
-        if(CBReiki.isChecked()){
-            Reiki = "yes";
+        if (CBReiki.isChecked()) {
+            inHomeForm.addCompTherapy(InHomeForm.CompTherapy.REIKI, eReiki.getText().toString());
         }
 
-        if(CBTT.isChecked()){
-            TT = "yes";
+        if (CBTT.isChecked()) {
+            inHomeForm.addCompTherapy(InHomeForm.CompTherapy.TT, eTT.getText().toString());
         }
 
-        if(CBAroma.isChecked()){
-           Aroma = "yes";
+        if (CBAroma.isChecked()) {
+            inHomeForm.addCompTherapy(InHomeForm.CompTherapy.AROMA, eAroma.getText().toString());
         }
 
-        if(CBCompanioning.isChecked()){
-            Companioning= "yes";
-        }
-        if(CBRespite.isChecked()){
-            Respite= "yes";
-        }
-        if(CBSpiritual.isChecked()){
-            Spiritual= "yes";
+        if (CBCompanioning.isChecked()) {
+            inHomeForm.addInHomeType(InHomeForm.InHomeType.COMPANIONING, eCompanioning.getText().toString());
         }
 
+        if (CBRespite.isChecked()) {
+            inHomeForm.addInHomeType(InHomeForm.InHomeType.RESPITE, eRespite.getText().toString());
+        }
 
+        if (CBSpiritual.isChecked()) {
+            inHomeForm.addInHomeType(InHomeForm.InHomeType.SPIRITUAL, eSpiritual.getText().toString());
+        }
     }
 }
