@@ -40,14 +40,14 @@ public class CalendarActivity extends AppCompatActivity {
         Log.e(ACTIVITY_NAME, "In OnCreate()");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-        timePicker1 = (TimePicker) findViewById(R.id.timePicker1);
-        datePicker = (DatePicker) findViewById(R.id.datePicker1);
-        location = (EditText) findViewById(R.id.location);
-        title = (EditText) findViewById(R.id.type);
-        duration = (EditText) findViewById(R.id.duration);
-        description = (EditText) findViewById(R.id.description);
+        timePicker1 = findViewById(R.id.timePicker1);
+        datePicker = findViewById(R.id.datePicker1);
+        location = findViewById(R.id.location);
+        title = findViewById(R.id.type);
+        duration = findViewById(R.id.duration);
+        description = findViewById(R.id.description);
 
-        createEvent = (Button) findViewById(R.id.create_event);
+        createEvent = findViewById(R.id.create_event);
         createEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View View) {

@@ -29,7 +29,7 @@ public class UserHistoryActivity extends AppCompatActivity{
         visitServiceImp = VisitServiceImpl.INSTANCE;
         itemList = visitServiceImp.findAllVisits();
         VisitAdapter va = new VisitAdapter(R.layout.recyclerview_visits, itemList);
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview_visits);
+        recyclerView = findViewById(R.id.recyclerview_visits);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(va);
     }

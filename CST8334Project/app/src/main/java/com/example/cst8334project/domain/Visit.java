@@ -27,16 +27,10 @@ public class Visit {
     private Date createdDate;
 
     /**
-     * The visit time for this Visit entry
-     */
-    @ColumnInfo(name = "visit_time")
-    private String visitTime;
-
-    /**
      * The number of clients served for this Visit entry
      */
-    @ColumnInfo(name = "number_people")
-    private String numberPeople;
+    @ColumnInfo(name = "service_type")
+    private String serviceType;
 
     /**
      * The note that the user can add for this Visit.
@@ -60,20 +54,6 @@ public class Visit {
         this.userNote = userNote;
     }
 
-    public String getVisitTime() {
-        return visitTime;
-    }
-    public void setVisitTime(String visitTime) {
-        this.visitTime = visitTime;
-    }
-
-    public String getNumberPeople() {
-        return numberPeople;
-    }
-
-    public void setNumberPeople(String numberPeople) {
-        this.numberPeople = numberPeople;
-    }
 
     public Date getCreatedDate() {
         return createdDate;
@@ -83,13 +63,20 @@ public class Visit {
         this.createdDate = createdDate;
     }
 
+    public String getServiceType() {
+        return serviceType;
+    }
+
+    public void setServiceType(String serviceType) {
+        this.serviceType = serviceType;
+    }
+
     @Override
     public String toString() {
         return "Visit{" +
                 "id=" + id +
                 ", createdDate=" + createdDate +
-                ", visitTime='" + visitTime + '\'' +
-                ", numberPeople='" + numberPeople + '\'' +
+                ", serviceType='" + serviceType + '\'' +
                 ", userNote='" + userNote + '\'' +
                 '}';
     }

@@ -12,6 +12,9 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.cst8334project.domain.Visit;
+import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
+
 import java.util.Calendar;
 
 public class InOfficeActivity extends Activity {
@@ -23,6 +26,7 @@ public class InOfficeActivity extends Activity {
     String ct = "no";
     String training = "no";
     String outreach = "no";
+    String serviceType = "none";
     CheckBox checkbox1, checkbox2, checkbox3, checkbox4, checkbox5;
 
     EditText eText1;
@@ -74,6 +78,7 @@ public class InOfficeActivity extends Activity {
             final Calendar cal = Calendar.getInstance();
             int hour = cal.get(Calendar.HOUR_OF_DAY);
             int minutes = cal.get(Calendar.MINUTE);
+            serviceType = "SPA";
 
             picker = new TimePickerDialog(InOfficeActivity.this,
                     new TimePickerDialog.OnTimeSetListener() {
@@ -99,6 +104,7 @@ public class InOfficeActivity extends Activity {
             final Calendar cal = Calendar.getInstance();
             int hour = cal.get(Calendar.HOUR_OF_DAY);
             int minutes = cal.get(Calendar.MINUTE);
+            serviceType = "Day Program";
 
             picker = new TimePickerDialog(InOfficeActivity.this,
                     new TimePickerDialog.OnTimeSetListener() {
@@ -123,6 +129,7 @@ public class InOfficeActivity extends Activity {
             final Calendar cal = Calendar.getInstance();
             int hour = cal.get(Calendar.HOUR_OF_DAY);
             int minutes = cal.get(Calendar.MINUTE);
+            serviceType = "CT";
 
             picker = new TimePickerDialog(InOfficeActivity.this,
                     new TimePickerDialog.OnTimeSetListener() {
@@ -148,6 +155,7 @@ public class InOfficeActivity extends Activity {
             final Calendar cal = Calendar.getInstance();
             int hour = cal.get(Calendar.HOUR_OF_DAY);
             int minutes = cal.get(Calendar.MINUTE);
+            serviceType = "Training";
 
             picker = new TimePickerDialog(InOfficeActivity.this,
                     new TimePickerDialog.OnTimeSetListener() {
@@ -173,6 +181,7 @@ public class InOfficeActivity extends Activity {
             final Calendar cal = Calendar.getInstance();
             int hour = cal.get(Calendar.HOUR_OF_DAY);
             int minutes = cal.get(Calendar.MINUTE);
+            serviceType = "Outreach";
 
             picker = new TimePickerDialog(InOfficeActivity.this,
                     new TimePickerDialog.OnTimeSetListener() {
@@ -194,6 +203,11 @@ public class InOfficeActivity extends Activity {
         @Override
         public void onClick(View v) {
 
+            VisitServiceImpl vsi = VisitServiceImpl.INSTANCE;
+            Visit visit = new Visit();
+            visit.setServiceType(serviceType);
+            visit.setUserNote("Performed service above.");
+            vsi.addVisit(visit);
 
             Intent intent = new Intent(InOfficeActivity.this, VolunteerInfoActivity.class);
             startActivityForResult(intent,50);

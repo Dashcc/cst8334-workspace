@@ -36,28 +36,24 @@ public class VisitAdapter extends RecyclerView.Adapter<VisitAdapter.ViewHolder>{
     public void onBindViewHolder(final ViewHolder holder, final int listPosition) {
         TextView createDate = holder.createdDate;
         createDate.setText("Created: " + visitList.get(listPosition).getCreatedDate().toString());
-        TextView visitTime = holder.visitTime;
-        visitTime.setText("Visit Time: : " + visitList.get(listPosition).getVisitTime());
-        TextView numberPeople = holder.numberPeople;
-        numberPeople.setText("Number of clients: " + visitList.get(listPosition).getNumberPeople());
+        TextView visitTime = holder.serviceType;
+        visitTime.setText("Visit Time: : " + visitList.get(listPosition).getServiceType());
         TextView note = holder.note;
         note.setText("Note: " + visitList.get(listPosition).getUserNote());
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView createdDate;
-        public TextView visitTime;
-        public TextView numberPeople;
+        public TextView serviceType;
         public TextView note;
 
         public ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
 
-            createdDate = (TextView) itemView.findViewById(R.id.visit_create_date);
-            visitTime = (TextView) itemView.findViewById(R.id.visit_time);
-            numberPeople = (TextView) itemView.findViewById(R.id.visit_number_people);
-            note = (TextView) itemView.findViewById(R.id.visit_note);
+            createdDate = itemView.findViewById(R.id.visit_create_date);
+            serviceType = itemView.findViewById(R.id.service_type);
+            note = itemView.findViewById(R.id.visit_note);
         }
         @Override
         public void onClick(View view) {

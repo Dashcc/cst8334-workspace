@@ -12,6 +12,9 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.cst8334project.domain.Visit;
+import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
+
 import java.util.Calendar;
 
 public class InHomeActivity extends Activity {
@@ -27,6 +30,7 @@ public class InHomeActivity extends Activity {
     String Companioning  = "no";
     String Respite = "no";
     String Spiritual = "no";
+    String serviceType = "none";
 
     EditText editName,editPerson,editNote;
     EditText eReiki,eTT,eAroma,eCompanioning,eRespite,eSpiritual;
@@ -84,6 +88,7 @@ public class InHomeActivity extends Activity {
                 final Calendar cal = Calendar.getInstance();
                 int hour = cal.get(Calendar.HOUR_OF_DAY);
                 int minutes = cal.get(Calendar.MINUTE);
+                serviceType = "Reiki";
 
                 picker = new TimePickerDialog(InHomeActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
@@ -108,6 +113,7 @@ public class InHomeActivity extends Activity {
                 final Calendar cal = Calendar.getInstance();
                 int hour = cal.get(Calendar.HOUR_OF_DAY);
                 int minutes = cal.get(Calendar.MINUTE);
+                serviceType = "TT";
 
                 picker = new TimePickerDialog(InHomeActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
@@ -132,6 +138,7 @@ public class InHomeActivity extends Activity {
                 final Calendar cal = Calendar.getInstance();
                 int hour = cal.get(Calendar.HOUR_OF_DAY);
                 int minutes = cal.get(Calendar.MINUTE);
+                serviceType = "Aroma";
 
                 picker = new TimePickerDialog(InHomeActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
@@ -156,6 +163,7 @@ public class InHomeActivity extends Activity {
                 final Calendar cal = Calendar.getInstance();
                 int hour = cal.get(Calendar.HOUR_OF_DAY);
                 int minutes = cal.get(Calendar.MINUTE);
+                serviceType = "Companioning";
 
                 picker = new TimePickerDialog(InHomeActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
@@ -180,6 +188,7 @@ public class InHomeActivity extends Activity {
                 final Calendar cal = Calendar.getInstance();
                 int hour = cal.get(Calendar.HOUR_OF_DAY);
                 int minutes = cal.get(Calendar.MINUTE);
+                serviceType = "Respite";
 
                 picker = new TimePickerDialog(InHomeActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
@@ -204,6 +213,7 @@ public class InHomeActivity extends Activity {
                 final Calendar cal = Calendar.getInstance();
                 int hour = cal.get(Calendar.HOUR_OF_DAY);
                 int minutes = cal.get(Calendar.MINUTE);
+                serviceType = "Spiritual";
 
                 picker = new TimePickerDialog(InHomeActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
@@ -224,6 +234,12 @@ public class InHomeActivity extends Activity {
 
             @Override
             public void onClick(View v) {
+
+                VisitServiceImpl vsi = VisitServiceImpl.INSTANCE;
+                Visit visit = new Visit();
+                visit.setServiceType(serviceType);
+                visit.setUserNote(editNote.getText().toString());
+                vsi.addVisit(visit);
 
                 Intent intent = new Intent(InHomeActivity.this, VolunteerInfoActivity.class);
                 startActivityForResult(intent, 50);

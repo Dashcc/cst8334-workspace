@@ -13,6 +13,10 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.cst8334project.domain.Visit;
+import com.example.cst8334project.userhistoryservice.VisitService;
+import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
+
 import java.util.Calendar;
 
 public class IndirectActivity extends Activity {
@@ -24,6 +28,7 @@ public class IndirectActivity extends Activity {
     String board = "no";
     String training = "no";
     String outreach = "no";
+    String serviceType = "none";
     CheckBox checkbox1, checkbox2, checkbox3, checkbox4, checkbox5;
 
     EditText eText1;
@@ -40,7 +45,6 @@ public class IndirectActivity extends Activity {
 
 
     Button btnSubmit;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +83,8 @@ public class IndirectActivity extends Activity {
                 int hour = cal.get(Calendar.HOUR_OF_DAY);
                 int minutes = cal.get(Calendar.MINUTE);
 
+                serviceType = "admin";
+
                 picker = new TimePickerDialog(IndirectActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
@@ -102,6 +108,8 @@ public class IndirectActivity extends Activity {
                 final Calendar cal = Calendar.getInstance();
                 int hour = cal.get(Calendar.HOUR_OF_DAY);
                 int minutes = cal.get(Calendar.MINUTE);
+
+                serviceType = "board";
 
                 picker = new TimePickerDialog(IndirectActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
@@ -127,6 +135,8 @@ public class IndirectActivity extends Activity {
                 int hour = cal.get(Calendar.HOUR_OF_DAY);
                 int minutes = cal.get(Calendar.MINUTE);
 
+                serviceType = "training";
+
                 picker = new TimePickerDialog(IndirectActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
@@ -150,6 +160,8 @@ public class IndirectActivity extends Activity {
                 final Calendar cal = Calendar.getInstance();
                 int hour = cal.get(Calendar.HOUR_OF_DAY);
                 int minutes = cal.get(Calendar.MINUTE);
+
+                serviceType = "fundraising";
 
                 picker = new TimePickerDialog(IndirectActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
@@ -175,6 +187,8 @@ public class IndirectActivity extends Activity {
                 int hour = cal.get(Calendar.HOUR_OF_DAY);
                 int minutes = cal.get(Calendar.MINUTE);
 
+                serviceType = "outreach";
+
                 picker = new TimePickerDialog(IndirectActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
@@ -195,6 +209,11 @@ public class IndirectActivity extends Activity {
             @Override
             public void onClick(View v) {
 
+                   VisitServiceImpl vsi = VisitServiceImpl.INSTANCE;
+                    Visit visit = new Visit();
+                    visit.setServiceType(serviceType);
+                    visit.setUserNote("Performed service above.");
+                    vsi.addVisit(visit);
 
                     Intent intent = new Intent(IndirectActivity.this, VolunteerInfoActivity.class);
                     startActivityForResult(intent,50);
