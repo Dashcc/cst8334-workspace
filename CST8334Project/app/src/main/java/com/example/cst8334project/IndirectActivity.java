@@ -7,8 +7,8 @@ import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -24,7 +24,7 @@ import java.util.Calendar;
 public class IndirectActivity extends Activity {
 
     TimePickerDialog picker;
-    CheckBox checkbox1, checkbox2, checkbox3, checkbox4, checkbox5;
+    RadioButton  radioButton1, radioButton2, radioButton3, radioButton4, radioButton5;
 
     EditText eText1;
     EditText eText2;
@@ -47,11 +47,11 @@ public class IndirectActivity extends Activity {
         setContentView(R.layout.activity_indirect);
 
 
-        checkbox1 = findViewById(R.id.CB1);
-        checkbox2 = findViewById(R.id.CB2);
-        checkbox3 = findViewById(R.id.CB3);
-        checkbox4 = findViewById(R.id.CB4);
-        checkbox5 = findViewById(R.id.CB5);
+        radioButton1 = findViewById(R.id.RB1);
+        radioButton2 = findViewById(R.id.RB2);
+        radioButton3 = findViewById(R.id.RB3);
+        radioButton4 = findViewById(R.id.RB4);
+        radioButton5 = findViewById(R.id.RB5);
 
         eText1 = findViewById(R.id.editText1);
         eText2 = findViewById(R.id.editText2);
@@ -68,10 +68,10 @@ public class IndirectActivity extends Activity {
         // Get the IndirectServiceForm object from the intent extras
         indirectServiceForm = (IndirectServiceForm) getIntent().getSerializableExtra(FormUtils.FORM_INTENT_OBJECT_NAME);
 
-        checkbox1.setOnClickListener(new View.OnClickListener() {
+        radioButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!checkbox1.isChecked()) {
+                if (!radioButton1.isChecked()) {
                     eText1.setText("");
                     return;
                 }
@@ -92,10 +92,10 @@ public class IndirectActivity extends Activity {
                 picker.show();
             }
         });
-        checkbox2.setOnClickListener(new View.OnClickListener() {
+        radioButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!checkbox2.isChecked()) {
+                if (!radioButton2.isChecked()) {
                     eText2.setText("");
                     return;
                 }
@@ -115,10 +115,10 @@ public class IndirectActivity extends Activity {
                 picker.show();
             }
         });
-        checkbox3.setOnClickListener(new View.OnClickListener() {
+        radioButton3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!checkbox3.isChecked()) {
+                if (!radioButton3.isChecked()) {
                     eText3.setText("");
                     return;
                 }
@@ -138,10 +138,10 @@ public class IndirectActivity extends Activity {
                 picker.show();
             }
         });
-        checkbox4.setOnClickListener(new View.OnClickListener() {
+        radioButton4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!checkbox4.isChecked()) {
+                if (!radioButton4.isChecked()) {
                     eText4.setText("");
                     return;
                 }
@@ -161,10 +161,10 @@ public class IndirectActivity extends Activity {
                 picker.show();
             }
         });
-        checkbox5.setOnClickListener(new View.OnClickListener() {
+        radioButton5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!checkbox5.isChecked()) {
+                if (!radioButton5.isChecked()) {
                     eText5.setText("");
                     return;
                 }
@@ -223,28 +223,28 @@ public class IndirectActivity extends Activity {
      * @return {@code true} if at least one of the Indirect Form checkboxes is checked, false otherwise
      */
     public boolean validate() {
-        return BooleanUtils.or(new boolean[]{checkbox1.isChecked(), checkbox2.isChecked(),
-                checkbox3.isChecked(), checkbox4.isChecked(), checkbox5.isChecked()});
+        return BooleanUtils.or(new boolean[]{radioButton1.isChecked(), radioButton2.isChecked(),
+                radioButton3.isChecked(), radioButton4.isChecked(), radioButton5.isChecked()});
     }
 
     private void initialize() {
-        if (checkbox1.isChecked()) {
+        if (radioButton1.isChecked()) {
             indirectServiceForm.addIndirectServiceType(IndirectServiceForm.IndirectServiceType.ADMIN, eText1.getText().toString());
         }
 
-        if (checkbox2.isChecked()) {
+        if (radioButton2.isChecked()) {
             indirectServiceForm.addIndirectServiceType(IndirectServiceForm.IndirectServiceType.BOARD, eText2.getText().toString());
         }
 
-        if (checkbox3.isChecked()) {
+        if (radioButton3.isChecked()) {
             indirectServiceForm.addIndirectServiceType(IndirectServiceForm.IndirectServiceType.TRAINING, eText3.getText().toString());
         }
 
-        if (checkbox4.isChecked()) {
+        if (radioButton4.isChecked()) {
             indirectServiceForm.addIndirectServiceType(IndirectServiceForm.IndirectServiceType.FUNDRAISING, eText4.getText().toString());
         }
 
-        if (checkbox5.isChecked()) {
+        if (radioButton5.isChecked()) {
             indirectServiceForm.addIndirectServiceType(IndirectServiceForm.IndirectServiceType.OUTREACH, eText5.getText().toString());
         }
     }

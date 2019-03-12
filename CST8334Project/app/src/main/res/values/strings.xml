@@ -63,7 +63,7 @@
 
 
 
-    <string name="submit">Submit: </string>
+    <string name="submit">Submit </string>
     <string name="enter_username">Enter your username here</string>
     <string name="enter_pass">Enter your password here</string>
     <string name="signin">Sign In</string>
