@@ -7,14 +7,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.cst8334project.forms.DirectServiceForm;
+import com.example.cst8334project.forms.InHomeForm;
+import com.example.cst8334project.forms.InOfficeForm;
+import com.example.cst8334project.forms.util.FormUtils;
+
 public class DirectActivity extends Activity {
 
     protected static final String ACTIVITY_NAME = "DirectActivity";
 
     Button inHome;
     Button inOffice;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,11 +27,19 @@ public class DirectActivity extends Activity {
         inHome = findViewById(R.id.inHome_btn);
         inOffice = findViewById(R.id.inOffice_btn);
 
+        // Obtain the DirectServiceForm object from the Intent extra
+        final DirectServiceForm directServiceForm = (DirectServiceForm) getIntent().getSerializableExtra("form");
+
         inHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(DirectActivity.this, InHomeActivity.class);
+
+                // Construct an InHomeForm object from the DirectServiceForm object and add it to the Intent
+                InHomeForm inHomeForm = new InHomeForm(directServiceForm);
+                intent.putExtra(FormUtils.FORM_INTENT_OBJECT_NAME, inHomeForm);
+
                 startActivityForResult(intent,50);
 
             }
@@ -37,8 +48,12 @@ public class DirectActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DirectActivity.this, InOfficeActivity.class);
-                startActivityForResult(intent,50);
 
+                //  Construct an InOfficeForm object from the DirectServiceForm object and add it to the Intent
+                InOfficeForm inOfficeForm = new InOfficeForm(directServiceForm);
+                intent.putExtra(FormUtils.FORM_INTENT_OBJECT_NAME, inOfficeForm);
+
+                startActivityForResult(intent,50);
             }
         });
     }

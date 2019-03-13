@@ -67,7 +67,7 @@
             android:layout_height="63dp"
             android:layout_weight="0.35"
             android:ems="10"
-            android:inputType="date"
+            android:editable="false"
             android:fontFamily="@font/times_new_roman_normal" />
 
     </LinearLayout>

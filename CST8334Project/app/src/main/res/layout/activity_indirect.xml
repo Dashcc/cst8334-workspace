@@ -19,11 +19,12 @@
         android:textColor="@color/Hex_Blue"
         android:textSize="25sp"
         android:textStyle="bold"
+        android:textAlignment="center"
         android:fontFamily="@font/times_new_roman_normal"
        />
 
-    <CheckBox
-        android:id="@+id/CB1"
+    <RadioButton
+        android:id="@+id/RB1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
@@ -40,20 +41,20 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/form2"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginTop="48dp"
         android:ems="10"
         android:hint="Time in Hours/Minute"
-        android:textSize="15sp"
         android:textColor="@color/Hex_Blue"
-        app:fontFamily="@font/times_new_roman_normal"/>
+        android:textSize="15sp"
+        app:fontFamily="@font/times_new_roman_normal" />
 
 
-    <CheckBox
-        android:id="@+id/CB2"
+    <RadioButton
+        android:id="@+id/RB2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:layout_below="@+id/CB1"
+        android:layout_below="@+id/RB1"
         android:layout_marginTop="47dp"
         android:fontFamily="@font/times_new_roman_normal"
         android:text="@string/board"
@@ -74,12 +75,12 @@
         android:textColor="@color/Hex_Blue"
     android:fontFamily="@font/times_new_roman_normal"/>
 
-    <CheckBox
-        android:id="@+id/CB3"
+    <RadioButton
+        android:id="@+id/RB3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:layout_below="@+id/CB2"
+        android:layout_below="@+id/RB2"
         android:layout_marginTop="47dp"
         android:text="@string/training"
         android:textColor="@color/Hex_Blue"
@@ -99,12 +100,12 @@
         android:textColor="@color/Hex_Blue"
         android:fontFamily="@font/times_new_roman_normal"/>
 
-    <CheckBox
-        android:id="@+id/CB4"
+    <RadioButton
+        android:id="@+id/RB4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:layout_below="@+id/CB3"
+        android:layout_below="@+id/RB3"
         android:layout_marginTop="47dp"
         android:text="@string/fundraising"
         android:textColor="@color/Hex_Blue"
@@ -117,19 +118,19 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText3"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="39dp"
         android:ems="10"
+        android:fontFamily="@font/times_new_roman_normal"
         android:hint="Time in Hours/Minute"
         android:textColor="@color/Hex_Blue"
-        android:textSize="15sp"
-        android:fontFamily="@font/times_new_roman_normal"/>
+        android:textSize="15sp" />
 
-    <CheckBox
-        android:id="@+id/CB5"
+    <RadioButton
+        android:id="@+id/RB5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
-        android:layout_below="@+id/CB4"
+        android:layout_below="@+id/RB4"
         android:layout_marginTop="47dp"
         android:text="@string/outreach"
         android:textColor="@color/Hex_Blue"
