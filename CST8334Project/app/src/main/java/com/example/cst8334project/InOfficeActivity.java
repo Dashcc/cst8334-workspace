@@ -21,6 +21,7 @@ import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
 import org.apache.commons.lang3.BooleanUtils;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class InOfficeActivity extends Activity {
 
@@ -223,9 +224,9 @@ public class InOfficeActivity extends Activity {
         VisitServiceImpl.INSTANCE.addVisit(visit);
 
         Email email = new Email();
-        email.setSubject("HHH InOffice Form");
+        email.setSubject("HHH InOffice Form " + new Date().toString());
         email.setBody("Please find attached an In Office Form data");
-        email.setCsvAttachmentFileName("InOfficeCSV.csv");
+        email.setCsvAttachmentFileName(email.getSubject() + ".csv");
         email.setAttachmentText(inOfficeForm.getAttachmentText());
 
         new EmailSenderAsyncTask(this).execute(email);

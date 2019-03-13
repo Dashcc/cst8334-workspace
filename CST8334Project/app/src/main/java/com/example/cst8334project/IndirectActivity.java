@@ -22,6 +22,7 @@ import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
 import org.apache.commons.lang3.BooleanUtils;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class IndirectActivity extends Activity {
 
@@ -115,9 +116,9 @@ public class IndirectActivity extends Activity {
         VisitServiceImpl.INSTANCE.addVisit(visit);
 
         Email email = new Email();
-        email.setSubject("HHH InDirect Form");
+        email.setSubject("HHH InDirect Form " + new Date().toString());
         email.setBody("Please find attached an InDirect Form data");
-        email.setCsvAttachmentFileName("InDirect.csv");
+        email.setCsvAttachmentFileName(email.getSubject() + ".csv");
         email.setAttachmentText(indirectServiceForm.getAttachmentText());
 
         new EmailSenderAsyncTask(this).execute(email);

@@ -22,6 +22,7 @@ import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
 import org.apache.commons.lang3.BooleanUtils;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class InHomeActivity extends Activity {
 
@@ -257,9 +258,9 @@ public class InHomeActivity extends Activity {
         VisitServiceImpl.INSTANCE.addVisit(visit);
 
         Email email = new Email();
-        email.setSubject("HHH InHome Form");
+        email.setSubject("HHH InHome Form " + new Date().toString());
         email.setBody("Please find attached an In Home Form data");
-        email.setCsvAttachmentFileName("InHomeCSV.csv");
+        email.setCsvAttachmentFileName(email.getSubject() + ".csv");
         email.setAttachmentText(inHomeForm.getAttachmentText());
 
         new EmailSenderAsyncTask(this).execute(email);
