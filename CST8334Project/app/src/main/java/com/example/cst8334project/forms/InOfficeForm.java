@@ -81,6 +81,10 @@ public class InOfficeForm extends DirectServiceForm {
         inOfficeTypeMap = new LinkedHashMap<>();
     }
 
+    public String getInOfficeServiceTypes() {
+        return join(inOfficeTypeMap.keySet(), COMMA);
+    }
+
     /**
      * Add the given {@link InOfficeType} and the corresponding time spent for this service
      * to the map.

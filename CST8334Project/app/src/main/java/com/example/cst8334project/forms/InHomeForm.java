@@ -289,4 +289,8 @@ public class InHomeForm extends DirectServiceForm {
     public void setNote(String note) {
         this.note = note;
     }
+
+    public String getServiceTypes() {
+        return join(getEnumNames(inHomeTypeMap.keySet()), COMMA);
+    }
 }

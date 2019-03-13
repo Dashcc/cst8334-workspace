@@ -94,4 +94,8 @@ public class IndirectServiceForm extends BaseForm {
         String headerString = indirectServiceTypePair.getKey().getName();
         return super.getHeaderRow() + COMMA + headerString;
     }
+
+    public String getServiceType() {
+        return indirectServiceTypePair.getKey().getName();
+    }
 }

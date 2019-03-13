@@ -13,9 +13,11 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.cst8334project.domain.Email;
+import com.example.cst8334project.domain.Visit;
 import com.example.cst8334project.emailservice.EmailSenderAsyncTask;
 import com.example.cst8334project.forms.IndirectServiceForm;
 import com.example.cst8334project.forms.util.FormUtils;
+import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
 
 import org.apache.commons.lang3.BooleanUtils;
 
@@ -38,7 +40,6 @@ public class IndirectActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_indirect);
-
 
         radioButtons[0] = findViewById(R.id.RB1);
         radioButtons[1] = findViewById(R.id.RB2);
@@ -108,6 +109,11 @@ public class IndirectActivity extends Activity {
      * Create the {@link Email} object that corresponds to this form and send the email.
      */
     public void onLoginSuccess() {
+        Visit visit = new Visit();
+        visit.setServiceType(indirectServiceForm.getServiceType());
+        visit.setUserNote("Performed the above service.");
+        VisitServiceImpl.INSTANCE.addVisit(visit);
+
         Email email = new Email();
         email.setSubject("HHH InDirect Form");
         email.setBody("Please find attached an InDirect Form data");
@@ -120,10 +126,11 @@ public class IndirectActivity extends Activity {
     /**
      * Validate the {@link IndirectServiceForm} by ensuring that atleast one of the checkboxes is
      * checked.
+     *
      * @return {@code true} if at least one of the Indirect Form checkboxes is checked, false otherwise
      */
     public boolean validate() {
-        for (RadioButton radioButton: radioButtons) {
+        for (RadioButton radioButton : radioButtons) {
             if (radioButton.isChecked()) {
                 return true;
             }

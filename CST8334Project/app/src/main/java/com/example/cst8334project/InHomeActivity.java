@@ -13,9 +13,11 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.cst8334project.domain.Email;
+import com.example.cst8334project.domain.Visit;
 import com.example.cst8334project.emailservice.EmailSenderAsyncTask;
 import com.example.cst8334project.forms.InHomeForm;
 import com.example.cst8334project.forms.util.FormUtils;
+import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
 
 import org.apache.commons.lang3.BooleanUtils;
 
@@ -248,6 +250,11 @@ public class InHomeActivity extends Activity {
         inHomeForm.setClientName(client_name);
         inHomeForm.setNumberOfPersonsSupported(numberOfPerson);
         inHomeForm.setNote(note);
+
+        Visit visit = new Visit();
+        visit.setServiceType(inHomeForm.getServiceTypes());
+        visit.setUserNote(note);
+        VisitServiceImpl.INSTANCE.addVisit(visit);
 
         Email email = new Email();
         email.setSubject("HHH InHome Form");

@@ -11,10 +11,12 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
+import com.example.cst8334project.domain.Visit;
 
 import com.example.cst8334project.domain.Email;
 import com.example.cst8334project.emailservice.EmailSenderAsyncTask;
 import com.example.cst8334project.forms.InOfficeForm;
+import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
 
 import org.apache.commons.lang3.BooleanUtils;
 
@@ -212,9 +214,14 @@ public class InOfficeActivity extends Activity {
     }
 
     /**
-     * Create an {@link Email} object that corresponds to the In Office form and send the email.
+     * Create an {@link Email} and {@link Visit} object that corresponds to the In Office form and send the email.
      */
     public void onLoginSuccess() {
+        Visit visit = new Visit();
+        visit.setServiceType(inOfficeForm.getInOfficeServiceTypes());
+        visit.setUserNote("Performed the services above.");
+        VisitServiceImpl.INSTANCE.addVisit(visit);
+
         Email email = new Email();
         email.setSubject("HHH InOffice Form");
         email.setBody("Please find attached an In Office Form data");
