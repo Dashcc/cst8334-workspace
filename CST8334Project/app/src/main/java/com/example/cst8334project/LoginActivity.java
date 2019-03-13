@@ -49,7 +49,7 @@ public class LoginActivity extends Activity {
 
     private void authenticate(String username, String password) {
         if (AuthenticationManager.authenticate(username, password)) {
-            Intent intent = new Intent(LoginActivity.this, VolunteerInfoActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MainMenu.class);
             startActivity(intent);
         } else {
             Toast.makeText(this, "The username or password you entered was incorrect", Toast.LENGTH_SHORT).show();
@@ -60,7 +60,7 @@ public class LoginActivity extends Activity {
 
         if(username.equals("volun") && userpass.equals("123")){
 
-            Intent intent = new Intent(LoginActivity.this, VolunteerInfoActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MainMenu.class);
 
             startActivity(intent);
 

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/cst8334-workspace.iml" filepath="$PROJECT_DIR$/.idea/cst8334-workspace.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cst8334-workspace.iml" filepath="$PROJECT_DIR$/cst8334-workspace.iml" />
     </modules>
   </component>
 </project>

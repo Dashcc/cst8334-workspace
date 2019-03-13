@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/Hex_Gray90"
+    tools:context=".IndirectActivity">
+
+    <TextView
+        android:id="@+id/menu"
+        android:layout_width="wrap_content"
+        android:layout_height="93dp"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/main_menu"
+        android:textColor="@color/Hex_Blue"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/times_new_roman_normal" />
+
+
+    <Button
+        android:id="@+id/timesheet"
+        android:layout_width="158dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menu"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="122dp"
+        android:ems="10"
+        android:text="@string/timesheet"
+        android:textColor="@color/Hex_Blue"
+        android:textSize="15sp"
+        android:fontFamily="@font/times_new_roman_normal"
+        />
+
+
+    <Button
+    android:id="@+id/appointment"
+    android:layout_width="153dp"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/timesheet"
+    android:layout_alignParentEnd="true"
+    android:layout_marginStart="15dp"
+    android:layout_marginTop="29dp"
+    android:layout_marginEnd="122dp"
+    android:ems="10"
+    android:text="@string/appointment"
+    android:textColor="@color/Hex_Blue"
+    android:textSize="15sp"
+    android:fontFamily="@font/times_new_roman_normal"
+
+        />
+
+    <Button
+        android:id="@+id/history"
+        android:layout_width="153dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appointment"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="122dp"
+        android:ems="10"
+        android:text="@string/history"
+        android:textColor="@color/Hex_Blue"
+        android:textSize="15sp"
+        android:fontFamily="@font/times_new_roman_normal"
+        />
+
+
+
+
+
+
+</RelativeLayout>

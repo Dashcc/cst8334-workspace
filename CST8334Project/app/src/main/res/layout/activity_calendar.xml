@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:datePickerMode="spinner"
         android:calendarViewShown="false"
+        android:layout_below="@id/create_event"
         />
 
     <TimePicker
@@ -106,7 +107,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/create_event"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentTop="true" />
     
 
 </RelativeLayout>
