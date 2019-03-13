@@ -42,9 +42,6 @@
     <string name="note">Notes: </string>
 
 
-
-
-
     <string name="inOffice">In-Office</string>
     <string name="inOffice_head">In-Office (More than one)</string>
     <string name="spa">SPA</string>
@@ -60,7 +57,6 @@
     <string name="training">Training</string>
     <string name="fundraising">Fundraising</string>
     <string name="outreach">Outreach</string>
-
 
 
     <string name="submit">Submit </string>
@@ -80,5 +76,11 @@
     <string name="duration">Duration(hours)</string>
     <string name="appointmentType">What type of appointment?</string>
     <string name="appointmentDescription">Description</string>
+
+    <string name="title_activity_main_menu">MainMenu</string>
+    <string name="main_menu">Main Menu</string>
+    <string name="timesheet">Submit a Timesheet</string>
+    <string name="appointment">Add appointment to Calendar</string>
     <string name="history">History</string>
+
 </resources>

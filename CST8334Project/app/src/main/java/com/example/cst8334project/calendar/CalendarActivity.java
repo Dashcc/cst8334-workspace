@@ -12,6 +12,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
+import com.example.cst8334project.MainMenu;
 import com.example.cst8334project.R;
 import com.example.cst8334project.VolunteerInfoActivity;
 
@@ -70,7 +71,7 @@ public class CalendarActivity extends AppCompatActivity {
         Log.i(ACTIVITY_NAME, "In OnResume()");
 
         if (eventCreated) {
-            Intent intent = new Intent(CalendarActivity.this, VolunteerInfoActivity.class);
+            Intent intent = new Intent(CalendarActivity.this, MainMenu.class);
             startActivity(intent);
         }
 
