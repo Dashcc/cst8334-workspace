@@ -1,14 +1,10 @@
 package com.example.cst8334project.forms;
 
-import static com.example.cst8334project.forms.util.FormUtils.*;
-
 import com.example.cst8334project.forms.util.FormEnum;
-import com.example.cst8334project.forms.util.FormUtils;
 
-import static org.apache.commons.lang3.StringUtils.*;
+import org.apache.commons.lang3.tuple.Pair;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
+import static com.example.cst8334project.forms.util.FormUtils.COMMA;
 
 /**
  * This class represents an Indirect Service form.
@@ -65,39 +61,37 @@ public class IndirectServiceForm extends BaseForm {
     }
 
     /**
-     * A map with a key of the {@link IndirectServiceType} and a value of the time that was spent
+     * A {@link Pair} with a key of the {@link IndirectServiceType} and a value of the time that was spent
      * for this Indirect service.
      */
-    private final Map<IndirectServiceType, String> indirectServiceTypeMap;
+    private Pair<IndirectServiceType, String> indirectServiceTypePair;
 
     /**
      * Construct an instance of a {@link IndirectServiceForm}.
      */
     public IndirectServiceForm() {
         setFormType(FormType.INDIRECT);
-        this.indirectServiceTypeMap = new LinkedHashMap<>();
     }
 
     /**
-     * Add the given {@link IndirectServiceType} and the corresponding time spent for this service
-     * to the map.
+     * Set the {@link IndirectServiceType} key and the corresponding time value.
      *
-     * @param type the type of the Indirect service
-     * @param time the time spent at the Indirect service
+     * @param indirectServiceType the {@link IndirectServiceType}
+     * @param time                the time spent at this service
      */
-    public void addIndirectServiceType(IndirectServiceType type, String time) {
-        indirectServiceTypeMap.put(type, time);
+    public void setIndirectServiceTypePair(IndirectServiceType indirectServiceType, String time) {
+        this.indirectServiceTypePair = Pair.of(indirectServiceType, time);
     }
 
     @Override
     protected String getDataRow() {
-        String dataString = join(indirectServiceTypeMap.values(), COMMA);
+        String dataString = indirectServiceTypePair.getValue();
         return super.getDataRow() + COMMA + dataString;
     }
 
     @Override
     protected String getHeaderRow() {
-        String headerString = join(FormUtils.getEnumNames(indirectServiceTypeMap.keySet()), COMMA);
+        String headerString = indirectServiceTypePair.getKey().getName();
         return super.getHeaderRow() + COMMA + headerString;
     }
 }
