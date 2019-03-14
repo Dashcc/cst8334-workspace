@@ -242,6 +242,8 @@ public class InHomeForm extends DirectServiceForm {
             sb.append(COMMA).append(join(inHomeTypeMap.values(), COMMA));
         }
 
+        sb.append(COMMA).append(note);
+
         return super.getDataRow() + COMMA + sb.toString();
     }
 
