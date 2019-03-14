@@ -1,7 +1,10 @@
 package com.example.cst8334project.forms.util;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,6 +16,21 @@ public final class FormUtils {
      * A String that represents the name of the Intent extra data form object.
      */
     public static final String FORM_INTENT_OBJECT_NAME = "form";
+
+    /**
+     * The {@link SimpleDateFormat} used to format the dates for the email attachments.
+     */
+    private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss");
+
+    /**
+     * The String used to format the hours and minutes displayed for volunteer activity durations.
+     */
+    public static final String TIME_FORMAT = "%d:%02d";
+
+    /**
+     * A String that represents the CSV file extension.
+     */
+    public static final String CSV_EXTENSION = ".csv";
 
     /**
      * A String that represents the new line character.
@@ -48,6 +66,16 @@ public final class FormUtils {
         }
 
         return enumNames;
+    }
+
+    /**
+     * Obtain the CSV file name, including the timestamp, for the given visit type.
+     *
+     * @param visitType the type of the visit, as a String
+     * @return a String that represents the CSV file name with the timestamp included
+     */
+    public static String getCSVFileName(String visitType) {
+        return "HHH - " + SIMPLE_DATE_FORMAT.format(new Date()) + COLON + visitType;
     }
 
     /**

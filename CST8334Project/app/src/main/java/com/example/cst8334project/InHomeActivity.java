@@ -15,6 +15,8 @@ import android.widget.Toast;
 import com.example.cst8334project.domain.Email;
 import com.example.cst8334project.domain.Visit;
 import com.example.cst8334project.emailservice.EmailSenderAsyncTask;
+import com.example.cst8334project.forms.BaseForm;
+import com.example.cst8334project.forms.DirectServiceForm;
 import com.example.cst8334project.forms.InHomeForm;
 import com.example.cst8334project.forms.util.FormUtils;
 import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
@@ -22,7 +24,8 @@ import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
 import org.apache.commons.lang3.BooleanUtils;
 
 import java.util.Calendar;
-import java.util.Date;
+
+import static com.example.cst8334project.forms.util.FormUtils.*;
 
 public class InHomeActivity extends Activity {
 
@@ -94,7 +97,7 @@ public class InHomeActivity extends Activity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                eReiki.setText(sHour + ":" + sMinute);
+                                eReiki.setText(String.format(TIME_FORMAT, sHour, sMinute));
                                 ReikiHour = sHour;
                                 ReikiMin = sMinute;
 
@@ -118,7 +121,7 @@ public class InHomeActivity extends Activity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                eTT.setText(sHour + ":" + sMinute);
+                                eTT.setText(String.format(TIME_FORMAT, sHour, sMinute));
                                 TTHour = sHour;
                                 TTMin = sMinute;
 
@@ -142,7 +145,7 @@ public class InHomeActivity extends Activity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                eAroma.setText(sHour + ":" + sMinute);
+                                eAroma.setText(String.format(TIME_FORMAT, sHour, sMinute));
                                 AromaHour = sHour;
                                 AromaMin = sMinute;
 
@@ -166,7 +169,7 @@ public class InHomeActivity extends Activity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                eCompanioning.setText(sHour + ":" + sMinute);
+                                eCompanioning.setText(String.format(TIME_FORMAT, sHour, sMinute));
                                 CompanioningHour = sHour;
                                 CompanioningMin = sMinute;
 
@@ -190,7 +193,7 @@ public class InHomeActivity extends Activity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                eRespite.setText(sHour + ":" + sMinute);
+                                eRespite.setText(String.format(TIME_FORMAT, sHour, sMinute));
                                 RespiteHour = sHour;
                                 RespiteMin = sMinute;
 
@@ -214,7 +217,7 @@ public class InHomeActivity extends Activity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                eSpiritual.setText(sHour + ":" + sMinute);
+                                eSpiritual.setText(String.format(TIME_FORMAT, sHour, sMinute));
                                 SpiritualHour = sHour;
                                 SpiritualMin = sMinute;
 
@@ -253,19 +256,19 @@ public class InHomeActivity extends Activity {
         inHomeForm.setNote(note);
 
         Visit visit = new Visit();
-        visit.setServiceType(inHomeForm.getServiceTypes());
+        visit.setServiceType(BaseForm.FormType.DIRECT.getName() + COLON + inHomeForm.getServiceTypes());
         visit.setUserNote(note);
         VisitServiceImpl.INSTANCE.addVisit(visit);
 
         Email email = new Email();
-        email.setSubject("HHH InHome Form " + new Date().toString());
+        email.setSubject(getCSVFileName(DirectServiceForm.DirectServiceType.IN_HOME.getName()));
         email.setBody("Please find attached an In Home Form data");
-        email.setCsvAttachmentFileName(email.getSubject() + ".csv");
+        email.setCsvAttachmentFileName(email.getSubject() + CSV_EXTENSION);
         email.setAttachmentText(inHomeForm.getAttachmentText());
 
         new EmailSenderAsyncTask(this).execute(email);
 
-        Intent intent = new Intent(InHomeActivity.this, VolunteerInfoActivity.class);
+        Intent intent = new Intent(InHomeActivity.this, MainMenu.class);
         startActivity(intent);
     }
 

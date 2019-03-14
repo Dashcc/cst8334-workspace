@@ -17,7 +17,7 @@ public class DirectServiceForm extends BaseForm {
     /**
      * An enum that represents the type of the direct service visit.
      */
-    protected enum DirectServiceType implements FormEnum {
+    public enum DirectServiceType implements FormEnum {
         /**
          * An in-home visit.
          */

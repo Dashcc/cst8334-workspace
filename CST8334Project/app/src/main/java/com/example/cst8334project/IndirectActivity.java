@@ -2,9 +2,9 @@ package com.example.cst8334project;
 
 import android.app.Activity;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,11 +15,12 @@ import android.widget.Toast;
 import com.example.cst8334project.domain.Email;
 import com.example.cst8334project.domain.Visit;
 import com.example.cst8334project.emailservice.EmailSenderAsyncTask;
+import com.example.cst8334project.forms.BaseForm;
 import com.example.cst8334project.forms.IndirectServiceForm;
-import com.example.cst8334project.forms.util.FormUtils;
+import static com.example.cst8334project.forms.util.FormUtils.*;
 import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
 
-import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -61,7 +62,7 @@ public class IndirectActivity extends Activity {
         editTexts[4].setInputType(InputType.TYPE_NULL);
 
         // Get the IndirectServiceForm object from the intent extras
-        indirectServiceForm = (IndirectServiceForm) getIntent().getSerializableExtra(FormUtils.FORM_INTENT_OBJECT_NAME);
+        indirectServiceForm = (IndirectServiceForm) getIntent().getSerializableExtra(FORM_INTENT_OBJECT_NAME);
 
         for (int i = 0; i < radioButtons.length; i++) {
             final int finalI = i;
@@ -78,7 +79,7 @@ public class IndirectActivity extends Activity {
                             new TimePickerDialog.OnTimeSetListener() {
                                 @Override
                                 public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                    editTexts[finalI].setText(sHour + ":" + sMinute);
+                                    editTexts[finalI].setText(String.format(TIME_FORMAT, sHour, sMinute));
                                     timeHour = sHour;
                                     timeMinutes = sMinute;
                                 }
@@ -111,17 +112,20 @@ public class IndirectActivity extends Activity {
      */
     public void onLoginSuccess() {
         Visit visit = new Visit();
-        visit.setServiceType(indirectServiceForm.getServiceType());
-        visit.setUserNote("Performed the above service.");
+        visit.setServiceType(BaseForm.FormType.INDIRECT.getName());
+        visit.setUserNote(indirectServiceForm.getServiceType());
         VisitServiceImpl.INSTANCE.addVisit(visit);
 
         Email email = new Email();
-        email.setSubject("HHH InDirect Form " + new Date().toString());
+        email.setSubject(getCSVFileName(BaseForm.FormType.INDIRECT.getName()));
         email.setBody("Please find attached an InDirect Form data");
-        email.setCsvAttachmentFileName(email.getSubject() + ".csv");
+        email.setCsvAttachmentFileName(email.getSubject() + CSV_EXTENSION);
         email.setAttachmentText(indirectServiceForm.getAttachmentText());
 
         new EmailSenderAsyncTask(this).execute(email);
+
+        Intent intent = new Intent(IndirectActivity.this, MainMenu.class);
+        startActivity(intent);
     }
 
     /**
@@ -131,9 +135,14 @@ public class IndirectActivity extends Activity {
      * @return {@code true} if at least one of the Indirect Form checkboxes is checked, false otherwise
      */
     public boolean validate() {
-        for (RadioButton radioButton : radioButtons) {
-            if (radioButton.isChecked()) {
-                return true;
+        for (int i = 0; i < radioButtons.length; i++) {
+            if (radioButtons[i].isChecked()) {
+                if (StringUtils.isNotBlank(editTexts[i].getText().toString())) {
+                    return true;
+                }
+                // If at least one of the radio buttons is selected, but its corresponding time
+                // is not provided, display an error message
+                editTexts[i].setError("Please enter a time for this service.");
             }
         }
         return false;
@@ -153,6 +162,7 @@ public class IndirectActivity extends Activity {
             if (i != index) {
                 radioButtons[i].setChecked(false);
                 editTexts[i].setText("");
+                editTexts[i].setError(null);
             }
         }
     }

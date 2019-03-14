@@ -15,13 +15,16 @@ import com.example.cst8334project.domain.Visit;
 
 import com.example.cst8334project.domain.Email;
 import com.example.cst8334project.emailservice.EmailSenderAsyncTask;
+import com.example.cst8334project.forms.BaseForm;
+import com.example.cst8334project.forms.DirectServiceForm;
 import com.example.cst8334project.forms.InOfficeForm;
 import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
 
 import org.apache.commons.lang3.BooleanUtils;
 
 import java.util.Calendar;
-import java.util.Date;
+
+import static com.example.cst8334project.forms.util.FormUtils.*;
 
 public class InOfficeActivity extends Activity {
 
@@ -84,7 +87,7 @@ public class InOfficeActivity extends Activity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                eText1.setText(sHour + ":" + sMinute);
+                                eText1.setText(String.format(TIME_FORMAT, sHour, sMinute));
                                 spaHour = sHour;
                                 spaMin = sMinute;
 
@@ -108,7 +111,7 @@ public class InOfficeActivity extends Activity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                eText2.setText(sHour + ":" + sMinute);
+                                eText2.setText(String.format(TIME_FORMAT, sHour, sMinute));
                                 dayProgramHour = sHour;
                                 dayProgramMin = sMinute;
                             }
@@ -131,7 +134,7 @@ public class InOfficeActivity extends Activity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                eText3.setText(sHour + ":" + sMinute);
+                                eText3.setText(String.format(TIME_FORMAT, sHour, sMinute));
                                 ctHour = sHour;
                                 ctMin = sMinute;
 
@@ -155,7 +158,7 @@ public class InOfficeActivity extends Activity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                eText4.setText(sHour + ":" + sMinute);
+                                eText4.setText(String.format(TIME_FORMAT, sHour, sMinute));
                                 trainingHour = sHour;
                                 trainingMin = sMinute;
 
@@ -179,7 +182,7 @@ public class InOfficeActivity extends Activity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                eText5.setText(sHour + ":" + sMinute);
+                                eText5.setText(String.format(TIME_FORMAT, sHour, sMinute));
                                 outreachHour = sHour;
                                 outreachMin = spaMin;
 
@@ -194,13 +197,7 @@ public class InOfficeActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-
-
-                Intent intent = new Intent(InOfficeActivity.this, VolunteerInfoActivity.class);
-                startActivityForResult(intent, 50);
-
                 submitForm();
-
             }
         });
     }
@@ -219,17 +216,21 @@ public class InOfficeActivity extends Activity {
      */
     public void onLoginSuccess() {
         Visit visit = new Visit();
-        visit.setServiceType(inOfficeForm.getInOfficeServiceTypes());
-        visit.setUserNote("Performed the services above.");
+        visit.setServiceType(BaseForm.FormType.DIRECT.getName() + COLON +
+                DirectServiceForm.DirectServiceType.IN_OFFICE.getName());
+        visit.setUserNote(inOfficeForm.getInOfficeServiceTypes());
         VisitServiceImpl.INSTANCE.addVisit(visit);
 
         Email email = new Email();
-        email.setSubject("HHH InOffice Form " + new Date().toString());
+        email.setSubject(getCSVFileName(DirectServiceForm.DirectServiceType.IN_OFFICE.getName()));
         email.setBody("Please find attached an In Office Form data");
-        email.setCsvAttachmentFileName(email.getSubject() + ".csv");
+        email.setCsvAttachmentFileName(email.getSubject() + CSV_EXTENSION);
         email.setAttachmentText(inOfficeForm.getAttachmentText());
 
         new EmailSenderAsyncTask(this).execute(email);
+
+        Intent intent = new Intent(InOfficeActivity.this, MainMenu.class);
+        startActivity(intent);
     }
 
     /**

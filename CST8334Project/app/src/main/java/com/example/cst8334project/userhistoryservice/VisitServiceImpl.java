@@ -8,6 +8,7 @@ import com.example.cst8334project.persistence.VisitDAO;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -134,7 +135,7 @@ public enum VisitServiceImpl implements VisitService {
             return visitFutures.get();
         } catch (InterruptedException | ExecutionException e) {
             Log.e(CLASS_NAME, "Encountered an error when trying to find all Visits.", e);
-            return null;
+            return Collections.emptyList();
         }
     }
 

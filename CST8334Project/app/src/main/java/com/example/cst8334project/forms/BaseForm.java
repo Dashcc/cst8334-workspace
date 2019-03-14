@@ -15,12 +15,12 @@ public abstract class BaseForm implements Serializable {
     /**
      * The headers that will be included in all forms.
      */
-    public static final String[] BASE_HEADERS = new String[]{"Name", "Date", "Visit Type"};
+    private static final String[] BASE_HEADERS = new String[]{"Name", "Date", "Visit Type"};
 
     /**
      * An enum that represents the type of the volunteer visit.
      */
-    protected enum FormType implements FormEnum {
+    public enum FormType implements FormEnum {
         /**
          * A direct visit.
          */
