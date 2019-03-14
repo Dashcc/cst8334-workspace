@@ -20,7 +20,7 @@ public final class FormUtils {
     /**
      * The {@link SimpleDateFormat} used to format the dates for the email attachments.
      */
-    private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd-MM-YYYY HH:mm:ss");
+    private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
     /**
      * The String used to format the hours and minutes displayed for volunteer activity durations.
