@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CST8334Project</string>
+    <string name="welcome_page">HEART HOUSE </string>
+    <string name="welcome_page1">H o s p i c e</string>
+    <string name="ButtonText">Log On</string>
+
+    <string name="username">User Name</string>
+    <string name="Hint">User Name/Email</string>
+    <string name="password">Mot de passe</string>
+    <string name="login">Ouverture de session</string>
+
+    <string name="title_activity_main_menu">MainMenu</string>
+    <string name="main_menu">Menu principal</string>
+    <string name="timesheet">Soumettre un rapport des heures de bénévolat</string>
+    <string name="appointment">Ajouter un rendez-vous/événement au calendrier</string>
+    <string name="history">Historique</string>
+
+    <string name="report_form">HHH Rapport des heures de bénévolat  </string>
+    <string name="name">Nom:</string>
+    <!-- <string name="reportingMonth">Reporting Month:</string>-->
+    <string name="date">Date:</string>
+    <string name="type">Type: </string>
+    <!--<string name="visitingTime">Visiting Time: </string>-->
+    <!--<string name="visitingActivities">Visiting Activities: </string>-->
+
+    <string name="direct">Direct</string>
+    <string name="direct_form">Service direct </string>
+    <string name="option1">Option 1:</string>
+    <string name="option2">Option 2:</string>
+    <string name="inHome">À domicile</string>
+
+    <string name="inHome_head">À domicile</string>
+    <string name="client_name">Nom du client:</string>
+    <string name="client_type">Type de client: </string>
+    <string name="palliative">Soins palliatifs </string>
+    <string name="caregiver">Aidant </string>
+    <string name="bereaved">Personne en deuil </string>
+    <string name="numberOfPerson">Nombre de personnes ayant bénéficié de soutien: </string>
+    <string name="numberOfVisit">Visit Activities (more than one): </string>
+    <string name="companioning">Accompagnement  </string>
+    <string name="comp_therapy">Thérapie de récupération: </string>
+    <string name="reiki">Reiki </string>
+    <string name="tt">Toucher thérapeutique </string>
+    <string name="aroma">Aromathérapie </string>
+    <string name="respite">Répit </string>
+    <string name="spiritual">Spiritualité </string>
+    <string name="note">Notes: </string>
+
+
+    <string name="inOffice">Au bureau</string>
+    <string name="inOffice_head">Au bureau (vous pouvez choisir plus d\'une option)</string>
+    <string name="spa">Spa</string>
+    <string name="dayProgram">Soins de jour</string>
+    <string name="ct">Thérapie de récupération</string>
+    <string name="training1">Formation</string>
+    <string name="outreach1">Service d\'approche/diffusion </string>
+
+    <string name="indirect">Indirect </string>
+    <string name="indirect_form">Indirect Service (sans client)</string>
+    <string name="admin">Administration</string>
+    <string name="board">Conseil</string>
+    <string name="training">Formation</string>
+    <string name="fundraising">Collecte de fonds</string>
+    <string name="outreach">Service d\'approche/diffusion</string>
+
+
+    <string name="submit">Soumettre </string>
+    <string name="enter_username">Enter your username here</string>
+    <string name="enter_pass">Enter your password here</string>
+    <string name="signin">Sign In</string>
+    <string name="success">You successfully logged in!</string>
+    <string name="fail">The username or password you entered was incorrect</string>
+    <string name="title_activity_user_history">UserHistoryActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="pick_time">Pick Time</string>
+    <string name="enter_location">Enter a Location</string>
+    <string name="create_event">Créer un événement</string>
+    <string name="enter_reminder">Reminder time (in minutes)</string>
+    <string name="duration">Duration(hours)</string>
+    <string name="appointmentType">What type of appointment?</string>
+    <string name="appointmentDescription">Description</string>
+
+
+</resources>
