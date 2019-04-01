@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CST8334Project</string>
+    <string name="welcome_page">HEART HOUSE </string>
+    <string name="welcome_page1">H o s p i c e</string>
+    <string name="ButtonText">Log On</string>
+
+    <string name="username">User Name</string>
+    <string name="Hint">User Name/Email</string>
+    <string name="password">Mật khẩu</string>
+    <string name="login">Đăng nhập</string>
+
+    <string name="title_activity_main_menu">MainMenu</string>
+    <string name="main_menu">Danh mục chính</string>
+    <string name="timesheet">Nộp một bản Volunteer Hours Report</string>
+    <string name="appointment">Thêm cuộc hẹn vào Lịch</string>
+    <string name="history">Lịch sử</string>
+
+    <string name="report_form">HHH Volunteering Report </string>
+    <string name="name">Họ tên:</string>
+    <!-- <string name="reportingMonth">Reporting Month:</string>-->
+    <string name="date">Ngày:</string>
+    <string name="type">Loại: </string>
+    <!--<string name="visitingTime">Visiting Time: </string>-->
+    <!--<string name="visitingActivities">Visiting Activities: </string>-->
+
+    <string name="direct">Trực tiếp </string>
+    <string name="direct_form">Dịch vụ trực tiếp (với khách hàng)</string>
+    <string name="option1">Option 1:</string>
+    <string name="option2">Option 2:</string>
+    <string name="inHome">Tại Nhà</string>
+
+    <string name="inHome_head">Tại Nhà</string>
+    <string name="client_name">Tên khách hàng:</string>
+    <string name="client_type">Loại khách hàng : </string>
+    <string name="palliative">Chăm sóc giảm nhẹ </string>
+    <string name="caregiver">Điều dưỡng viên </string>
+    <string name="bereaved">Gia quyến </string>
+    <string name="numberOfPerson">Số người được hỗ trợ: </string>
+    <string name="numberOfVisit">Visit Activities (more than one): </string>
+    <string name="companioning">Companioning  </string>
+    <string name="comp_therapy">Comp Therapy: </string>
+    <string name="reiki">Reiki </string>
+    <string name="tt">TT </string>
+    <string name="aroma">Liệu pháp hương liệu </string>
+    <string name="respite">Trì hoãn </string>
+    <string name="spiritual">Linh hồn </string>
+    <string name="note">Ghi chú: </string>
+
+
+    <string name="inOffice">Tại Văn phòng</string>
+    <string name="inOffice_head">Tại Văn phòng (More than one)</string>
+    <string name="spa">Liệu pháp spa</string>
+    <string name="dayProgram">NgàyHospice</string>
+    <string name="ct">CT</string>
+    <string name="training1">Đào tạo</string>
+    <string name="outreach1">Tiếp cận cộng đồng</string>
+
+    <string name="indirect">Gián tiếp </string>
+    <string name="indirect_form">Gián tiếp (Không có khách hàng)</string>
+    <string name="admin">Quản trị viên</string>
+    <string name="board">Ban lãnh đạo</string>
+    <string name="training">Đào tạo</string>
+    <string name="fundraising">Gây quỹ</string>
+    <string name="outreach">Tiếp cận cộng đồng</string>
+
+
+    <string name="submit">Gửi đi </string>
+    <string name="enter_username">Enter your username here</string>
+    <string name="enter_pass">Enter your password here</string>
+    <string name="signin">Sign In</string>
+    <string name="success">You successfully logged in!</string>
+    <string name="fail">The username or password you entered was incorrect</string>
+    <string name="title_activity_user_history">UserHistoryActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="pick_time">Pick Time</string>
+    <string name="enter_location">Nhập một địa điểm</string>
+    <string name="create_event">Tạo sự kiện </string>
+    <string name="enter_reminder">Reminder time (in minutes)</string>
+    <string name="duration">Duration(hours)</string>
+    <string name="appointmentType">Loại activity?</string>
+    <string name="appointmentDescription">Mô tả</string>
+
+
+</resources>

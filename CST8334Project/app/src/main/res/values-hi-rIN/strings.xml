@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CST8334Project</string>
+    <string name="welcome_page">HEART HOUSE </string>
+    <string name="welcome_page1">H o s p i c e</string>
+    <string name="ButtonText">Log On</string>
+
+    <string name="username">User Name</string>
+    <string name="Hint">पहचान शब्द</string>
+    <string name="password">Password</string>
+    <string name="login">लॉग इन</string>
+
+
+    <string name="title_activity_main_menu">MainMenu</string>
+    <string name="main_menu">मुख्य-सूची</string>
+    <string name="timesheet">स्वयंसेवक कI समय विवरण प्रस्तुत करें</string>
+    <string name="appointment">नियोजित भेंट तिथिपत्र  में लिखें</string>
+    <string name="history">इतिहास</string>
+
+    <string name="report_form">HHH स्वयंसेवक  समय  विवरण</string>
+    <string name="name">नाम:</string>
+    <!-- <string name="reportingMonth">Reporting Month:</string>-->
+    <string name="date">दिनांक:</string>
+    <string name="type">प्रकार: </string>
+    <!--<string name="visitingTime">Visiting Time: </string>-->
+    <!--<string name="visitingActivities">Visiting Activities: </string>-->
+
+    <string name="direct">सीध</string>
+    <string name="direct_form">सीधी सेवा </string>
+    <string name="option1">Option 1:</string>
+    <string name="option2">Option 2:</string>
+    <string name="inHome">घर में</string>
+
+    <string name="inHome_head">घर में</string>
+    <string name="client_name">ग्राहक का नाम:</string>
+    <string name="client_type">ग्राहक का प्रकार: </string>
+    <string name="palliative">प्रशामक देखभाल</string>
+    <string name="caregiver">देखभालकर्ता</string>
+    <string name="bereaved">वंचित / शोकसंतप्त</string>
+    <string name="numberOfPerson">समर्थित व्यक्तियों की संख्या: </string>
+    <string name="numberOfVisit">Visit Activities (more than one): </string>
+    <string name="companioning">साथी समय  </string>
+    <string name="comp_therapy">अतिरिक्त / पूरक  चिकित्सा: </string>
+    <string name="reiki">रेकी </string>
+    <string name="tt">चिकित्सीय स्पर्श </string>
+    <string name="aroma">सुगंधि चिकित्सा </string>
+    <string name="respite">राहत देखभाल </string>
+    <string name="spiritual">आध्यात्मिक </string>
+    <string name="note">टिप्पणियाँ: </string>
+
+
+    <string name="inOffice">In-Office</string>
+    <string name="inOffice_head">In-Office (More than one)</string>
+    <string name="spa">SPA</string>
+    <string name="dayProgram">Day Program</string>
+    <string name="ct">CT</string>
+    <string name="training1">Training</string>
+    <string name="outreach1">Outreach</string>
+
+    <string name="indirect">अप्रत्यक्ष</string>
+    <string name="indirect_form">अप्रत्यक्ष (कोई ग्राहक नहीं)</string>
+    <string name="admin">व्यवस्थापक</string>
+    <string name="board">मंडल</string>
+    <string name="training">प्रशिक्षण</string>
+    <string name="fundraising">कोष संग्रह</string>
+    <string name="outreach">प्रसार कार्यक्रम</string>
+
+
+    <string name="submit">Submit </string>
+    <string name="enter_username">Enter your username here</string>
+    <string name="enter_pass">Enter your password here</string>
+    <string name="signin">Sign In</string>
+    <string name="success">You successfully logged in!</string>
+    <string name="fail">The username or password you entered was incorrect</string>
+    <string name="title_activity_user_history">UserHistoryActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="pick_time">Pick Time</string>
+    <string name="enter_location">स्थान दर्ज करें</string>
+    <string name="create_event"> घटना सर्जन करना</string>
+    <string name="enter_reminder">Reminder time (in minutes)</string>
+    <string name="duration">Duration(hours)</string>
+    <string name="appointmentType">किस प्रकार की गतिविधि?</string>
+    <string name="appointmentDescription">विवरण</string>
+
+
+</resources>
