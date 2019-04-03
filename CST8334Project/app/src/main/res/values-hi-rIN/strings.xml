@@ -49,13 +49,14 @@
     <string name="note">टिप्पणियाँ: </string>
 
 
-    <string name="inOffice">In-Office</string>
-    <string name="inOffice_head">In-Office (More than one)</string>
-    <string name="spa">SPA</string>
-    <string name="dayProgram">Day Program</string>
-    <string name="ct">CT</string>
-    <string name="training1">Training</string>
-    <string name="outreach1">Outreach</string>
+    <string name="inOffice">कार्यालय में </string>
+
+    <string name="inOffice_head">कार्यालय में  (एक से अधिक का चयन कर सकते हैं)</string>
+    <string name="spa">स्पा </string>
+    <string name="dayProgram">प्रशामक देखरेख </string>
+    <string name="ct">प्रशामक देखरेख </string>
+    <string name="training1">प्रशिक्षण</string>
+    <string name="outreach1">प्रसार कार्यक्रम</string>
 
     <string name="indirect">अप्रत्यक्ष</string>
     <string name="indirect_form">अप्रत्यक्ष (कोई ग्राहक नहीं)</string>
