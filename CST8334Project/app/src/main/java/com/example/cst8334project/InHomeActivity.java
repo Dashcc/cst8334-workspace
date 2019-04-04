@@ -35,6 +35,8 @@ public class InHomeActivity extends Activity {
     EditText editName, editPerson, editNote;
     EditText eReiki, eTT, eAroma, eCompanioning, eRespite, eSpiritual;
 
+    CheckBox[] checkBoxes = new CheckBox[8];
+
     CheckBox CBPalliative, CBCaregiver, CBBereaved, CBReiki, CBTT, CBAroma, CBCompanioning, CBRespite, CBSpiritual;
 
     int ReikiHour, ReikiMin;

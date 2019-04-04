@@ -24,7 +24,7 @@
         android:hint="@string/username"
         android:inputType="textPersonName"
         android:textColor="#fbf9f9"
-        android:fontFamily="@font/times_new_roman_normal" />
+        android:fontFamily="@font/calibri"/>
 
     <EditText
 
@@ -34,7 +34,7 @@
         android:inputType="textPassword"
         android:hint="@string/password"
         android:textColor="#fbf9f9"
-        android:fontFamily="@font/times_new_roman_normal"
+        android:fontFamily="@font/calibri"
         />
 
     <Button
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:text="@string/login"
         android:textStyle="bold"
-        android:fontFamily="@font/times_new_roman_normal"
+        android:fontFamily="@font/calibri"
         />
 
 

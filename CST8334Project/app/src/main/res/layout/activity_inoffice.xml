@@ -4,22 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@color/Hex_Gray90"
+    android:orientation="vertical"
     tools:context=".InOfficeActivity">
+
+    <ImageView
+
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="93dp"
+        android:src="@drawable/letterhead"
+        app:srcCompat="@drawable/letterhead"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/officeForm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="11dp"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/calibri"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="@string/inOffice_head"
-        android:textColor="@color/Hex_Blue"
+        android:textColor="@color/Color_Panto"
         android:textSize="25sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/times_new_roman_normal"/>
+        android:textStyle="bold" />
 
     <CheckBox
         android:id="@+id/CB1"
@@ -27,25 +38,26 @@
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:layout_below="@+id/officeForm"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/calibri"
         android:text="@string/spa"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="18sp"
-
-        android:fontFamily="@font/times_new_roman_normal"/>
+        android:textColor="@color/Color_Panto"
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/editText1"
+        android:labelFor="@id/editText1"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/officeForm"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="Time in Hours/Minute"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="15sp"
-        android:fontFamily="@font/times_new_roman_normal"/>
+        android:fontFamily="@font/calibri"
+        android:textColor="@color/Color_Panto"
+        android:textSize="12sp"
+        tools:ignore="Autofill"
+        android:inputType="time"/>
 
     <CheckBox
         android:id="@+id/CB2"
@@ -53,11 +65,11 @@
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:layout_below="@+id/CB1"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/calibri"
         android:text="@string/dayProgram"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="18sp"
-        android:fontFamily="@font/times_new_roman_normal"/>
+        android:textColor="@color/Color_Panto"
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/editText2"
@@ -65,13 +77,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText1"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="14dp"
         android:ems="10"
-        android:fontFamily="@font/times_new_roman_normal"
-        android:hint="Time in Hours/Minute"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="15sp"
-        />
+        android:fontFamily="@font/calibri"
+        android:inputType="time"
+        android:labelFor="@id/editText2"
+        android:textColor="@color/Color_Panto"
+        android:textSize="12sp"
+        tools:ignore="Autofill" />
 
     <CheckBox
         android:id="@+id/CB3"
@@ -79,24 +92,26 @@
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:layout_below="@+id/CB2"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/calibri"
         android:text="@string/ct"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="18sp"
-        android:fontFamily="@font/times_new_roman_normal"/>
+        android:textColor="@color/Color_Panto"
+        android:textSize="12sp" />
 
     <EditText
         android:id="@+id/editText3"
+        android:labelFor="@id/editText3"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText2"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="14dp"
         android:ems="10"
-        android:hint="Time in Hours/Minute"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="15sp"
-        android:fontFamily="@font/times_new_roman_normal"/>
+        android:fontFamily="@font/calibri"
+        android:textColor="@color/Color_Panto"
+        android:textSize="12sp"
+        tools:ignore="Autofill"
+        android:inputType="time"/>
 
     <CheckBox
         android:id="@+id/CB4"
@@ -104,24 +119,26 @@
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:layout_below="@+id/CB3"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/calibri"
         android:text="@string/training1"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="18sp"
-        android:fontFamily="@font/times_new_roman_normal"/>
+        android:textColor="@color/Color_Panto"
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/editText4"
+        android:labelFor="@id/editText4"
         android:layout_width="160dp"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/editText3"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Time in Hours/Minute"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="15sp"
-        android:fontFamily="@font/times_new_roman_normal"/>
+        android:fontFamily="@font/calibri"
+        android:textColor="@color/Color_Panto"
+        android:textSize="12sp"
+        tools:ignore="Autofill"
+        android:inputType="time"/>
 
     <CheckBox
         android:id="@+id/CB5"
@@ -129,37 +146,91 @@
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:layout_below="@+id/CB4"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/calibri"
         android:text="@string/outreach1"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="18sp"
-        android:fontFamily="@font/times_new_roman_normal"/>
+        android:textColor="@color/Color_Panto"
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/editText5"
-        android:layout_width="wrap_content"
+        android:labelFor="@id/editText5"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText4"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="14dp"
         android:ems="10"
-        android:hint="Time in Hours/Minute"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="15sp"
-        android:fontFamily="@font/times_new_roman_normal"
-        />
+        android:fontFamily="@font/calibri"
+        android:textColor="@color/Color_Panto"
+        android:textSize="12sp"
+        tools:ignore="Autofill"
+        android:inputType="time"/>
 
+    <CheckBox
+        android:id="@+id/CB6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_below="@+id/CB5"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/calibri"
+        android:text="@string/art_therapy"
+        android:textColor="@color/Color_Panto"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/editText6"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText5"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="17dp"
+        android:ems="10"
+        android:fontFamily="@font/calibri"
+        android:inputType="time"
+        android:labelFor="@id/editText6"
+        android:textColor="@color/Color_Panto"
+        android:textSize="12sp"
+        tools:ignore="Autofill" />
+
+    <CheckBox
+        android:id="@+id/CB7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_columnWeight="1"
+        android:layout_below="@+id/CB6"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/calibri"
+        android:text="@string/music_therapy"
+        android:textColor="@color/Color_Panto"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/editText7"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editText6"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:fontFamily="@font/calibri"
+        android:inputType="time"
+        android:labelFor="@id/editText7"
+        android:textColor="@color/Color_Panto"
+        android:textSize="12sp"
+        tools:ignore="Autofill" />
 
     <Button
         android:id="@+id/btn_directSubmit"
         android:layout_width="wrap_content"
-        android:layout_height="74dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="155dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editText7"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/calibri"
         android:text="@string/submit"
-        android:textColor="@color/Hex_Blue"
-        android:textStyle="bold"
-        android:fontFamily="@font/times_new_roman_normal"/>
+        android:textColor="@color/Color_Panto"
+        android:textStyle="bold" />
 
 </RelativeLayout>

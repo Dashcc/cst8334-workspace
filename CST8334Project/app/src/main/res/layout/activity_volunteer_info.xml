@@ -8,18 +8,27 @@
     android:background="@color/Hex_Gray90"
     >
 
+    <ImageView
+
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="93dp"
+        android:src="@drawable/letterhead"
+        app:srcCompat="@drawable/letterhead"
+        tools:ignore="ContentDescription" />
+
     <TextView
         android:id="@+id/form"
         android:layout_width="wrap_content"
-        android:layout_height="61dp"
-        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/calibri"
+        android:layout_gravity="center_horizontal"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="@string/report_form"
-        android:textColor="@color/Hex_Blue"
+        android:textColor="@color/Color_Panto"
         android:textSize="25sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/times_new_roman_normal" />
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -32,18 +41,20 @@
             android:layout_weight="0.25"
             android:text="@string/name"
             android:textSize="20sp"
-            android:textColor="@color/Hex_Blue"
-            android:fontFamily="@font/times_new_roman_normal" />
+            android:textColor="@color/Color_Panto"
+            android:fontFamily="@font/calibri" />
 
         <EditText
             android:id="@+id/edit_name"
+            android:labelFor="@id/edit_name"
             android:layout_width="0dp"
             android:layout_height="63dp"
             android:layout_weight="0.35"
             android:ems="10"
             android:inputType="textPersonName"
-            android:textColor="@color/Hex_Blue"
-            android:fontFamily="@font/times_new_roman_normal" />
+            android:textColor="@color/Color_Panto"
+            android:fontFamily="@font/calibri"
+            tools:ignore="Autofill"/>
 
     </LinearLayout>
 
@@ -57,18 +68,21 @@
             android:layout_height="63dp"
             android:layout_weight="0.25"
             android:text="@string/date"
-            android:textColor="@color/Hex_Blue"
+            android:textColor="@color/Color_Panto"
             android:textSize="20sp"
-            android:fontFamily="@font/times_new_roman_normal" />
+            android:fontFamily="@font/calibri"/>
 
         <EditText
             android:id="@+id/edit_date"
+            android:labelFor="@id/edit_date"
             android:layout_width="0dp"
             android:layout_height="63dp"
             android:layout_weight="0.35"
             android:ems="10"
-            android:editable="false"
-            android:fontFamily="@font/times_new_roman_normal" />
+            android:textColor="@color/Color_Panto"
+            android:inputType="date"
+            android:fontFamily="@font/calibri"
+            tools:ignore="Autofill"/>
 
     </LinearLayout>
 
@@ -82,9 +96,9 @@
             android:layout_height="63dp"
             android:layout_weight="0.25"
             android:text="@string/type"
-            android:textColor="@color/Hex_Blue"
+            android:textColor="@color/Color_Panto"
             android:textSize="20sp"
-            android:fontFamily="@font/times_new_roman_normal" />
+            android:fontFamily="@font/calibri"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -100,9 +114,9 @@
                 android:layout_weight="0.35"
                 android:ems="10"
                 android:text="@string/direct"
-                android:textColor="@color/Hex_Blue"
-
-                android:fontFamily="@font/times_new_roman_normal" />
+                android:textColor="@color/Color_Panto"
+                android:fontFamily="@font/calibri"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/indirect_btn"
@@ -112,8 +126,9 @@
                 android:layout_weight="0.35"
                 android:ems="10"
                 android:text="@string/indirect"
-                android:textColor="@color/Hex_Blue"
-                android:fontFamily="@font/times_new_roman_normal" />
+                android:textColor="@color/Color_Panto"
+                android:fontFamily="@font/calibri"
+                android:textStyle="bold"  />
 
 
         </LinearLayout>

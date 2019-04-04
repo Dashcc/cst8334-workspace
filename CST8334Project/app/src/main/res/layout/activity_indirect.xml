@@ -8,20 +8,30 @@
     android:background="@color/Hex_Gray90"
     tools:context=".IndirectActivity">
 
+
+    <ImageView
+
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="93dp"
+        android:src="@drawable/letterhead"
+        app:srcCompat="@drawable/letterhead"
+        tools:ignore="ContentDescription" />
+
     <TextView
         android:id="@+id/form2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@id/logo"
+        android:layout_marginTop="11dp"
+        android:fontFamily="@font/calibri"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="@string/indirect_form"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="25sp"
-        android:textStyle="bold"
         android:textAlignment="center"
-        android:fontFamily="@font/times_new_roman_normal"
-       />
+        android:textColor="@color/Color_Panto"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
     <RadioButton
         android:id="@+id/RB1"
@@ -30,23 +40,25 @@
         android:layout_columnWeight="1"
         android:layout_below="@+id/form2"
         android:layout_marginTop="47dp"
-        android:fontFamily="@font/times_new_roman_normal"
+        android:fontFamily="@font/calibri"
         android:text="@string/admin"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="20sp" />
+        android:textColor="@color/Color_Panto"
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/editText1"
+        android:labelFor="@id/editText1"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/form2"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="45dp"
         android:ems="10"
-        android:hint="Time in Hours/Minute"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="15sp"
-        app:fontFamily="@font/times_new_roman_normal" />
+        android:fontFamily="@font/calibri"
+        android:textColor="@color/Color_Panto"
+        android:textSize="12sp"
+        tools:ignore="Autofill"
+        android:inputType="time"/>
 
 
     <RadioButton
@@ -55,11 +67,11 @@
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:layout_below="@+id/RB1"
-        android:layout_marginTop="47dp"
-        android:fontFamily="@font/times_new_roman_normal"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/calibri"
         android:text="@string/board"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="20sp"
+        android:textColor="@color/Color_Panto"
+        android:textSize="15sp"
          />
 
     <EditText
@@ -68,12 +80,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText1"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
-        android:hint="Time in Hours/Minute"
-        android:textSize="15sp"
-        android:textColor="@color/Hex_Blue"
-    android:fontFamily="@font/times_new_roman_normal"/>
+        android:fontFamily="@font/calibri"
+        android:inputType="time"
+        android:labelFor="@id/editText2"
+        android:textColor="@color/Color_Panto"
+        android:textSize="12sp"
+        tools:ignore="Autofill" />
 
     <RadioButton
         android:id="@+id/RB3"
@@ -81,24 +95,26 @@
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:layout_below="@+id/RB2"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="30dp"
         android:text="@string/training"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="20sp"
-        android:fontFamily="@font/times_new_roman_normal"/>
+        android:textColor="@color/Color_Panto"
+        android:textSize="15sp"
+        android:fontFamily="@font/calibri"/>
 
     <EditText
         android:id="@+id/editText3"
+        android:labelFor="@id/editText3"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText2"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="25dp"
         android:ems="10"
-        android:hint="Time in Hours/Minute"
-        android:textSize="15sp"
-        android:textColor="@color/Hex_Blue"
-        android:fontFamily="@font/times_new_roman_normal"/>
+        android:textSize="12sp"
+        android:textColor="@color/Color_Panto"
+        android:fontFamily="@font/calibri"
+        tools:ignore="Autofill"
+        android:inputType="time"/>
 
     <RadioButton
         android:id="@+id/RB4"
@@ -106,24 +122,26 @@
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:layout_below="@+id/RB3"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="30dp"
         android:text="@string/fundraising"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="20sp"
-        android:fontFamily="@font/times_new_roman_normal"/>
+        android:textColor="@color/Color_Panto"
+        android:textSize="15sp"
+        android:fontFamily="@font/calibri"/>
 
     <EditText
         android:id="@+id/editText4"
+        android:labelFor="@id/editText4"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText3"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="25dp"
         android:ems="10"
-        android:fontFamily="@font/times_new_roman_normal"
-        android:hint="Time in Hours/Minute"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="15sp" />
+        android:fontFamily="@font/calibri"
+        android:textColor="@color/Color_Panto"
+        android:textSize="12sp"
+        tools:ignore="Autofill"
+        android:inputType="time"/>
 
     <RadioButton
         android:id="@+id/RB5"
@@ -131,37 +149,39 @@
         android:layout_height="wrap_content"
         android:layout_columnWeight="1"
         android:layout_below="@+id/RB4"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="30dp"
         android:text="@string/outreach"
-        android:textColor="@color/Hex_Blue"
-        android:textSize="20sp"
-        android:fontFamily="@font/times_new_roman_normal"/>
+        android:textColor="@color/Color_Panto"
+        android:textSize="15sp"
+        android:fontFamily="@font/calibri"/>
 
     <EditText
         android:id="@+id/editText5"
+        android:labelFor="@id/editText5"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editText4"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="25dp"
         android:ems="10"
-        android:hint="Time in Hours/Minute"
-        android:textSize="15sp"
-        android:textColor="@color/Hex_Blue"
-        android:fontFamily="@font/times_new_roman_normal"/>
+        android:textSize="12sp"
+        android:textColor="@color/Color_Panto"
+        android:fontFamily="@font/calibri"
+        tools:ignore="Autofill"
+        android:inputType="time"/>
 
 
     <Button
-        android:id="@+id/btn_directSubmit"
+        android:id="@+id/btn_indirectSubmit"
         android:layout_width="wrap_content"
-        android:layout_height="88dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="265dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editText5"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/calibri"
         android:text="@string/submit"
-        android:textColor="@color/Hex_Blue"
-        android:textStyle="bold"
-        android:fontFamily="@font/times_new_roman_normal"/>
+        android:textColor="@color/Color_Panto"
+        android:textStyle="bold" />
 
 </RelativeLayout>
 

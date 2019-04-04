@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single"/>
+
+    <item
+        android:id="@+id/timeSheet"
+        android:title="@string/timeSheet"
+        android:icon="@drawable/baseline_access_time_black_18dp"
+      />
+    <item
+        android:id="@+id/appointment"
+        android:title="@string/appointment"
+        android:icon="@drawable/baseline_perm_contact_calendar_black_18dp"
+        />
+    <item
+        android:id="@+id/history"
+        android:title="@string/history"
+        android:icon="@drawable/baseline_history_black_18dp" />
+
+</menu>
