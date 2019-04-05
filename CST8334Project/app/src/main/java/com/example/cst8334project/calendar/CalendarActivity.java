@@ -12,6 +12,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
+import com.example.cst8334project.BaseActivity;
 import com.example.cst8334project.MainMenu;
 import com.example.cst8334project.R;
 import com.example.cst8334project.VolunteerInfoActivity;
@@ -22,7 +23,8 @@ import java.util.Date;
 
 //import android.provider.CalendarContract;
 
-public class CalendarActivity extends AppCompatActivity {
+public class CalendarActivity extends BaseActivity {
+
     private TimePicker timePicker1;
     private DatePicker datePicker;
     private EditText location;
@@ -41,6 +43,9 @@ public class CalendarActivity extends AppCompatActivity {
         Log.e(ACTIVITY_NAME, "In OnCreate()");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+
+        setupDrawer();
+
         timePicker1 = findViewById(R.id.timePicker1);
         datePicker = findViewById(R.id.datePicker1);
         location = findViewById(R.id.location);

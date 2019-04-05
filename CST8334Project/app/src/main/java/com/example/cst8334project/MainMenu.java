@@ -33,68 +33,36 @@ public class MainMenu extends AppCompatActivity implements NavigationView.OnNavi
         dLayout.addDrawerListener(aToggle);
         aToggle.syncState();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         NavigationView View = (NavigationView) findViewById(R.id.navigationView);
         View.setNavigationItemSelectedListener(this);
 
     }
-//        Button timeSheet = findViewById(R.id.timeSheet);
-//        Button appointment = findViewById(R.id.appointment);
-//        Button history = findViewById(R.id.history);
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
 
-//        timeSheet.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View View) {
-//                Intent intent = new Intent(MainMenu.this, VolunteerInfoActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        appointment.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View View) {
-//                Intent intent = new Intent(MainMenu.this, CalendarActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//
-//        history.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View View) {
-//                Intent intent = new Intent(MainMenu.this, UserHistoryActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item){
-
-            if(aToggle.onOptionsItemSelected(item)){
-                return true;
-            }
-
-            return super.onOptionsItemSelected(item);
-
+        if (aToggle.onOptionsItemSelected(item)) {
+            return true;
         }
+
+        return super.onOptionsItemSelected(item);
+
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        
-        if (id == R.id.timeSheet)
-        {
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        if (id == R.id.timeSheet) {
+            startActivity(new Intent(MainMenu.this, VolunteerInfoActivity.class));
         }
-        if (id == R.id.appointment)
-        {
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        if (id == R.id.appointment) {
+            startActivity(new Intent(MainMenu.this, CalendarActivity.class));
         }
-        if (id == R.id.history)
-        {
-            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        if (id == R.id.history) {
+            startActivity(new Intent(MainMenu.this, UserHistoryActivity.class));
         }
-        return false;
+        return true;
     }
 }
 
