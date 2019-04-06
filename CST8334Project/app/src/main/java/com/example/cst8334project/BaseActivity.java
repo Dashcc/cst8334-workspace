@@ -13,9 +13,8 @@ import android.view.Gravity;
 import android.view.MenuItem;
 
 import com.example.cst8334project.calendar.CalendarActivity;
-import com.example.cst8334project.util.ActivityUtils;
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     protected DrawerLayout drawerLayout;
 
@@ -24,6 +23,9 @@ public class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
     }
 
+    /**
+     * Set up the navigation drawer for the activities that require it.
+     */
     protected void setupDrawer() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -35,14 +37,14 @@ public class BaseActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerLayout);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
-        //navigationView.setNavigationItemSelectedListener(ActivityUtils.getNavigationListener(this, drawerLayout));
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 // Close the drawer when a navigation item is selected
                 drawerLayout.closeDrawers();
 
-                switch(item.getItemId()) {
+                switch (item.getItemId()) {
                     case R.id.timeSheet:
                         startActivity((new Intent(BaseActivity.this, VolunteerInfoActivity.class)));
                         break;
@@ -51,9 +53,10 @@ public class BaseActivity extends AppCompatActivity {
                         break;
                     case R.id.history:
                         startActivity((new Intent(BaseActivity.this, UserHistoryActivity.class)));
+                        break;
                 }
 
-                return false;
+                return true;
             }
         });
     }

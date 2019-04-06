@@ -83,9 +83,10 @@
                 android:layout_width="0dp"
                 android:layout_height="63dp"
                 android:layout_weight="0.35"
+                android:editable="false"
                 android:ems="10"
+                android:focusableInTouchMode="false"
                 android:fontFamily="@font/calibri"
-                android:inputType="date"
                 android:labelFor="@id/edit_date"
                 android:textColor="@color/Color_Panto"
                 tools:ignore="Autofill" />

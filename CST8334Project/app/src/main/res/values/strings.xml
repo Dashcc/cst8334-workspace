@@ -13,7 +13,7 @@
     <string name="report_form">HHH Volunteer Hours Report </string>
     <string name="name">Name:</string>
     <!-- <string name="reportingMonth">Reporting Month:</string>-->
-    <string name="date">Date:</string>
+    <string name="date">Date</string>
     <string name="type">Type: </string>
     <!--<string name="visitingTime">Visiting Time: </string>-->
     <!--<string name="visitingActivities">Visiting Activities: </string>-->
@@ -90,5 +90,7 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="email">Info@hearthousehospice.com</string>
+    <string name="add_appointment">Add Appointment</string>
+    <string name="start_time">Start time</string>
 
 </resources>
