@@ -13,7 +13,7 @@ import com.example.cst8334project.util.Converters;
 /**
  * The database for storing, retrieving, and modifying the domain objects for this application.
  */
-@Database(entities = {Visit.class, Email.class}, version = 1, exportSchema = false)
+@Database(entities = {Visit.class, Email.class}, version = 2, exportSchema = false)
 @TypeConverters({Converters.class})
 public abstract class HHHDatabase extends RoomDatabase {
 

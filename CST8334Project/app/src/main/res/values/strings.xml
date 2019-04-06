@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CST8334Project</string>
+    <string name="app_name">Heart House Hospice</string>
     <string name="welcome_page">HEART HOUSE </string>
     <string name="welcome_page1">H o s p i c e</string>
     <string name="ButtonText">Log On</string>
@@ -10,7 +10,7 @@
     <string name="login">Login</string>
 
 
-    <string name="report_form">HHH Volunteering Report </string>
+    <string name="report_form">HHH Volunteer Hours Report </string>
     <string name="name">Name:</string>
     <!-- <string name="reportingMonth">Reporting Month:</string>-->
     <string name="date">Date:</string>
@@ -39,6 +39,8 @@
     <string name="aroma">Aroma </string>
     <string name="respite">Respite </string>
     <string name="spiritual">Spiritual </string>
+    <string name="art">Art Therapy </string>
+    <string name="music">Music Therapy </string>
     <string name="note">Notes: </string>
 
 
@@ -49,6 +51,8 @@
     <string name="ct">CT</string>
     <string name="training1">Training</string>
     <string name="outreach1">Outreach</string>
+    <string name="art_therapy">Art Therapy </string>
+    <string name="music_therapy">Music Therapy </string>
 
     <string name="indirect">Indirect</string>
     <string name="indirect_form">Indirect Service (No Clients)</string>
@@ -79,8 +83,12 @@
 
     <string name="title_activity_main_menu">MainMenu</string>
     <string name="main_menu">Main Menu</string>
-    <string name="timesheet">Submit a Timesheet</string>
-    <string name="appointment">Add appointment to Calendar</string>
+    <string name="timeSheet">Volunteer Hours </string>
+    <string name="appointment"> Appointment Calendar</string>
     <string name="history">History</string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="email">Info@hearthousehospice.com</string>
 
 </resources>

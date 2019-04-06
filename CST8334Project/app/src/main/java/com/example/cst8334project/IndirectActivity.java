@@ -23,25 +23,21 @@ import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Calendar;
-import java.util.Date;
 
-public class IndirectActivity extends Activity {
-
-    TimePickerDialog picker;
+public class IndirectActivity extends BaseActivity {
 
     RadioButton[] radioButtons = new RadioButton[5];
 
     EditText[] editTexts = new EditText[5];
 
-    int timeHour, timeMinutes;
-
     IndirectServiceForm indirectServiceForm;
-    Button btnSubmit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_indirect);
+
+        setupDrawer();
 
         radioButtons[0] = findViewById(R.id.RB1);
         radioButtons[1] = findViewById(R.id.RB2);
@@ -55,11 +51,17 @@ public class IndirectActivity extends Activity {
         editTexts[3] = findViewById(R.id.editText4);
         editTexts[4] = findViewById(R.id.editText5);
 
-        editTexts[0].setInputType(InputType.TYPE_NULL);
-        editTexts[1].setInputType(InputType.TYPE_NULL);
-        editTexts[2].setInputType(InputType.TYPE_NULL);
-        editTexts[3].setInputType(InputType.TYPE_NULL);
-        editTexts[4].setInputType(InputType.TYPE_NULL);
+        Button btnSubmit = findViewById(R.id.btn_indirectSubmit);
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                submitForm();
+            }
+        });
+
+        for(EditText editText: editTexts) {
+            editText.setInputType(InputType.TYPE_NULL);
+        }
 
         // Get the IndirectServiceForm object from the intent extras
         indirectServiceForm = (IndirectServiceForm) getIntent().getSerializableExtra(FORM_INTENT_OBJECT_NAME);
@@ -75,27 +77,17 @@ public class IndirectActivity extends Activity {
                     int hour = cal.get(Calendar.HOUR_OF_DAY);
                     int minutes = cal.get(Calendar.MINUTE);
 
-                    picker = new TimePickerDialog(IndirectActivity.this,
+                    TimePickerDialog picker = new TimePickerDialog(IndirectActivity.this,
                             new TimePickerDialog.OnTimeSetListener() {
                                 @Override
                                 public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
                                     editTexts[finalI].setText(String.format(TIME_FORMAT, sHour, sMinute));
-                                    timeHour = sHour;
-                                    timeMinutes = sMinute;
                                 }
                             }, hour, minutes, true);
                     picker.show();
                 }
             });
         }
-
-        btnSubmit = findViewById(R.id.btn_directSubmit);
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                submitForm();
-            }
-        });
     }
 
     private void submitForm() {
@@ -123,9 +115,6 @@ public class IndirectActivity extends Activity {
         email.setAttachmentText(indirectServiceForm.getAttachmentText());
 
         new EmailSenderAsyncTask(this).execute(email);
-
-        Intent intent = new Intent(IndirectActivity.this, MainMenu.class);
-        startActivity(intent);
     }
 
     /**
@@ -153,6 +142,7 @@ public class IndirectActivity extends Activity {
             if (radioButtons[i].isChecked()) {
                 indirectServiceForm.setIndirectServiceTypePair(IndirectServiceForm.IndirectServiceType.values()[i],
                         editTexts[i].getText().toString());
+                return;
             }
         }
     }

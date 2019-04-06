@@ -27,13 +27,15 @@ import java.util.Calendar;
 
 import static com.example.cst8334project.forms.util.FormUtils.*;
 
-public class InHomeActivity extends Activity {
+public class InHomeActivity extends BaseActivity {
 
     TimePickerDialog picker;
     String client_name, numberOfPerson, note;
 
     EditText editName, editPerson, editNote;
     EditText eReiki, eTT, eAroma, eCompanioning, eRespite, eSpiritual;
+
+    CheckBox[] checkBoxes = new CheckBox[8];
 
     CheckBox CBPalliative, CBCaregiver, CBBereaved, CBReiki, CBTT, CBAroma, CBCompanioning, CBRespite, CBSpiritual;
 
@@ -51,6 +53,8 @@ public class InHomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inhome);
+
+        setupDrawer();
 
         CBPalliative = findViewById(R.id.CBPalliative);
         CBCaregiver = findViewById(R.id.CBCaregiver);
@@ -267,9 +271,6 @@ public class InHomeActivity extends Activity {
         email.setAttachmentText(inHomeForm.getAttachmentText());
 
         new EmailSenderAsyncTask(this).execute(email);
-
-        Intent intent = new Intent(InHomeActivity.this, MainMenu.class);
-        startActivity(intent);
     }
 
     /**

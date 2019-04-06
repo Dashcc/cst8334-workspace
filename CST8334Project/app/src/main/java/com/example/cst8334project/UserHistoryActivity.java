@@ -15,7 +15,7 @@ import com.example.cst8334project.userhistoryservice.VisitServiceImpl;
 import java.util.List;
 
 
-public class UserHistoryActivity extends AppCompatActivity{
+public class UserHistoryActivity extends BaseActivity {
 
     private RecyclerView recyclerView;
     List<Visit> itemList;
@@ -25,6 +25,8 @@ public class UserHistoryActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_history);
+
+        setupDrawer();
 
         visitServiceImp = VisitServiceImpl.INSTANCE;
         itemList = visitServiceImp.findAllVisits();
@@ -36,15 +38,15 @@ public class UserHistoryActivity extends AppCompatActivity{
 
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_user_history, menu);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.delete_history:
                 visitServiceImp.clearAllVisits();
                 Intent intent = new Intent(UserHistoryActivity.this, VolunteerInfoActivity.class);
@@ -54,5 +56,5 @@ public class UserHistoryActivity extends AppCompatActivity{
                 return super.onOptionsItemSelected(item);
         }
     }
- }
+}
 
