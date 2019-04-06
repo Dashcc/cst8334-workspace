@@ -31,7 +31,6 @@ import java.util.Locale;
 
 import static com.example.cst8334project.forms.util.FormUtils.TIME_FORMAT;
 
-@SuppressWarnings("deprecation")
 public class CalendarActivity extends BaseActivity {
 
     private EditText location;
@@ -43,6 +42,7 @@ public class CalendarActivity extends BaseActivity {
 
     private boolean eventCreated = false;
 
+    private Button createEvent;
     protected static final String ACTIVITY_NAME = "CalendarActivity";
 
     @Override
@@ -57,7 +57,7 @@ public class CalendarActivity extends BaseActivity {
         title = findViewById(R.id.apt_type);
         duration = findViewById(R.id.cal_duration);
         description = findViewById(R.id.cal_desc);
-        Button createEvent = findViewById(R.id.btn_create_event);
+        createEvent = findViewById(R.id.btn_create_event);
 
         final Calendar calendar = Calendar.getInstance();
 
@@ -148,9 +148,9 @@ public class CalendarActivity extends BaseActivity {
         String type = title.getText().toString();
         String desc = description.getText().toString();
 
-        int endTime;
+        Integer endTime;
         try {
-            endTime = Integer.parseInt(duration.getText().toString());
+            endTime = Integer.valueOf(duration.getText().toString());
         } catch (Exception e) {
             endTime = 1;
         }
