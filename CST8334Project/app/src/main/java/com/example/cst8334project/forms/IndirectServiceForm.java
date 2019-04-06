@@ -70,7 +70,7 @@ public class IndirectServiceForm extends BaseForm {
      * Construct an instance of a {@link IndirectServiceForm}.
      */
     public IndirectServiceForm() {
-        setFormType(FormType.INDIRECT);
+        this.formType = FormType.INDIRECT;
     }
 
     /**
@@ -85,14 +85,12 @@ public class IndirectServiceForm extends BaseForm {
 
     @Override
     protected String getDataRow() {
-        String dataString = indirectServiceTypePair.getValue();
-        return super.getDataRow() + COMMA + dataString;
+        return super.getDataRow() + COMMA + indirectServiceTypePair.getValue();
     }
 
     @Override
     protected String getHeaderRow() {
-        String headerString = indirectServiceTypePair.getKey().getName();
-        return super.getHeaderRow() + COMMA + headerString;
+        return super.getHeaderRow() + COMMA + getServiceType();
     }
 
     public String getServiceType() {
