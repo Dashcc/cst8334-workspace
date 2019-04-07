@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CST8334Project</string>
+    <string name="welcome_page">HEART HOUSE </string>
+    <string name="welcome_page1">H o s p i c e</string>
+    <string name="ButtonText">پر لاگ ان کریں</string>
+
+    <string name="username">صارف کا نام</string>
+    <string name="Hint">User Name/Email</string>
+    <string name="password">پاس ورڈ</string>
+    <string name="login"> لاگ ان</string>
+
+    <string name="title_activity_main_menu">مرکزي فہرست</string>
+    <string name="main_menu">مرکزي فہرست</string>
+    <string name="timeSheet">رضاکار گھنٹوں کی رپورٹ بھیج دیں</string>
+    <string name="appointment">کیلنڈر میں متوقع ملاقات کا وقت درج کریں </string>
+    <string name="clientHistory">ہسٹری </string>
+
+    <string name="report_form">ہاسپس رضاکار گھنٹوں کی رپورٹنگ  </string>
+    <string name="name">: نام </string>
+    <string name="date">تاریخ </string>
+    <string name="studentPlacement">طالب علم کی جگہ </string>
+    <string name="type">قسم </string>
+
+
+    <string name="direct">براہ راست   </string>
+    <string name="direct_form">براہ راست خدمت   </string>
+    <string name="option1">Option 1:</string>
+    <string name="option2">Option 2:</string>
+    <string name="inHome">گھر میں</string>
+
+    <string name="inHome_head">گھر میں</string>
+    <string name="client_name">کلائینٹ کا نام </string>
+    <string name="client_type">کلائینٹ کی قسم </string>
+    <string name="palliative"> قریب المرگ مریض   </string>
+    <string name="caregiver">دیکھ بھال کرنے والے </string>
+    <string name="bereaved">سوگواراان </string>
+    <string name="numberOfPerson">کل افراد جنکی مدد کی گئ</string>
+    <string name="numberOfVisit">سرگرمیاں ملاحظہ کریں (ایک سے زائد): </string>
+    <string name="companioning">ساتھ کا وقت      </string>
+    <string name="comp_therapy">کمپ تھراپی:</string>
+    <string name="reiki">کمپلیمیننٹری تھراپی </string>
+    <string name="tt">تھرا پیوٹک ٹچ </string>
+    <string name="aroma">اروما تھراپی </string>
+    <string name="respite">دیکھ بھال کرنے والے کو وقفہ  </string>
+    <string name="spiritual">روحانی مدد </string>
+    <string name="art">فن تھراپی</string>
+    <string name="music">موسیقی تھراپی</string>
+    <string name="note"> کویئ اور اہم تفصیل </string>
+
+
+    <string name="inOffice">ہاسپس کے دفتر میں</string>
+    <string name="inOffice_head">ہاسپس کے دفتر میں (More than one)</string>
+    <string name="spa"> سپا </string>
+    <string name="dayProgram">ڈے ہوسپس</string>
+    <string name="ct">کمپلییمینٹری تھراپی</string>
+    <string name="training1"> تربیت یا ٹریننگ</string>
+    <string name="outreach1">آؤٹ ریچ</string>
+    <string name="art_therapy">فن تھراپی</string>
+    <string name="music_therapy">موسیقی تھراپی</string>
+    <string name="numberOfPerson2">خدمت کی گئی شخص کی تعداد:</string>
+
+    <string name="indirect">بالواسطہ </string>
+    <string name="indirect_form">بالواسطہ (کلائینٹ کے علاوہ)</string>
+    <string name="admin"> ایڈمن</string>
+    <string name="board">بورڈ</string>
+    <string name="training"> تربیت یا ٹریننگ</string>
+    <string name="fundraising"> فنڈ ریزنگ</string>
+    <string name="outreach"> آؤٹ ریچ</string>
+
+
+    <string name="submit">جمع </string>
+    <string name="enter_username">یہاں آپ کا صارف نام درج کریں</string>
+    <string name="enter_pass">یہاں اپنا پاس ورڈ درج کریں</string>
+    <string name="signin">داخلہ</string>
+    <string name="success">آپ نے کامیابی سے لاگ ان کیا!</string>
+    <string name="fail">آپ نے درج کردہ صارف کا نام یا پاس ورڈ غلط تھا</string>
+    <string name="title_activity_user_history">UserHistoryActivity</string>
+    <string name="action_settings">ترتیبات</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="pick_time">وقت اٹھاو</string>
+    <string name="enter_location">سرگرمی کی جگہ یا محل وقوعہ</string>
+    <string name="create_event">تقریب یا سرگرمی تشکیل دیں   </string>
+    <string name="enter_reminder">یاد دہانی کا وقت (منٹ میں)</string>
+    <string name="duration">دورانیہ (گھنٹے):</string>
+    <string name="appointmentType">تقرری کی قسم:</string>
+    <string name="appointmentDescription">سرگرمی کی تفصیل:</string>
+
+    <string name="open">کھولیں</string>
+    <string name="close">بند کریں</string>
+    <string name="email">Info@hearthousehospice.com</string>
+
+
+</resources>

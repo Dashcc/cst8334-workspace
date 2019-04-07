@@ -12,11 +12,9 @@
 
     <string name="report_form">HHH Volunteer Hours Report </string>
     <string name="name">Name:</string>
-    <!-- <string name="reportingMonth">Reporting Month:</string>-->
     <string name="date">Date:</string>
     <string name="type">Type: </string>
-    <!--<string name="visitingTime">Visiting Time: </string>-->
-    <!--<string name="visitingActivities">Visiting Activities: </string>-->
+    <string name="studentPlacement">Student Placement: </string>
 
     <string name="direct">Direct</string>
     <string name="direct_form">Direct Service</string>
@@ -53,6 +51,7 @@
     <string name="outreach1">Outreach</string>
     <string name="art_therapy">Art Therapy </string>
     <string name="music_therapy">Music Therapy </string>
+    <string name="numberOfPerson2">Number of Person Served: </string>
 
     <string name="indirect">Indirect</string>
     <string name="indirect_form">Indirect Service (No Clients)</string>
@@ -78,14 +77,14 @@
     <string name="create_event">Create Event</string>
     <string name="enter_reminder">Reminder time (in minutes)</string>
     <string name="duration">Duration(hours)</string>
-    <string name="appointmentType">What type of appointment?</string>
-    <string name="appointmentDescription">Description</string>
+    <string name="appointmentType">Type Of Appointment:</string>
+    <string name="appointmentDescription">Description:</string>
 
     <string name="title_activity_main_menu">MainMenu</string>
     <string name="main_menu">Main Menu</string>
-    <string name="timeSheet">Volunteer Hours </string>
+    <string name="timeSheet" translatable="false">Volunteer Hours </string>
     <string name="appointment"> Appointment Calendar</string>
-    <string name="history">History</string>
+    <string name="clientHistory">History</string>
 
     <string name="open">Open</string>
     <string name="close">Close</string>

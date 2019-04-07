@@ -19,6 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:fontFamily="@font/calibri"
+            android:textColor="@color/Color_Panto"
+            android:background="@drawable/test3"
             tools:context="com.example.cst8334project.calendar.CalendarActivity">
 
             <include layout="@layout/toolbar" />
@@ -29,7 +32,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/create_event"
                 android:calendarViewShown="false"
-                android:datePickerMode="spinner" />
+                android:datePickerMode="spinner"
+                />
 
             <TimePicker
                 android:id="@+id/timePicker1"
@@ -40,7 +44,7 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="148dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/datePicker1"
                 android:layout_toRightOf="@id/timePicker1">
@@ -48,12 +52,16 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/duration" />
+                    android:text="@string/duration"
+                    android:fontFamily="@font/calibri"
+                    android:textColor="@color/Color_Panto"/>
 
                 <EditText
                     android:id="@+id/duration"
-                    android:layout_width="25dp"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="66dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/calibri"
+                    android:textColor="@color/Color_Panto"/>
 
 
             </LinearLayout>
@@ -61,21 +69,31 @@
             <LinearLayout
                 android:id="@+id/type_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_below="@id/timePicker1"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/type_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/appointmentType" />
+                    android:layout_width="0dp"
+                    android:layout_height="63dp"
+                    android:layout_weight="0.25"
+                    android:fontFamily="@font/calibri"
+                    android:text="@string/appointmentType"
+                    android:textColor="@color/Color_Panto"
+                    android:textSize="15sp" />
 
                 <EditText
                     android:id="@+id/type"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:layout_weight="0.35"
+                    android:ems="10"
+                    android:fontFamily="@font/calibri"
+                    android:inputType="text"
+                    android:labelFor="@id/type"
+                    android:textColor="@color/Color_Panto"
+                    tools:ignore="Autofill" />
             </LinearLayout>
 
             <LinearLayout
@@ -87,15 +105,27 @@
 
                 <TextView
                     android:id="@+id/description_layout_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/appointmentDescription" />
+                    android:layout_width="0dp"
+                    android:layout_height="63dp"
+                    android:layout_weight="0.25"
+                    android:text="@string/appointmentDescription"
+                    android:layout_marginTop="-10dp"
+                    android:fontFamily="@font/calibri"
+                    android:textColor="@color/Color_Panto"
+                    android:textSize="15sp"/>
 
                 <EditText
                     android:id="@+id/description"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:layout_weight="0.35"
+                    android:ems="10"
+                    android:layout_marginTop="-10dp"
+                    android:fontFamily="@font/calibri"
+                    android:inputType="text"
+                    android:labelFor="@id/description"
+                    android:textColor="@color/Color_Panto"
+                    tools:ignore="Autofill" />
             </LinearLayout>
 
             <LinearLayout
@@ -107,15 +137,27 @@
 
                 <TextView
                     android:id="@+id/enter_location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/enter_location" />
+                    android:layout_width="0dp"
+                    android:layout_height="63dp"
+                    android:layout_weight="0.25"
+                    android:layout_marginTop="-10dp"
+                    android:text="@string/enter_location"
+                    android:fontFamily="@font/calibri"
+                    android:textColor="@color/Color_Panto"
+                    android:textSize="15sp"/>
 
                 <EditText
                     android:id="@+id/location"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/enter_location" />
+                    android:layout_marginTop="-10dp"
+                    android:layout_weight="0.35"
+                    android:ems="10"
+                    android:fontFamily="@font/calibri"
+                    android:labelFor="@id/location"
+                    android:textColor="@color/Color_Panto"
+                    android:textSize="20sp"
+                    tools:ignore="Autofill" />
             </LinearLayout>
 
             <Button
@@ -123,7 +165,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:text="@string/create_event" />
+                android:text="@string/create_event"
+                android:fontFamily="@font/calibri"
+                android:textColor="@color/Color_Panto"
+                android:textStyle="bold"/>
 
 
         </RelativeLayout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CST8334Project</string>
+    <string name="welcome_page">HEART HOUSE </string>
+    <string name="welcome_page1">H o s p i c e</string>
+    <string name="ButtonText">Zalogować się</string>
+
+    <string name="username">Nazwa Użytkownika</string>
+    <string name="Hint">User Name/Email</string>
+    <string name="password">Hasło</string>
+    <string name="login">Zalogowanie</string>
+
+    <string name="title_activity_main_menu">Menu Główne</string>
+    <string name="main_menu">Menu Główne</string>
+    <string name="timeSheet">Prześlij Volunteer Hours Report</string>
+    <string name="appointment">Dodaj spotkanie do kalendarza</string>
+    <string name="clientHistory">Historia</string>
+
+    <string name="report_form">Raportowanie godzin pracy wolontariuszy HHH</string>
+    <string name="name">Imię:</string>
+    <string name="date">Data:</string>
+    <string name="studentPlacement">Umieszczenie studenta: </string>
+    <string name="type">Rodzaj: </string>
+
+
+    <string name="direct">Bezpośredni </string>
+    <string name="direct_form">Bezpośrednia usługa </string>
+    <string name="option1">Option 1:</string>
+    <string name="option2">Option 2:</string>
+    <string name="inHome">W domu</string>
+
+    <string name="inHome_head">W domu</string>
+    <string name="client_name">Imię klienta</string>
+    <string name="client_type">Typ klienta </string>
+    <string name="palliative">Paliatywny </string>
+    <string name="caregiver">Opiekun </string>
+    <string name="bereaved">Pogrążony w smutku </string>
+    <string name="numberOfPerson">Liczba obsługiwanych osób </string>
+    <string name="numberOfVisit">Odwiedź działania (więcej niż jeden):</string>
+    <string name="companioning">Towarzysz  </string>
+    <string name="comp_therapy">Tterapia Uzupełniająca </string>
+    <string name="reiki">Reiki </string>
+    <string name="tt">TT </string>
+    <string name="aroma">Aromaterapia </string>
+    <string name="respite">Wytchnienia </string>
+    <string name="spiritual">Duchowy </string>
+    <string name="art">Terapia sztuką</string>
+    <string name="music">Terapia muzyczna  </string>
+    <string name="note">Uwagi: </string>
+
+
+    <string name="inOffice">W biurze</string>
+    <string name="inOffice_head">W biurze (More than one)</string>
+    <string name="spa">SPA</string>
+    <string name="dayProgram">Dzienny Hospice</string>
+    <string name="ct">CT</string>
+    <string name="training1">Trening</string>
+    <string name="outreach1">Zasięganie pomocy od spolecznosci</string>
+    <string name="art_therapy">Terapia sztuką</string>
+    <string name="music_therapy">Terapia muzyczna </string>
+    <string name="numberOfPerson2">Liczba obsługiwanych osób:</string>
+
+    <string name="indirect">Pośredni </string>
+    <string name="indirect_form">Pośredni  Service (brak klienta)</string>
+    <string name="admin">Praca administracyjna</string>
+    <string name="board">Zarząd</string>
+    <string name="training">Trening</string>
+    <string name="fundraising">Zbieranie funduszy</string>
+    <string name="outreach">Zasięganie pomocy od spolecznosci</string>
+
+    <string name="submit">Prześlij </string>
+    <string name="enter_username">Wpisz tutaj swoją nazwę użytkownika</string>
+    <string name="enter_pass">Enter your password here</string>
+    <string name="signin">Zaloguj</string>
+    <string name="success">Pomyślnie się zalogowałeś!</string>
+    <string name="fail">Wprowadzona nazwa użytkownika lub hasło były nieprawidłowe</string>
+    <string name="title_activity_user_history">UserHistoryActivity</string>
+    <string name="action_settings">Ustawienia</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="pick_time">Wybierz czas</string>
+    <string name="enter_location">Wpisz Lokalizację</string>
+    <string name="create_event">Stworzyć wydarzenie</string>
+    <string name="enter_reminder">Czas przypomnienia (w minutach)</string>
+    <string name="duration">Czas trwania (godziny)</string>
+    <string name="appointmentType">Rodzaj spotkania:</string>
+    <string name="appointmentDescription">Opis</string>
+
+    <string name="open">otwarty</string>
+    <string name="close">Blisko</string>
+    <string name="email">Info@hearthousehospice.com</string>
+
+</resources>

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
@@ -26,6 +27,7 @@ public class VolunteerInfoActivity extends BaseActivity {
     String date;
     EditText editName;
     EditText editDate;
+    CheckBox CBStudent;
     Button btnDirect;
     Button btnIndirect;
     DatePickerDialog datePickerDialog;
@@ -38,6 +40,7 @@ public class VolunteerInfoActivity extends BaseActivity {
 
         editName = findViewById(R.id.edit_name);
         editDate = findViewById(R.id.edit_date);
+        CBStudent = findViewById(R.id.CBStudent);
         btnDirect = findViewById(R.id.direct_btn);
         btnIndirect = findViewById(R.id.indirect_btn);
 

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CST8334Project</string>
+    <string name="welcome_page">HEART HOUSE </string>
+    <string name="welcome_page1">H o s p i c e</string>
+    <string name="ButtonText">登录</string>
+
+    <string name="username">用户名</string>
+    <string name="Hint">User Name/Email</string>
+    <string name="password">密码</string>
+    <string name="login">登入</string>
+
+
+    <string name="title_activity_main_menu">主頁</string>
+    <string name="main_menu">主頁</string>
+    <string name="timeSheet">提交义工时间报告</string>
+    <string name="appointment">将約定時段提加入日历</string>
+    <string name="clientHistory">过去服務简報</string>
+
+
+    <string name="report_form">义工时间报告 </string>
+    <string name="name">姓名:</string>
+    <string name="date">日期:</string>
+    <string name="studentPlacement">学生安置： </string>
+    <string name="type">类型: </string>
+
+    <string name="direct">直接</string>
+    <string name="direct_form">直接</string>
+    <string name="option1">Option 1:</string>
+    <string name="option2">Option 2:</string>
+    <string name="inHome">家中</string>
+
+    <string name="inHome_head">家中</string>
+    <string name="client_name">客戶姓名:</string>
+    <string name="client_type">客户类型： </string>
+    <string name="palliative">临终患者 </string>
+    <string name="caregiver">护理家人 </string>
+    <string name="bereaved">丧亲 </string>
+    <string name="numberOfPerson">支援的人数: </string>
+    <string name="numberOfVisit">访问活动（不止一个）： </string>
+    <string name="companioning">陪伴時間  </string>
+    <string name="comp_therapy">补充疗法: </string>
+    <string name="reiki">灵气 </string>
+    <string name="tt">TT </string>
+    <string name="aroma">香薰疗法 </string>
+    <string name="respite">喘息服务 </string>
+    <string name="spiritual">心灵辅导` </string>
+    <string name="art">艺术治疗</string>
+    <string name="music">音乐疗法</string>
+    <string name="note">笔记: </string>
+
+
+    <string name="inOffice">在办公室</string>
+    <string name="inOffice_head">在办公室 (可以选择超过一项)</string>
+    <string name="spa">水疗护理</string>
+    <string name="dayProgram">日托</string>
+    <string name="ct">补充疗法</string>
+    <string name="training1">训练</string>
+    <string name="outreach1">外展</string>
+    <string name="art_therapy">艺术治疗 </string>
+    <string name="music_therapy">音乐疗法 </string>
+    <string name="numberOfPerson2">送达人数： </string>
+
+
+    <string name="indirect">间接</string>
+    <string name="indirect_form">间接(無客戶接觸)</string>
+    <string name="admin">行政时間</string>
+    <string name="board">董事会</string>
+    <string name="training">训练</string>
+    <string name="fundraising">筹款</string>
+    <string name="outreach">外展</string>
+
+
+    <string name="submit">提交 </string>
+    <string name="enter_username">在此输入您的用户名</string>
+    <string name="enter_pass">在此输入您的密码</string>
+    <string name="signin">登入</string>
+    <string name="success">您已成功登录！</string>
+    <string name="fail">您输入的用户名或密码不正确</string>
+    <string name="title_activity_user_history">用户历史活动</string>
+    <string name="action_settings">设置</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="pick_time">选择时间</string>
+    <string name="enter_location">输入地奌</string>
+    <string name="create_event">创建活动</string>
+    <string name="enter_reminder">提醒时间（以分钟为单位）</string>
+    <string name="duration">持续时间（小时:</string>
+    <string name="appointmentType">预约类型：</string>
+    <string name="appointmentDescription">描述:</string>
+
+    <string name="open">打开</string>
+    <string name="close">关</string>
+    <string name="email">Info@hearthousehospice.com</string>
+</resources>

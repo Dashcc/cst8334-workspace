@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CST8334Project</string>
+    <string name="welcome_page">HEART HOUSE </string>
+    <string name="welcome_page1">H o s p i c e</string>
+    <string name="ButtonText">تسجيل دخول</string>
+
+    <string name="username">اسم المستخدم</string>
+    <string name="Hint">User Name/Email</string>
+    <string name="password">كلمة السر </string>
+    <string name="login">تسجيل الدخول</string>
+
+    <string name="title_activity_main_menu">القائمة الرئيسية</string>
+    <string name="main_menu">القائمة الرئيسية</string>
+    <string name="timeSheet">قدم تقرير ساعات التطوع</string>
+    <string name="appointment">إضافة مواعيد إلى التقويم</string>
+    <string name="clientHistory">التاريخ</string>
+
+    <string name="report_form">HHH تقرير ساعات المتطوع </string>
+    <string name="name">الاسم</string>
+    <string name="date">تاريخ</string>
+    <string name="type">نوع</string>
+    <string name="studentPlacement">وضع الطالب: </string>
+
+    <string name="direct">مباشرة</string>
+    <string name="direct_form">خدمات مباشرة</string>
+    <string name="option1">Option 1:</string>
+    <string name="option2">Option 2:</string>
+    <string name="inHome">في المنزل</string>
+
+    <string name="inHome_head">في المنزل</string>
+    <string name="client_name">إسم العميل</string>
+    <string name="client_type">نوع العميل</string>
+    <string name="palliative">رعايه تخفيفية </string>
+    <string name="caregiver">مقدمي الرعاية</string>
+    <string name="bereaved">محزونين </string>
+    <string name="numberOfPerson">عدد الأشخاص المقدم لهم الدعم</string>
+    <string name="numberOfVisit">زيارة الأنشطة (أكثر من واحد):</string>
+    <string name="companioning">المرافقة  </string>
+    <string name="comp_therapy">العلاج التكميلي</string>
+    <string name="reiki">الريكي </string>
+    <string name="tt">لمسة علاجية  </string>
+    <string name="aroma">العلاج العطري </string>
+    <string name="respite">نقاهة </string>
+    <string name="spiritual">روحي </string>
+    <string name="art">علاج فني </string>
+    <string name="music">العلاج بالموسيقى</string>
+    <string name="note">ملاحظات</string>
+
+
+    <string name="inOffice">في المكتب</string>
+    <string name="inOffice_head">داخل المكتب (يمكنك اختيار أكثر من واحدة)</string>
+    <string name="spa">مركز رعايه صحية</string>
+    <string name="dayProgram">دار العجزة</string>
+    <string name="ct">العلاج التكميلي</string>
+    <string name="training1">تدريب</string>
+    <string name="outreach1">التوعية</string>
+    <string name="art_therapy">علاج فني</string>
+    <string name="music_therapy">العلاج بالموسيقى </string>
+    <string name="numberOfPerson2">عدد الأشخاص الذين خدموا:</string>
+
+    <string name="indirect">غير مباشر </string>
+    <string name="indirect_form">غير مباشر (لا عميل)</string>
+    <string name="admin">إداري</string>
+    <string name="board">مجلس</string>
+    <string name="training">تدريب</string>
+    <string name="fundraising">جمع التبرعات</string>
+    <string name="outreach">التوعية</string>
+
+
+    <string name="submit">تقديم </string>
+    <string name="enter_username">أدخل اسم المستخدم الخاص بك هنا</string>
+    <string name="enter_pass">أدخل كلمة مرورك هنا</string>
+    <string name="signin">تسجيل الدخول</string>
+    <string name="success">قمت بتسجيل الدخول بنجاح!</string>
+    <string name="fail"> المستخدم أو كلمة المرور التي أدخلتها غيرصحيحةاسم </string>
+    <string name="title_activity_user_history">UserHistoryActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="pick_time">اختر وقت</string>
+    <string name="enter_location">أدخل الموقع</string>
+    <string name="create_event">انشاء حدث</string>
+    <string name="enter_reminder">وقت التذكير (بالدقائق)</string>
+    <string name="duration">مدة (ساعة)</string>
+    <string name="appointmentType">نوع الموعد:</string>
+    <string name="appointmentDescription">الوصف</string>
+
+    <string name="open">افتح</string>
+    <string name="close">أغلق</string>
+    <string name="email">Info@hearthousehospice.com</string>
+
+</resources>

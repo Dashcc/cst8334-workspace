@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:fitsSystemWindows="true"
+    android:background="@drawable/test3"
     app:menu="@menu/navigation_menu"
     app:headerLayout="@layout/nav_header_main"
     app:itemTextColor="@color/Color_Panto"

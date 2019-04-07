@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CST8334Project</string>
+    <string name="welcome_page">HEART HOUSE </string>
+    <string name="welcome_page1">H o s p i c e</string>
+    <string name="ButtonText">Đăng nhập</string>
+
+    <string name="username">Tên người dùng</string>
+    <string name="Hint">User Name/Email</string>
+    <string name="password">Mật khẩu</string>
+    <string name="login">Đăng nhập</string>
+
+    <string name="title_activity_main_menu">Danh mục chính</string>
+    <string name="main_menu">Danh mục chính</string>
+    <string name="timeSheet">Nộp một bản Volunteer Hours Report</string>
+    <string name="appointment">Thêm cuộc hẹn vào Lịch</string>
+    <string name="clientHistory">Lịch sử</string>
+
+    <string name="report_form">HHH Volunteering Report </string>
+    <string name="name">Họ tên:</string>
+    <string name="date">Ngày:</string>
+    <string name="studentPlacement">Vị trí sinh viên: </string>
+    <string name="type">Loại: </string>
+
+    <string name="direct">Trực tiếp </string>
+    <string name="direct_form">Dịch vụ trực tiếp (với khách hàng)</string>
+    <string name="option1">Option 1:</string>
+    <string name="option2">Option 2:</string>
+    <string name="inHome">Tại Nhà</string>
+
+    <string name="inHome_head">Tại Nhà</string>
+    <string name="client_name">Tên khách hàng:</string>
+    <string name="client_type">Loại khách hàng : </string>
+    <string name="palliative">Chăm sóc giảm nhẹ </string>
+    <string name="caregiver">Điều dưỡng viên </string>
+    <string name="bereaved">Gia quyến </string>
+    <string name="numberOfPerson">Số người được hỗ trợ: </string>
+    <string name="numberOfVisit">Visit Activities (more than one): </string>
+    <string name="companioning">Đồng hành  </string>
+    <string name="comp_therapy">Trị liệu tổng hợp: </string>
+    <string name="reiki">Reiki </string>
+    <string name="tt">TT </string>
+    <string name="aroma">Liệu pháp hương liệu </string>
+    <string name="respite">Trì hoãn </string>
+    <string name="spiritual">Linh hồn </string>
+    <string name="art">Trị liệu nghệ thuật </string>
+    <string name="music">Âm nhạc trị liệu </string>
+    <string name="note">Ghi chú: </string>
+
+
+    <string name="inOffice">Tại Văn phòng</string>
+    <string name="inOffice_head">Tại Văn phòng (More than one)</string>
+    <string name="spa">Liệu pháp spa</string>
+    <string name="dayProgram">NgàyHospice</string>
+    <string name="ct">CT</string>
+    <string name="training1">Đào tạo</string>
+    <string name="outreach1">Tiếp cận cộng đồng</string>
+    <string name="art_therapy">Trị liệu nghệ thuật </string>
+    <string name="music_therapy">Âm nhạc trị liệu </string>
+    <string name="numberOfPerson2">Số người được phục vụ: </string>
+
+    <string name="indirect">Gián tiếp </string>
+    <string name="indirect_form">Gián tiếp (Không có khách hàng)</string>
+    <string name="admin">Quản trị viên</string>
+    <string name="board">Ban lãnh đạo</string>
+    <string name="training">Đào tạo</string>
+    <string name="fundraising">Gây quỹ</string>
+    <string name="outreach">Tiếp cận cộng đồng</string>
+
+
+    <string name="submit">Gửi đi </string>
+    <string name="enter_username">Nhập tên tài khoản của bạn ở đây</string>
+    <string name="enter_pass">Nhập mật khẩu của bạn ở đây</string>
+    <string name="signin">Đăng nhập</string>
+    <string name="success">Bạn đã đăng nhập thành công!</string>
+    <string name="fail">Tên người dùng hoặc mật khẩu bạn đã nhập không chính xác</string>
+    <string name="title_activity_user_history">UserHistoryActivity</string>
+    <string name="action_settings">Cài đặt</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <string name="pick_time">Chọn thời gian</string>
+    <string name="enter_location">Nhập một địa điểm</string>
+    <string name="create_event">Tạo sự kiện </string>
+    <string name="enter_reminder">Thời gian nhắc nhở (tính bằng phút)</string>
+    <string name="duration">Thời lượng (giờ):</string>
+    <string name="appointmentType">Loại bổ nhiệm:</string>
+    <string name="appointmentDescription">Mô tả:</string>
+
+    <string name="open">mở</string>
+    <string name="close">gần</string>
+    <string name="email">Info@hearthousehospice.com</string>
+
+
+</resources>

@@ -128,7 +128,6 @@ public class InHomeForm extends DirectServiceForm {
          * A spiritual in home visit.
          */
         SPIRITUAL("Spiritual");
-
         /**
          * The name, as it is rendered on the CSV file, of this {@link InHomeType}
          */

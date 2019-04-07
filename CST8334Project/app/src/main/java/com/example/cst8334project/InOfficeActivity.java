@@ -28,10 +28,14 @@ import static com.example.cst8334project.forms.util.FormUtils.*;
 
 public class InOfficeActivity extends BaseActivity {
 
-    CheckBox[] checkBoxes = new CheckBox[5];
-    EditText[] editTexts = new EditText[5];
+    CheckBox[] checkBoxes = new CheckBox[7];
+    String numberOfPerson2;
+    EditText[] editTexts = new EditText[8];
+    EditText editPerson;
+
 
     InOfficeForm inOfficeForm;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +44,14 @@ public class InOfficeActivity extends BaseActivity {
 
         setupDrawer();
 
-        int[] checkBoxesIds = new int[]{R.id.CB1, R.id.CB2, R.id.CB3, R.id.CB4, R.id.CB5};
-        int[] editTextIds = new int[]{R.id.editText1, R.id.editText2, R.id.editText3, R.id.editText4, R.id.editText5};
+        int[] checkBoxesIds = new int[]{R.id.CB1, R.id.CB2, R.id.CB3, R.id.CB4, R.id.CB5,R.id.CB6, R.id.CB7};
+        int[] editTextIds = new int[]{R.id.editText1, R.id.editText2, R.id.editText3, R.id.editText4, R.id.editText5, R.id.editText6, R.id.editText7, R.id.editTextNumPerson2};
 
         for (int i = 0; i < checkBoxes.length; i++) {
             checkBoxes[i] = findViewById(checkBoxesIds[i]);
             editTexts[i] = findViewById(editTextIds[i]);
             editTexts[i].setInputType(InputType.TYPE_NULL);
+
 
             final int finalI = i;
             checkBoxes[i].setOnClickListener(new View.OnClickListener() {
@@ -100,6 +105,8 @@ public class InOfficeActivity extends BaseActivity {
      * Create an {@link Email} and {@link Visit} object that corresponds to the In Office form and send the email.
      */
     public void onLoginSuccess() {
+
+
         Visit visit = new Visit();
         visit.setServiceType(BaseForm.FormType.DIRECT.getName() + COLON +
                 DirectServiceForm.DirectServiceType.IN_OFFICE.getName());
@@ -122,6 +129,7 @@ public class InOfficeActivity extends BaseActivity {
      * @return {@code true} if at least one of the checkboxes is checked, {@code false} otherwise
      */
     public boolean validate() {
+        boolean valid = true;
         for (int i = 0; i < checkBoxes.length; i++) {
             if (checkBoxes[i].isChecked()) {
                 if (StringUtils.isNotBlank(editTexts[i].getText().toString())) {
@@ -130,18 +138,28 @@ public class InOfficeActivity extends BaseActivity {
                 // If at least one of the checkboxes is selected, but its corresponding time
                 // is not provided, display an error message
                 editTexts[i].setError("Please enter a time for this service.");
-                return false;
+                valid = false;
             }
         }
-        return false;
+        if (numberOfPerson2.isEmpty()) {
+            editPerson.setError("Please enter  valid number of people during visit");
+            valid = false;
+
+        }
+//        return false;
+        return valid;
     }
 
     private void initialize() {
+
+        numberOfPerson2 = editPerson.getText().toString().trim();
+
         for (int i = 0; i < checkBoxes.length; i++) {
             if (checkBoxes[i].isChecked()) {
                 inOfficeForm.addInOfficeType(InOfficeForm.InOfficeType.values()[i], editTexts[i].getText().toString());
             }
         }
+
     }
 
     private void clearErrors() {

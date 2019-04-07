@@ -33,11 +33,10 @@ public class InHomeActivity extends BaseActivity {
     String client_name, numberOfPerson, note;
 
     EditText editName, editPerson, editNote;
-    EditText eReiki, eTT, eAroma, eCompanioning, eRespite, eSpiritual;
+    EditText eReiki, eTT, eAroma, eCompanioning, eRespite, eSpiritual,eArt, eMusic;
 
-    CheckBox[] checkBoxes = new CheckBox[8];
 
-    CheckBox CBPalliative, CBCaregiver, CBBereaved, CBReiki, CBTT, CBAroma, CBCompanioning, CBRespite, CBSpiritual;
+    CheckBox CBPalliative, CBCaregiver, CBBereaved, CBReiki, CBTT, CBAroma, CBCompanioning, CBRespite, CBSpiritual, CBArt, CBMusic;
 
     int ReikiHour, ReikiMin;
     int TTHour, TTMin;
@@ -45,6 +44,8 @@ public class InHomeActivity extends BaseActivity {
     int CompanioningHour, CompanioningMin;
     int RespiteHour, RespiteMin;
     int SpiritualHour, SpiritualMin;
+    int ArtHour, ArtMin;
+    int MusicHour, MusicMin;
 
     InHomeForm inHomeForm;
     Button btnSubmit;
@@ -65,6 +66,9 @@ public class InHomeActivity extends BaseActivity {
         CBCompanioning = findViewById(R.id.CBCompanioning);
         CBRespite = findViewById(R.id.CBRespite);
         CBSpiritual = findViewById(R.id.CBSpiritual);
+        CBArt = findViewById(R.id.CBArt);
+        CBMusic = findViewById(R.id.CBMusic);
+
 
         editName = findViewById(R.id.editTextName);
         editPerson = findViewById(R.id.editTextNumPerson);
@@ -75,6 +79,8 @@ public class InHomeActivity extends BaseActivity {
         eCompanioning = findViewById(R.id.editCompanioning);
         eRespite = findViewById(R.id.editRespite);
         eSpiritual = findViewById(R.id.editSpiritual);
+        eArt = findViewById(R.id.editArt);
+        eMusic = findViewById(R.id.editMusic);
 
         eReiki.setInputType(InputType.TYPE_NULL);
         eTT.setInputType(InputType.TYPE_NULL);
@@ -82,6 +88,8 @@ public class InHomeActivity extends BaseActivity {
         eCompanioning.setInputType(InputType.TYPE_NULL);
         eRespite.setInputType(InputType.TYPE_NULL);
         eSpiritual.setInputType(InputType.TYPE_NULL);
+        eArt.setInputType(InputType.TYPE_NULL);
+        eMusic.setInputType(InputType.TYPE_NULL);
 
         // Obtain the InHomeForm object from the Intent extra
         inHomeForm = (InHomeForm) getIntent().getSerializableExtra(FormUtils.FORM_INTENT_OBJECT_NAME);
@@ -230,6 +238,54 @@ public class InHomeActivity extends BaseActivity {
                 picker.show();
             }
         });
+        CBArt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!CBArt.isChecked()) {
+                    eArt.setText("");
+                    return;
+                }
+                final Calendar cal = Calendar.getInstance();
+                int hour = cal.get(Calendar.HOUR_OF_DAY);
+                int minutes = cal.get(Calendar.MINUTE);
+
+                picker = new TimePickerDialog(InHomeActivity.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
+                                eArt.setText(String.format(TIME_FORMAT, sHour, sMinute));
+                                ArtHour = sHour;
+                                ArtMin = sMinute;
+
+                            }
+                        }, hour, minutes, true);
+                picker.show();
+            }
+        });
+        CBMusic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!CBMusic.isChecked()) {
+                    eMusic.setText("");
+                    return;
+                }
+                final Calendar cal = Calendar.getInstance();
+                int hour = cal.get(Calendar.HOUR_OF_DAY);
+                int minutes = cal.get(Calendar.MINUTE);
+
+                picker = new TimePickerDialog(InHomeActivity.this,
+                        new TimePickerDialog.OnTimeSetListener() {
+                            @Override
+                            public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
+                                eMusic.setText(String.format(TIME_FORMAT, sHour, sMinute));
+                                MusicHour = sHour;
+                                MusicMin = sMinute;
+
+                            }
+                        }, hour, minutes, true);
+                picker.show();
+            }
+        });
 
         btnSubmit = findViewById(R.id.btn_inHomeSubmit);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
@@ -339,5 +395,11 @@ public class InHomeActivity extends BaseActivity {
         if (CBSpiritual.isChecked()) {
             inHomeForm.addInHomeType(InHomeForm.InHomeType.SPIRITUAL, eSpiritual.getText().toString());
         }
+//        if (CBArt.isChecked()) {
+//            inHomeForm.addInHomeType(InHomeForm.InHomeType.ART, eArt.getText().toString());
+//        }
+//        if (CBMusic.isChecked()) {
+//            inHomeForm.addInHomeType(InHomeForm.InHomeType.MUSIC, eMusic.getText().toString());
+//        }
     }
 }
