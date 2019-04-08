@@ -57,7 +57,7 @@ public class DirectServiceForm extends BaseForm {
      * Construct an instance of a {@link DirectServiceForm}.
      */
     public DirectServiceForm() {
-        setFormType(FormType.DIRECT);
+        this.formType = FormType.DIRECT;
     }
 
     @Override
@@ -70,11 +70,11 @@ public class DirectServiceForm extends BaseForm {
         return super.getDataRow() + COMMA + getDirectServiceType().getName();
     }
     
-    public DirectServiceType getDirectServiceType() {
+    protected DirectServiceType getDirectServiceType() {
         return directServiceType;
     }
 
-    public void setDirectServiceType(DirectServiceType directServiceType) {
+    protected void setDirectServiceType(DirectServiceType directServiceType) {
         this.directServiceType = directServiceType;
     }
 }

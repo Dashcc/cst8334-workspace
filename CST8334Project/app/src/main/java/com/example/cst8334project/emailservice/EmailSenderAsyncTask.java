@@ -1,12 +1,14 @@
 package com.example.cst8334project.emailservice;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.app.Activity;
-import android.view.Gravity;
 import android.widget.Toast;
 
+import com.example.cst8334project.MainMenu;
 import com.example.cst8334project.domain.Email;
 import com.example.cst8334project.util.ConnectionUtils;
 
@@ -41,6 +43,14 @@ public class EmailSenderAsyncTask extends AsyncTask<Email, Void, Boolean> {
     private final WeakReference<Context> context;
 
     /**
+     * A flag that indicates whether this AsyncTask was called from an activity. This is useful
+     * for determining whether to display indicators pertaining to progress status to the user or not.
+     */
+    private final boolean isCalledFromActivity;
+
+    private ProgressDialog progressDialog;
+
+    /**
      * Construct a new {@link EmailSenderAsyncTask} with the given {@link Context}.
      *
      * @param context the {@link Context} of the activity that instantiates this {@link AsyncTask};
@@ -50,6 +60,22 @@ public class EmailSenderAsyncTask extends AsyncTask<Email, Void, Boolean> {
     public EmailSenderAsyncTask(Context context) {
         this.context = new WeakReference<>(context);
         this.emailService = EmailServiceImpl.INSTANCE;
+        this.isCalledFromActivity = this.context.get() instanceof Activity;
+    }
+
+    /**
+     * If this AsyncTask was called from an activity, configure the progress dialog
+     * before sending the email.
+     */
+    @Override
+    protected void onPreExecute() {
+        if (isCalledFromActivity) {
+            progressDialog = new ProgressDialog(context.get());
+            progressDialog.setTitle("Please wait...");
+            progressDialog.setMessage("Sending to Heart House Hospice...");
+            progressDialog.setIndeterminate(true);
+            progressDialog.show();
+        }
     }
 
     /**
@@ -121,11 +147,12 @@ public class EmailSenderAsyncTask extends AsyncTask<Email, Void, Boolean> {
     @Override
     protected void onPostExecute(Boolean emailsSent) {
         // Show a toast message if this AsyncTask was called from an activity
-        if (emailsSent && context.get() instanceof Activity) {
+        if (isCalledFromActivity) {
+            progressDialog.dismiss();
+            String toastText = emailsSent ? "Email sent." : "Could not send email.";
             Activity activity = (Activity) context.get();
-            Toast toast = Toast.makeText(activity, "Email sent.", Toast.LENGTH_LONG);
-            toast.setGravity(Gravity.CENTER, 0, 0);
-            toast.show();
+            activity.startActivity(new Intent(activity, MainMenu.class));
+            Toast.makeText(activity, toastText, Toast.LENGTH_LONG).show();
         }
     }
 

@@ -79,6 +79,16 @@ public final class FormUtils {
     }
 
     /**
+     * Replace all the commas in the given String with semi-colons.
+     *
+     * @param toReplace the String to manipulate
+     * @return the original String, with commas instead of semi-colons.
+     */
+    public static String replaceCommas(String toReplace) {
+        return toReplace.replace(COMMA.charAt(0), SEMI_COLON.charAt(0));
+    }
+    
+    /**
      * Prevent instantiation.
      */
     private FormUtils() {

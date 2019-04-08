@@ -64,7 +64,7 @@ public abstract class BaseForm implements Serializable {
     /**
      * The type of the Form (Direct or Indirect).
      */
-    private FormType formType;
+    protected FormType formType;
 
     /**
      * Get the String that represents the column header row of the CSV file. Subclasses should override
@@ -111,9 +111,5 @@ public abstract class BaseForm implements Serializable {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public void setFormType(FormType formType) {
-        this.formType = formType;
     }
 }

@@ -229,7 +229,7 @@ public class InHomeForm extends DirectServiceForm {
     public String getDataRow() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append(clientName).append(COMMA)
+        sb.append(replaceCommas(clientName)).append(COMMA)
                 .append(join(getEnumNames(clientTypes), SEMI_COLON))
                 .append(COMMA).append(numberOfPersonsSupported);
 
@@ -241,7 +241,7 @@ public class InHomeForm extends DirectServiceForm {
             sb.append(COMMA).append(join(inHomeTypeMap.values(), COMMA));
         }
 
-        sb.append(COMMA).append(note);
+        sb.append(COMMA).append(replaceCommas(note));
 
         return super.getDataRow() + COMMA + sb.toString();
     }

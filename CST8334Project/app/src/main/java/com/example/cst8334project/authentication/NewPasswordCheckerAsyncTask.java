@@ -2,7 +2,9 @@ package com.example.cst8334project.authentication;
 
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.cst8334project.config.HeartHouseHospiceApp;
 import com.example.cst8334project.util.ConnectionUtils;
 
 import org.apache.commons.lang3.ArrayUtils;
@@ -127,19 +129,19 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
                 } else {
                     // Flag any emails that are not from the client to be deleted
                     message.setFlag(Flags.Flag.DELETED, true);
-                    Log.i(CLASS_NAME, "Deleting email that is not from the client:\n");
 
                     MimeMessage mimeMessage = (MimeMessage) message;
                     String from = ((InternetAddress) mimeMessage.getFrom()[0]).getAddress();
                     String subject = mimeMessage.getSubject();
                     String date = mimeMessage.getReceivedDate().toString();
 
-                    Log.i(CLASS_NAME, String.format("FROM: %s %n" +
-                                                    "SUBJECT: %s %n" +
-                                                    "DATE: %s %n",
-                                                    from,
-                                                    subject,
-                                                    date));
+                    Log.i(CLASS_NAME, "Deleting email that is not from the client:\n"
+                                            + String.format("FROM: %s %n" +
+                                                            "SUBJECT: %s %n" +
+                                                            "DATE: %s %n",
+                                                            from,
+                                                            subject,
+                                                            date));
                 }
             }
 
@@ -168,6 +170,11 @@ public final class NewPasswordCheckerAsyncTask extends AsyncTask<Void, Void, Boo
         String password = AuthenticationManager.getPassword();
         Log.i(CLASS_NAME, "The password was" + (passwordChanged ? "" : " not")
                 + " changed. It is: " + password);
+
+        // Display a toast if the password was changed
+        if (passwordChanged) {
+            Toast.makeText(HeartHouseHospiceApp.getAppContext(), "Password was changed.", Toast.LENGTH_LONG).show();
+        }
     }
 
     /**
