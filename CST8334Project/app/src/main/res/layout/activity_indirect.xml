@@ -14,22 +14,14 @@
 
         <include layout="@layout/toolbar" />
 
+        <include layout="@layout/nav_header_main" />
+
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             tools:context=".IndirectActivity">
-
-
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="match_parent"
-                android:layout_height="93dp"
-                android:src="@drawable/letterhead"
-                app:srcCompat="@drawable/letterhead"
-                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/form2"
