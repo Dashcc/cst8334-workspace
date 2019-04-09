@@ -15,7 +15,7 @@ public abstract class BaseForm implements Serializable {
     /**
      * The headers that will be included in all forms.
      */
-    private static final String[] BASE_HEADERS = new String[]{"Name", "Date", "Visit Type"};
+    private static final String[] BASE_HEADERS = new String[]{"Name", "Date", "Visit Type", "Student Placement?"};
 
     /**
      * An enum that represents the type of the volunteer visit.
@@ -62,6 +62,11 @@ public abstract class BaseForm implements Serializable {
     private String date;
 
     /**
+     * A boolean flag that indicates whether this visit is a student placement.
+     */
+    private boolean isStudentPlacement;
+
+    /**
      * The type of the Form (Direct or Indirect).
      */
     protected FormType formType;
@@ -83,7 +88,7 @@ public abstract class BaseForm implements Serializable {
      * @return the String that represents the data row of the CSV file
      */
     protected String getDataRow() {
-        return joinWith(COMMA, name, date, formType.getName());
+        return joinWith(COMMA, name, date, formType.getName(), replaceBooleanWithYesNo(isStudentPlacement));
     }
 
     /**
@@ -111,5 +116,9 @@ public abstract class BaseForm implements Serializable {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public void setStudentPlacement(boolean studentPlacement) {
+        isStudentPlacement = studentPlacement;
     }
 }

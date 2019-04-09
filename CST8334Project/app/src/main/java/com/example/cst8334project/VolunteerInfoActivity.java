@@ -94,6 +94,7 @@ public class VolunteerInfoActivity extends BaseActivity {
                 BaseForm form = new DirectServiceForm();
                 form.setName(name);
                 form.setDate(date);
+                form.setStudentPlacement(CBStudent.isChecked());
 
                 // Add the DirectServiceForm object to the intent
                 intent.putExtra(FormUtils.FORM_INTENT_OBJECT_NAME, form);
@@ -120,6 +121,7 @@ public class VolunteerInfoActivity extends BaseActivity {
                 BaseForm form = new IndirectServiceForm();
                 form.setName(name);
                 form.setDate(date);
+                form.setStudentPlacement(CBStudent.isChecked());
 
                 // Add the IndirectServiceForm object to the intent and start the activity
                 intent.putExtra(FormUtils.FORM_INTENT_OBJECT_NAME, form);
@@ -127,16 +129,6 @@ public class VolunteerInfoActivity extends BaseActivity {
             }
         });
     }
-/*
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                drawerLayout.openDrawer(Gravity.START);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }*/
 }
 
 
