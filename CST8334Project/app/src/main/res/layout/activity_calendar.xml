@@ -6,169 +6,177 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/test3"
-        android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/test3">
 
-        <include layout="@layout/toolbar" />
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="match_parent"
-            android:layout_height="93dp"
-            android:src="@drawable/letterhead"
-            app:srcCompat="@drawable/letterhead"
-            tools:ignore="ContentDescription" />
-
-        <TextView
-            android:id="@+id/form"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="11dp"
-            android:fontFamily="@font/calibri"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:text="@string/add_appointment"
-            android:textColor="@color/Color_Panto"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-        <LinearLayout
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/apt_type"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="50dp"
-                android:layout_weight="0.35"
-                android:background="@drawable/border"
-                android:ems="10"
-                android:fontFamily="@font/calibri"
-                android:gravity="center"
-                android:hint="@string/appointmentType"
-                android:inputType="textPersonName"
-                android:labelFor="@id/edit_name"
-                android:textColor="@color/Color_Panto"
-                android:textSize="20sp"
-                tools:ignore="Autofill" />
+            <include layout="@layout/toolbar" />
 
-            <EditText
-                android:id="@+id/cal_date"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="50dp"
-                android:layout_weight="0.35"
-                android:background="@drawable/border"
-                android:focusableInTouchMode="false"
-                android:ems="10"
-                android:fontFamily="@font/calibri"
-                android:gravity="center"
-                android:hint="@string/date"
-                android:inputType="none"
-                android:editable="false"
-                android:labelFor="@id/edit_name"
-                android:textColor="@color/Color_Panto"
-                android:textSize="20sp"
-                tools:ignore="Autofill" />
+            <include layout="@layout/nav_header_main" />
 
-            <EditText
-                android:id="@+id/cal_time"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="50dp"
-                android:layout_weight="0.35"
-                android:background="@drawable/border"
-                android:focusableInTouchMode="false"
-                android:ems="10"
+            <TextView
+                android:id="@+id/form"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="11dp"
                 android:fontFamily="@font/calibri"
-                android:gravity="center"
-                android:editable="false"
-                android:hint="@string/start_time"
-                android:inputType="none"
-                android:labelFor="@id/edit_name"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/add_appointment"
                 android:textColor="@color/Color_Panto"
-                android:textSize="20sp"
-                tools:ignore="Autofill" />
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/cal_duration"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="50dp"
-                android:layout_weight="0.35"
-                android:background="@drawable/border"
-                android:ems="10"
-                android:fontFamily="@font/calibri"
-                android:gravity="center"
-                android:hint="@string/duration"
-                android:inputType="number"
-                android:labelFor="@id/edit_name"
-                android:textColor="@color/Color_Panto"
-                android:textSize="20sp"
-                tools:ignore="Autofill" />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/cal_location"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="50dp"
-                android:background="@drawable/border"
-                android:fontFamily="@font/calibri"
-                android:gravity="center"
-                android:hint="@string/enter_location"
-                android:inputType="textPersonName"
-                android:textColor="@color/Color_Panto"
-                android:textSize="20sp"
-                tools:ignore="Autofill" />
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="50dp"
+                    android:textColorHint="@color/Color_Panto"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
 
-            <EditText
-                android:id="@+id/cal_desc"
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="50dp"
-                android:background="@drawable/border"
+                    <EditText
+                        android:id="@+id/apt_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/Color_Panto"
+                        android:fontFamily="@font/calibri"
+                        android:hint="@string/appointmentType"
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:textColor="@color/Color_Panto" />
+
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="50dp"
+                    android:textColorHint="@color/Color_Panto"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
+
+                    <EditText
+                        android:id="@+id/cal_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/Color_Panto"
+                        android:focusable="false"
+                        android:fontFamily="@font/calibri"
+                        android:hint="@string/date"
+                        android:textColor="@color/Color_Panto" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="50dp"
+                    android:textColorHint="@color/Color_Panto"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
+
+                    <EditText
+                        android:id="@+id/cal_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/Color_Panto"
+                        android:focusable="false"
+                        android:fontFamily="@font/calibri"
+                        android:hint="@string/start_time"
+                        android:textColor="@color/Color_Panto" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="50dp"
+                    android:textColorHint="@color/Color_Panto"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
+
+                    <EditText
+                        android:id="@+id/cal_duration"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/Color_Panto"
+                        android:fontFamily="@font/calibri"
+                        android:hint="@string/duration"
+                        android:inputType="number"
+                        android:textColor="@color/Color_Panto" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="50dp"
+                    android:textColorHint="@color/Color_Panto"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
+
+                    <EditText
+                        android:id="@+id/cal_location"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/Color_Panto"
+                        android:fontFamily="@font/calibri"
+                        android:hint="@string/enter_location"
+                        android:inputType="text"
+                        android:textColor="@color/Color_Panto" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="50dp"
+                    android:textColorHint="@color/Color_Panto"
+                    app:hintTextAppearance="@style/TextAppearance.App.TextInputLayout">
+
+                    <EditText
+                        android:id="@+id/cal_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/Color_Panto"
+                        android:fontFamily="@font/calibri"
+                        android:hint="@string/appointmentDescription"
+                        android:inputType="text"
+                        android:maxLines="3"
+                        android:textColor="@color/Color_Panto" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_create_event"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/calibri"
-                android:gravity="center"
-                android:hint="@string/appointmentDescription"
-                android:inputType="textPersonName|textMultiLine"
-                android:scrollHorizontally="false"
+                android:text="@string/create_event"
+                android:textAllCaps="false"
                 android:textColor="@color/Color_Panto"
-                android:textSize="20sp"
-                tools:ignore="Autofill" />
+                android:textSize="20dp"
+                android:textStyle="bold" />
         </LinearLayout>
-
-        <Button
-            android:id="@+id/btn_create_event"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/calibri"
-            android:text="@string/create_event"
-            android:textAllCaps="false"
-            android:textColor="@color/Color_Panto"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-    </LinearLayout>
+    </ScrollView>
 
     <include layout="@layout/drawer" />
 </android.support.v4.widget.DrawerLayout>

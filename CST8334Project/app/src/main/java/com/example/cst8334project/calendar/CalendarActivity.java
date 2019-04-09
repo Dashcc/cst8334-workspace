@@ -6,7 +6,6 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.CalendarContract;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +17,6 @@ import android.widget.TimePicker;
 import com.example.cst8334project.BaseActivity;
 import com.example.cst8334project.MainMenu;
 import com.example.cst8334project.R;
-import com.example.cst8334project.VolunteerInfoActivity;
 
 import java.sql.Time;
 import java.text.Format;
@@ -26,7 +24,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Formatter;
 import java.util.Locale;
 
 import static com.example.cst8334project.forms.util.FormUtils.TIME_FORMAT;
