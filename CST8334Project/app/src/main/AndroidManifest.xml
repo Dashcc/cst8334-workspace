@@ -15,9 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity
-            android:name=".MainMenu"
-            android:label="@string/title_activity_main_menu" />
         <activity android:name=".InOfficeActivity" />
         <activity android:name=".InHomeActivity" />
         <activity android:name=".IndirectActivity" />
@@ -26,6 +23,7 @@
         <activity android:name=".VolunteerInfoActivity" />
         <activity android:name=".calendar.CalendarActivity" />
         <activity android:name=".UserHistoryActivity" />
+        <activity android:name=".MainMenu" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
