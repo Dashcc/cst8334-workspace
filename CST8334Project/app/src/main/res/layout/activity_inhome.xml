@@ -15,13 +15,7 @@
 
         <include layout="@layout/toolbar" />
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="match_parent"
-            android:layout_height="93dp"
-            android:src="@drawable/letterhead"
-            app:srcCompat="@drawable/letterhead"
-            tools:ignore="ContentDescription" />
+        <include layout="@layout/nav_header_main" />
 
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -35,8 +29,8 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/test3">
+                android:background="@drawable/test3"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/form"
@@ -427,5 +421,6 @@
             </RelativeLayout>
         </ScrollView>
     </LinearLayout>
+
     <include layout="@layout/drawer" />
 </android.support.v4.widget.DrawerLayout>
