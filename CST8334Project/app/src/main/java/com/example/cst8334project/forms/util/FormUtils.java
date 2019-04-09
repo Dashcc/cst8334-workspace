@@ -1,6 +1,5 @@
 package com.example.cst8334project.forms.util;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,7 +19,7 @@ public final class FormUtils {
     /**
      * The {@link SimpleDateFormat} used to format the dates for the email attachments.
      */
-    private static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    private static final SimpleDateFormat ATTACHMENT_DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
     /**
      * The String used to format the hours and minutes displayed for volunteer activity durations.
@@ -75,19 +74,30 @@ public final class FormUtils {
      * @return a String that represents the CSV file name with the timestamp included
      */
     public static String getCSVFileName(String visitType) {
-        return "HHH - " + SIMPLE_DATE_FORMAT.format(new Date()) + COLON + visitType;
+        return "HHH - " + ATTACHMENT_DATE_FORMAT.format(new Date()) + COLON + visitType;
     }
 
     /**
      * Replace all the commas in the given String with semi-colons.
      *
      * @param toReplace the String to manipulate
-     * @return the original String, with commas instead of semi-colons.
+     * @return the original String, with semi-colons instead of commas.
      */
     public static String replaceCommas(String toReplace) {
         return toReplace.replace(COMMA.charAt(0), SEMI_COLON.charAt(0));
     }
-    
+
+    /**
+     * Returns a user-friendly string representation of the given boolean - {@code true} returns "Yes",
+     * while {@code false} returns "No".
+     *
+     * @param bool the boolean value
+     * @return a user-friendly string representation of the given boolean
+     */
+    public static String replaceBooleanWithYesNo(boolean bool) {
+        return bool ? "Yes" : "No";
+    }
+
     /**
      * Prevent instantiation.
      */
