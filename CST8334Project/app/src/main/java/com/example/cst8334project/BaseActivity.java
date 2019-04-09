@@ -45,6 +45,9 @@ public abstract class BaseActivity extends AppCompatActivity {
                 drawerLayout.closeDrawers();
 
                 switch (item.getItemId()) {
+                    case R.id.mainMenu:
+                        startActivity((new Intent(BaseActivity.this, MainMenu.class)));
+                        break;
                     case R.id.timeSheet:
                         startActivity((new Intent(BaseActivity.this, VolunteerInfoActivity.class)));
                         break;
