@@ -15,6 +15,11 @@ import java.util.Map;
 public class InOfficeForm extends DirectServiceForm {
 
     /**
+     * The column header that represents the number of persons supported in this In Office visit.
+     */
+    private static final String NUM_OF_PERSONS_HEADER = "Number of Persons Supported";
+
+    /**
      * An enum that represents the type of the In Office visit.
      */
     public enum InOfficeType implements FormEnum {
@@ -41,7 +46,17 @@ public class InOfficeForm extends DirectServiceForm {
         /**
          * An Outreach in-office visit.
          */
-        OUTREACH("Outreach");
+        OUTREACH("Outreach"),
+
+        /**
+         * An Art therapy in-office visit.
+         */
+        ART_THERAPY("Art Therapy"),
+
+        /**
+         * A Music therapy in-office visit.
+         */
+        MUSIC_THERAPY("Music Therapy");
 
         /**
          * The name, as it is rendered on the CSV file, of this {@link InOfficeType}
@@ -70,6 +85,11 @@ public class InOfficeForm extends DirectServiceForm {
     private final Map<InOfficeType, String> inOfficeTypeMap;
 
     /**
+     * The number of persons supported in this In Office visit.
+     */
+    private String numberOfPersonsSupported;
+
+    /**
      * Construct an instance of a {@link InOfficeForm} for the given {@link DirectServiceForm}.
      *
      * @param directServiceForm the {@link DirectServiceForm}
@@ -90,21 +110,25 @@ public class InOfficeForm extends DirectServiceForm {
      * to the map.
      *
      * @param inOfficeType the type of the In Office service
-     * @param time the time spent at the In Office service
+     * @param time         the time spent at the In Office service
      */
     public void addInOfficeType(InOfficeType inOfficeType, String time) {
         inOfficeTypeMap.put(inOfficeType, time);
     }
 
+    public void setNumberOfPersonsSupported(String numberOfPersonsSupported) {
+        this.numberOfPersonsSupported = numberOfPersonsSupported;
+    }
+
     @Override
     public String getDataRow() {
-        String dataString = join(inOfficeTypeMap.values(), COMMA);
+        String dataString = join(inOfficeTypeMap.values(), COMMA) + COMMA + numberOfPersonsSupported;
         return super.getDataRow() + COMMA + dataString;
     }
 
     @Override
     public String getHeaderRow() {
-        String headerString = join(getEnumNames(inOfficeTypeMap.keySet()), COMMA);
+        String headerString = join(getEnumNames(inOfficeTypeMap.keySet()), COMMA) + COMMA + NUM_OF_PERSONS_HEADER;
         return super.getHeaderRow() + COMMA + headerString;
     }
 }

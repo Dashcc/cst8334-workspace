@@ -43,8 +43,10 @@ public class InOfficeActivity extends BaseActivity {
 
         setupDrawer();
 
-        int[] checkBoxesIds = new int[]{R.id.CB1, R.id.CB2, R.id.CB3, R.id.CB4, R.id.CB5,R.id.CB6, R.id.CB7};
-        int[] editTextIds = new int[]{R.id.editText1, R.id.editText2, R.id.editText3, R.id.editText4, R.id.editText5, R.id.editText6, R.id.editText7, R.id.editTextNumPerson2};
+        int[] checkBoxesIds = new int[]{R.id.CB1, R.id.CB2, R.id.CB3, R.id.CB4, R.id.CB5, R.id.CB6, R.id.CB7};
+        int[] editTextIds = new int[]{R.id.editText1, R.id.editText2, R.id.editText3, R.id.editText4, R.id.editText5, R.id.editText6, R.id.editText7};
+
+        editPerson = findViewById(R.id.editTextNumPerson2);
 
         for (int i = 0; i < checkBoxes.length; i++) {
             checkBoxes[i] = findViewById(checkBoxesIds[i]);
@@ -104,7 +106,7 @@ public class InOfficeActivity extends BaseActivity {
      * Create an {@link Email} and {@link Visit} object that corresponds to the In Office form and send the email.
      */
     public void onLoginSuccess() {
-
+        inOfficeForm.setNumberOfPersonsSupported(numberOfPerson2);
 
         Visit visit = new Visit();
         visit.setServiceType(BaseForm.FormType.DIRECT.getName() + COLON +
@@ -141,16 +143,14 @@ public class InOfficeActivity extends BaseActivity {
             }
         }
         if (numberOfPerson2.isEmpty()) {
-            editPerson.setError("Please enter  valid number of people during visit");
+            editPerson.setError("Please enter valid number of people during visit");
             valid = false;
 
         }
-//        return false;
         return valid;
     }
 
     private void initialize() {
-
         numberOfPerson2 = editPerson.getText().toString().trim();
 
         for (int i = 0; i < checkBoxes.length; i++) {
