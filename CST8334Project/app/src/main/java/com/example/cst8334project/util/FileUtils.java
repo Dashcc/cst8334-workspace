@@ -2,6 +2,7 @@ package com.example.cst8334project.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -186,6 +187,20 @@ public final class FileUtils {
         String result = sharedPreferences.getString(key, defaultValue);
         Log.i(CLASS_NAME, "Result from SharedPreferences for key: " + key + " is: " + result);
         return result;
+    }
+
+    /**
+     * Retrieve the String corresponding to the string resource with the given name.
+     *
+     * @param name the name of the string resource
+     * @return the String corresponding to the string resource with the given name if it exists, {@code null} otherwise
+     */
+    public static String getStringFromResources(String name) {
+        Context appContext = HeartHouseHospiceApp.getAppContext();
+        Resources resources = appContext.getResources();
+        String stringResource = resources.getString(resources.getIdentifier(name, "string", appContext.getPackageName()));
+        Log.i(CLASS_NAME, "String resource with name: " + name + " has value of: " + stringResource);
+        return stringResource;
     }
 
     /**
