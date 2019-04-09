@@ -6,79 +6,46 @@
     android:fitsSystemWindows="true">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/test3">
+        android:background="@drawable/test3"
+        android:orientation="vertical">
 
         <include layout="@layout/toolbar" />
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="fill_parent"
+        <include layout="@layout/nav_header_main" />
+
+        <TextView
+            android:id="@+id/form"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:context=".IndirectActivity">
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="11dp"
+            android:fontFamily="@font/calibri"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/direct_form"
+            android:textColor="@color/Color_Panto"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="match_parent"
-                android:layout_height="93dp"
-                android:src="@drawable/letterhead"
-                app:srcCompat="@drawable/letterhead"
-                tools:ignore="ContentDescription" />
+        <Button
+            android:id="@+id/inHome_btn"
+            android:layout_width="200sp"
+            android:layout_height="50sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="@string/inHome"
+            android:textColor="@color/Color_Panto" />
 
-            <TextView
-                android:id="@+id/form1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/logo"
-                android:layout_centerInParent="true"
-                android:layout_marginTop="11dp"
-                android:fontFamily="@font/calibri"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:text="@string/direct_form"
-                android:textColor="@color/Color_Panto"
-                android:textSize="25sp"
-                android:textStyle="bold" />
-
-
-            <Button
-                android:id="@+id/inHome_btn"
-                android:layout_width="158dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/form1"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="29dp"
-                android:layout_marginEnd="122dp"
-                android:layout_toEndOf="@id/editText2"
-                android:ems="10"
-                android:fontFamily="@font/calibri"
-                android:text="@string/inHome"
-                android:textColor="@color/Color_Panto"
-                android:textSize="15sp" />
-
-
-            <Button
-                android:id="@+id/inOffice_btn"
-                android:layout_width="153dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/inHome_btn"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="29dp"
-                android:layout_marginEnd="122dp"
-                android:layout_toEndOf="@id/editText2"
-                android:ems="10"
-                android:fontFamily="@font/calibri"
-                android:text="@string/inOffice"
-                android:textColor="@color/Color_Panto"
-                android:textSize="15sp" />
-        </RelativeLayout>
+        <Button
+            android:id="@+id/inOffice_btn"
+            android:layout_width="200sp"
+            android:layout_height="50sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="@string/inOffice"
+            android:textColor="@color/Color_Panto" />
     </LinearLayout>
 
     <include layout="@layout/drawer" />
