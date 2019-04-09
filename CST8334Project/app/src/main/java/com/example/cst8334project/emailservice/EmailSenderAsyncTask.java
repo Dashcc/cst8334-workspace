@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.widget.Toast;
 
 import com.example.cst8334project.MainMenu;
+import com.example.cst8334project.VolunteerInfoActivity;
 import com.example.cst8334project.domain.Email;
 import com.example.cst8334project.util.ConnectionUtils;
 
@@ -149,6 +150,7 @@ public class EmailSenderAsyncTask extends AsyncTask<Email, Void, Boolean> {
         // Show a toast message if this AsyncTask was called from an activity
         if (isCalledFromActivity) {
             progressDialog.dismiss();
+            //TODO - refactor this text into string resource
             String toastText = emailsSent ? "Email sent." : "Could not send email.";
             Activity activity = (Activity) context.get();
             activity.startActivity(new Intent(activity, MainMenu.class));

@@ -1,23 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    android:background="@drawable/test3">
+    android:fitsSystemWindows="true">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/navigationView"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:menu="@menu/navigation_menu" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/test3">
 
+        <include layout="@layout/toolbar" />
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="93dp"
+            android:src="@drawable/letterhead"
+            app:srcCompat="@drawable/letterhead"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/form"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="11dp"
+            android:fontFamily="@font/calibri"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="@string/main_menu"
+            android:textColor="@color/Color_Panto"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/mainMenuTimesheet"
+            android:layout_width="200sp"
+            android:layout_height="50sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="@string/timeSheet"
+            android:textColor="@color/Color_Panto" />
+
+        <Button
+            android:id="@+id/mainMenuAppointment"
+            android:layout_width="200sp"
+            android:layout_height="50sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="@string/appointment"
+            android:textColor="@color/Color_Panto" />
+
+        <Button
+            android:id="@+id/mainMenuHistory"
+            android:layout_width="200sp"
+            android:layout_height="50sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:text="@string/clientHistory"
+            android:textColor="@color/Color_Panto" />
+    </LinearLayout>
+
+    <include layout="@layout/drawer" />
 </android.support.v4.widget.DrawerLayout>
