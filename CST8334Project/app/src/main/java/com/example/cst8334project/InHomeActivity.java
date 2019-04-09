@@ -33,8 +33,7 @@ public class InHomeActivity extends BaseActivity {
     String client_name, numberOfPerson, note;
 
     EditText editName, editPerson, editNote;
-    EditText eReiki, eTT, eAroma, eCompanioning, eRespite, eSpiritual,eArt, eMusic;
-
+    EditText eReiki, eTT, eAroma, eCompanioning, eRespite, eSpiritual, eArt, eMusic;
 
     CheckBox CBPalliative, CBCaregiver, CBBereaved, CBReiki, CBTT, CBAroma, CBCompanioning, CBRespite, CBSpiritual, CBArt, CBMusic;
 
@@ -322,7 +321,7 @@ public class InHomeActivity extends BaseActivity {
 
         Email email = new Email();
         email.setSubject(getCSVFileName(DirectServiceForm.DirectServiceType.IN_HOME.getName()));
-        email.setBody("Please find attached an In Home Form data");
+        email.setBody("Please find attached an In Home Form data form.");
         email.setCsvAttachmentFileName(email.getSubject() + CSV_EXTENSION);
         email.setAttachmentText(inHomeForm.getAttachmentText());
 
@@ -395,11 +394,12 @@ public class InHomeActivity extends BaseActivity {
         if (CBSpiritual.isChecked()) {
             inHomeForm.addInHomeType(InHomeForm.InHomeType.SPIRITUAL, eSpiritual.getText().toString());
         }
-//        if (CBArt.isChecked()) {
-//            inHomeForm.addInHomeType(InHomeForm.InHomeType.ART, eArt.getText().toString());
-//        }
-//        if (CBMusic.isChecked()) {
-//            inHomeForm.addInHomeType(InHomeForm.InHomeType.MUSIC, eMusic.getText().toString());
-//        }
+
+        if (CBArt.isChecked()) {
+            inHomeForm.addInHomeType(InHomeForm.InHomeType.ART_THERAPY, eArt.getText().toString());
+        }
+        if (CBMusic.isChecked()) {
+            inHomeForm.addInHomeType(InHomeForm.InHomeType.MUSIC_THERAPY, eMusic.getText().toString());
+        }
     }
 }
