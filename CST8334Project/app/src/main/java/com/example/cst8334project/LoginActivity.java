@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void authenticate(String username, String password) {
         if (AuthenticationManager.authenticate(username, password)) {
-            Intent intent = new Intent(LoginActivity.this, VolunteerInfoActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MainMenu.class);
             startActivity(intent);
         } else {
             Toast.makeText(this, "The username or password you entered was incorrect", Toast.LENGTH_SHORT).show();

@@ -1,6 +1,8 @@
 package com.example.cst8334project;
 
 import android.support.v7.widget.RecyclerView;
+import static com.example.cst8334project.util.FileUtils.*;
+import static com.example.cst8334project.forms.util.FormUtils.*;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,12 +10,18 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.example.cst8334project.domain.Visit;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class VisitAdapter extends RecyclerView.Adapter<VisitAdapter.ViewHolder>{
 
     private List<Visit> visitList;
     private int listItemLayout;
+
+    private static final DateFormat HISTORY_DATE_FORMAT = DateFormat.getDateInstance(DateFormat.LONG);
+
+    private static final String VISIT_DATE = getStringFromResources("date") + COLON;
 
     public VisitAdapter(int layoutId, List<Visit> visitList){
         listItemLayout = layoutId;
@@ -35,7 +43,7 @@ public class VisitAdapter extends RecyclerView.Adapter<VisitAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int listPosition) {
         TextView createDate = holder.createdDate;
-        createDate.setText("Created: " + visitList.get(listPosition).getCreatedDate().toString());
+        createDate.setText(VISIT_DATE + HISTORY_DATE_FORMAT.format(visitList.get(listPosition).getCreatedDate()));
         TextView visitTime = holder.serviceType;
         visitTime.setText("Service Type: " + visitList.get(listPosition).getServiceType());
         TextView note = holder.note;
