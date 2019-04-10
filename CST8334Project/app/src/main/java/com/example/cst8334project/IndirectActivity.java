@@ -89,7 +89,6 @@ public class IndirectActivity extends BaseActivity {
             });
         }
     }
-
     private void submitForm() {
         initialize();
         if (!validate()) {

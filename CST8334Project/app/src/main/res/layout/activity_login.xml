@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -12,44 +12,63 @@
 
         android:id="@+id/logo"
         android:layout_width="match_parent"
-        android:layout_height="249dp"
+        android:layout_height="184dp"
         android:src="@drawable/logo"
         app:srcCompat="@drawable/logo"
-        tools:ignore="ContentDescription"/>
+        tools:ignore="ContentDescription" />
 
     <EditText
 
         android:id="@+id/edit_username"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:layout_alignStart="@id/edit_username"
+        android:layout_alignLeft="@id/edit_username"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="149dp"
+        android:drawableLeft="@drawable/ic_action_name"
+        android:ems="10"
+        android:fontFamily="@font/calibri"
         android:hint="@string/username"
         android:inputType="textPersonName"
-        android:textColor="#fbf9f9"
-        android:fontFamily="@font/calibri"
-        tools:ignore="Autofill"/>
+        android:textColorHint="#ffffff"
+        tools:ignore="Autofill" />
 
     <EditText
 
         android:id="@+id/edit_pass"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="@string/password"
-        android:textColor="#fbf9f9"
+        android:layout_below="@id/edit_username"
+        android:layout_alignStart="@id/edit_pass"
+        android:layout_alignLeft="@id/edit_pass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="17dp"
+        android:drawableLeft="@drawable/ic_action_lock"
+        android:ems="10"
         android:fontFamily="@font/calibri"
-        tools:ignore="Autofill"
-        />
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:textColorHint="#ffffff"
+        tools:ignore="Autofill" />
 
     <Button
         android:id="@+id/button"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login"
-        android:textStyle="bold"
+        android:layout_below="@id/edit_pass"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/calibri"
-        />
+        android:layout_centerHorizontal="true"
+        android:text="@string/login"
+        android:textStyle="bold" />
 
 
 
 
-</LinearLayout>
+</RelativeLayout>

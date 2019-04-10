@@ -4,30 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@drawable/test"
     tools:context="com.example.cst8334project.MainActivity">
 
     <ImageView
 
         android:id="@+id/logo"
         android:layout_width="match_parent"
-        android:layout_height="636dp"
+        android:layout_height="626dp"
         android:src="@drawable/final_logo"
         app:srcCompat="@drawable/final_logo"
-        tools:ignore="ContentDescription"/>
+        tools:ignore="ContentDescription" />
 
     <Button
 
         android:id="@+id/button"
-        android:layout_width="match_parent"
+        android:layout_width="115dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="170dp"
         android:fontFamily="@font/calibri_normal"
         android:text="@string/ButtonText"
-        android:textStyle="bold"
         android:textColor="@color/Color_Panto"
+        android:textStyle="bold"
+        android:textSize="20sp"
         tools:ignore="MissingConstraints" />
 
 
