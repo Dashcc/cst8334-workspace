@@ -2,17 +2,12 @@ package com.example.cst8334project.forms;
 
 import com.example.cst8334project.forms.util.FormEnum;
 
-import static com.example.cst8334project.forms.util.FormUtils.*;
+import java.util.List;
 
 /**
  * This class represents a Direct Service form.
  */
 public class DirectServiceForm extends BaseForm {
-
-    /**
-     * The column header that specifies the type of the Direct Service.
-     */
-    private static final String DIRECT_SERVICE_HEADER = "Direct Service Type";
 
     /**
      * An enum that represents the type of the direct service visit.
@@ -21,12 +16,12 @@ public class DirectServiceForm extends BaseForm {
         /**
          * An in-home visit.
          */
-        IN_HOME("In Home"),
+        IN_HOME("InHome"),
 
         /**
          * An in-office visit.
          */
-        IN_OFFICE("In Office");
+        IN_OFFICE("InOffice");
 
         /**
          * The name, as it is rendered on the CSV file, of this {@link DirectServiceType}
@@ -61,17 +56,8 @@ public class DirectServiceForm extends BaseForm {
     }
 
     @Override
-    protected String getHeaderRow() {
-        return super.getHeaderRow() + COMMA + DIRECT_SERVICE_HEADER;
-    }
-
-    @Override
-    protected String getDataRow() {
-        return super.getDataRow() + COMMA + getDirectServiceType().getName();
-    }
-    
-    protected DirectServiceType getDirectServiceType() {
-        return directServiceType;
+    protected List<String> getActivitySpecificRows() {
+        return null;
     }
 
     protected void setDirectServiceType(DirectServiceType directServiceType) {

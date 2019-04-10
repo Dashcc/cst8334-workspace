@@ -1,8 +1,6 @@
 package com.example.cst8334project;
 
-import android.app.Activity;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -108,9 +106,7 @@ public class IndirectActivity extends BaseActivity {
         VisitServiceImpl.INSTANCE.addVisit(visit);
 
         Email email = new Email();
-        email.setSubject(getCSVFileName(BaseForm.FormType.INDIRECT.getName()));
-        email.setBody("Please find attached an InDirect Form data");
-        email.setCsvAttachmentFileName(email.getSubject() + CSV_EXTENSION);
+        setEmailProperties(email, BaseForm.FormType.INDIRECT.getName());
         email.setAttachmentText(indirectServiceForm.getAttachmentText());
 
         new EmailSenderAsyncTask(this).execute(email);
@@ -140,7 +136,7 @@ public class IndirectActivity extends BaseActivity {
         for (int i = 0; i < radioButtons.length; i++) {
             if (radioButtons[i].isChecked()) {
                 indirectServiceForm.setIndirectServiceTypePair(IndirectServiceForm.IndirectServiceType.values()[i],
-                        editTexts[i].getText().toString());
+                        convertTimeToString(editTexts[i].getText().toString()));
                 return;
             }
         }

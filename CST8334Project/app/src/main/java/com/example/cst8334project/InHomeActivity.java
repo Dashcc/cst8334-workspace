@@ -1,8 +1,6 @@
 package com.example.cst8334project;
 
-import android.app.Activity;
 import android.app.TimePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -320,9 +318,7 @@ public class InHomeActivity extends BaseActivity {
         VisitServiceImpl.INSTANCE.addVisit(visit);
 
         Email email = new Email();
-        email.setSubject(getCSVFileName(DirectServiceForm.DirectServiceType.IN_HOME.getName()));
-        email.setBody("Please find attached an In Home Form data form.");
-        email.setCsvAttachmentFileName(email.getSubject() + CSV_EXTENSION);
+        setEmailProperties(email, DirectServiceForm.DirectServiceType.IN_HOME.getName());
         email.setAttachmentText(inHomeForm.getAttachmentText());
 
         new EmailSenderAsyncTask(this).execute(email);
@@ -372,34 +368,34 @@ public class InHomeActivity extends BaseActivity {
         }
 
         if (CBReiki.isChecked()) {
-            inHomeForm.addCompTherapy(InHomeForm.CompTherapy.REIKI, eReiki.getText().toString());
+            inHomeForm.addCompTherapy(InHomeForm.CompTherapy.REIKI, convertTimeToString(eReiki.getText().toString()));
         }
 
         if (CBTT.isChecked()) {
-            inHomeForm.addCompTherapy(InHomeForm.CompTherapy.TT, eTT.getText().toString());
+            inHomeForm.addCompTherapy(InHomeForm.CompTherapy.TT, convertTimeToString(eTT.getText().toString()));
         }
 
         if (CBAroma.isChecked()) {
-            inHomeForm.addCompTherapy(InHomeForm.CompTherapy.AROMA, eAroma.getText().toString());
+            inHomeForm.addCompTherapy(InHomeForm.CompTherapy.AROMA, convertTimeToString(eAroma.getText().toString()));
         }
 
         if (CBCompanioning.isChecked()) {
-            inHomeForm.addInHomeType(InHomeForm.InHomeType.COMPANIONING, eCompanioning.getText().toString());
+            inHomeForm.addInHomeType(InHomeForm.InHomeType.COMPANIONING, convertTimeToString(eCompanioning.getText().toString()));
         }
 
         if (CBRespite.isChecked()) {
-            inHomeForm.addInHomeType(InHomeForm.InHomeType.RESPITE, eRespite.getText().toString());
+            inHomeForm.addInHomeType(InHomeForm.InHomeType.RESPITE, convertTimeToString(eRespite.getText().toString()));
         }
 
         if (CBSpiritual.isChecked()) {
-            inHomeForm.addInHomeType(InHomeForm.InHomeType.SPIRITUAL, eSpiritual.getText().toString());
+            inHomeForm.addInHomeType(InHomeForm.InHomeType.SPIRITUAL, convertTimeToString(eSpiritual.getText().toString()));
         }
 
         if (CBArt.isChecked()) {
-            inHomeForm.addInHomeType(InHomeForm.InHomeType.ART_THERAPY, eArt.getText().toString());
+            inHomeForm.addInHomeType(InHomeForm.InHomeType.ART_THERAPY, convertTimeToString(eArt.getText().toString()));
         }
         if (CBMusic.isChecked()) {
-            inHomeForm.addInHomeType(InHomeForm.InHomeType.MUSIC_THERAPY, eMusic.getText().toString());
+            inHomeForm.addInHomeType(InHomeForm.InHomeType.MUSIC_THERAPY, convertTimeToString(eMusic.getText().toString()));
         }
     }
 }

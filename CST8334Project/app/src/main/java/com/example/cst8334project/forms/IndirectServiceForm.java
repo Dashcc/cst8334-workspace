@@ -4,6 +4,9 @@ import com.example.cst8334project.forms.util.FormEnum;
 
 import org.apache.commons.lang3.tuple.Pair;
 
+import java.util.Collections;
+import java.util.List;
+
 import static com.example.cst8334project.forms.util.FormUtils.COMMA;
 
 /**
@@ -84,13 +87,9 @@ public class IndirectServiceForm extends BaseForm {
     }
 
     @Override
-    protected String getDataRow() {
-        return super.getDataRow() + COMMA + indirectServiceTypePair.getValue();
-    }
-
-    @Override
-    protected String getHeaderRow() {
-        return super.getHeaderRow() + COMMA + getServiceType();
+    protected List<String> getActivitySpecificRows() {
+        String data = indirectServiceTypePair.getLeft().getName() + COMMA + indirectServiceTypePair.getValue();
+        return Collections.singletonList(data);
     }
 
     public String getServiceType() {

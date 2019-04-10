@@ -20,7 +20,7 @@ import java.util.Calendar;
 public class VolunteerInfoActivity extends BaseActivity {
 
     protected static final String ACTIVITY_NAME = "VolunteerInfoActivity";
-    private static final String DATE_FORMAT = "%d/%02d/%02d";
+    private static final String DATE_FORMAT = "%02d/%02d/%d";
     private static final String VOLUN_NAME_KEY = "volunteer_name";
 
     String name;
@@ -59,7 +59,7 @@ public class VolunteerInfoActivity extends BaseActivity {
         final int year = calendar.get(Calendar.YEAR);
 
         // By default, the date edit text shows the current date
-        String today = String.format(DATE_FORMAT, year, month + 1, day);
+        String today = String.format(DATE_FORMAT, month + 1, day, year);
         editDate.setText(today);
 
         // Show a DatePickerDialog to let the user select a date
@@ -69,7 +69,7 @@ public class VolunteerInfoActivity extends BaseActivity {
                 datePickerDialog = new DatePickerDialog(VolunteerInfoActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int mYear, int mMonth, int mDayOfMonth) {
-                        date = String.format("%d/%02d/%02d", mYear, mMonth + 1, mDayOfMonth);
+                        date = String.format(DATE_FORMAT, mMonth + 1, mDayOfMonth, mYear);
                         editDate.setText(date);
                     }
                 }, year, month, day);

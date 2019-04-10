@@ -236,42 +236,6 @@ public class InHomeForm extends DirectServiceForm {
         inHomeTypeMap.put(inHomeType, time);
     }
 
-    @Override
-    public String getDataRow() {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(replaceCommas(clientName)).append(COMMA)
-                .append(join(getEnumNames(clientTypes), SEMI_COLON))
-                .append(COMMA).append(numberOfPersonsSupported);
-
-        if (!compTherapiesMap.isEmpty()) {
-            sb.append(COMMA).append(join(getCompTherapiesData(), SEMI_COLON));
-        }
-
-        if (!inHomeTypeMap.isEmpty()) {
-            sb.append(COMMA).append(join(inHomeTypeMap.values(), COMMA));
-        }
-
-        sb.append(COMMA).append(replaceCommas(note));
-
-        return super.getDataRow() + COMMA + sb.toString();
-    }
-
-    @Override
-    public String getHeaderRow() {
-        StringBuilder sb = new StringBuilder();
-
-        sb.append(join(IN_HOME_HEADERS, COMMA));
-
-        if (!inHomeTypeMap.isEmpty()) {
-            sb.append(COMMA).append(join(getEnumNames(inHomeTypeMap.keySet()), COMMA));
-        }
-
-        sb.append(COMMA).append(NOTES_HEADER);
-
-        return super.getHeaderRow() + COMMA + sb.toString();
-    }
-
     /**
      * Construct a {@code List<String>} that represents the {@link CompTherapy} data for this In
      * Home visit.
@@ -304,5 +268,28 @@ public class InHomeForm extends DirectServiceForm {
 
     public String getServiceTypes() {
         return join(getEnumNames(inHomeTypeMap.keySet()), COMMA);
+    }
+
+    @Override
+    protected List<String> getActivitySpecificRows() {
+        List<String> dataRows = new ArrayList<>();
+
+        // Comp therapies
+        for (Map.Entry<CompTherapy, String> compTherapyEntry : compTherapiesMap.entrySet()) {
+            String compTherapyType = compTherapyEntry.getKey().getName();
+            String compTherapyTime = compTherapyEntry.getValue();
+
+            dataRows.add(compTherapyType + COMMA + compTherapyTime);
+        }
+
+        // Other activities
+        for (Map.Entry<InHomeType, String> inHomeTypeStringEntry : inHomeTypeMap.entrySet()) {
+            String activityType = inHomeTypeStringEntry.getKey().getName();
+            String activityTime = inHomeTypeStringEntry.getValue();
+
+            dataRows.add(activityType + COMMA + activityTime);
+        }
+
+        return dataRows;
     }
 }

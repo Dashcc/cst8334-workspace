@@ -3,9 +3,9 @@ package com.example.cst8334project.forms;
 import com.example.cst8334project.forms.util.FormEnum;
 
 import java.io.Serializable;
+import java.util.List;
 
 import static com.example.cst8334project.forms.util.FormUtils.*;
-import static org.apache.commons.lang3.StringUtils.joinWith;
 
 /**
  * This class represents a base, abstract form.
@@ -72,26 +72,6 @@ public abstract class BaseForm implements Serializable {
     protected FormType formType;
 
     /**
-     * Get the String that represents the column header row of the CSV file. Subclasses should override
-     * this method to add headers that are specific to them.
-     *
-     * @return the String that represents the column headers of the CSV file
-     */
-    protected String getHeaderRow() {
-        return joinWith(COMMA, (Object[]) BASE_HEADERS);
-    }
-
-    /**
-     * Get the String that represents the data row of the CSV file. Subclasses should override
-     * this method to add data that are specific to them.
-     *
-     * @return the String that represents the data row of the CSV file
-     */
-    protected String getDataRow() {
-        return joinWith(COMMA, name, date, formType.getName(), replaceBooleanWithYesNo(isStudentPlacement));
-    }
-
-    /**
      * Get the String that represents the complete attachment text that is to be written to the CSV
      * file. Note that the method is final, thus it cannot be overridden.
      *
@@ -99,8 +79,34 @@ public abstract class BaseForm implements Serializable {
      * file
      */
     public final String getAttachmentText() {
-        return getHeaderRow() + NEW_LINE + getDataRow();
+        int numOfRows = getActivitySpecificRows().size();
+
+        StringBuilder csvText = new StringBuilder();
+
+        for (int i = 0; i < numOfRows; i++) {
+            String dataLine = getActivitySpecificRows().get(i);
+
+            csvText.append(name)
+                    .append(COMMA)
+                    .append(date)
+                    .append(COMMA)
+                    .append(dataLine);
+
+            // Append a new line character if this is not the last line
+            if (i < numOfRows - 1) {
+                csvText.append(NEW_LINE);
+            }
+        }
+
+        return csvText.toString();
     }
+
+    /**
+     * Get the list of Strings that represents the activity specific rows for the various forms.
+     *
+     * @return a {@code List<String>} that represents the activity specific rows for the various forms
+     */
+    protected abstract List<String> getActivitySpecificRows();
 
     public String getName() {
         return name;

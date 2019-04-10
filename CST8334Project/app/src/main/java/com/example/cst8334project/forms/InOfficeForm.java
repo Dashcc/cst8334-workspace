@@ -6,7 +6,9 @@ import static com.example.cst8334project.forms.util.FormUtils.*;
 
 import static org.apache.commons.lang3.StringUtils.*;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -121,14 +123,16 @@ public class InOfficeForm extends DirectServiceForm {
     }
 
     @Override
-    public String getDataRow() {
-        String dataString = join(inOfficeTypeMap.values(), COMMA) + COMMA + numberOfPersonsSupported;
-        return super.getDataRow() + COMMA + dataString;
-    }
+    protected List<String> getActivitySpecificRows() {
+        List<String> dataRows = new ArrayList<>();
 
-    @Override
-    public String getHeaderRow() {
-        String headerString = join(getEnumNames(inOfficeTypeMap.keySet()), COMMA) + COMMA + NUM_OF_PERSONS_HEADER;
-        return super.getHeaderRow() + COMMA + headerString;
+        for (Map.Entry<InOfficeType, String> inOfficeTypeEntry : inOfficeTypeMap.entrySet()) {
+            String activityType = inOfficeTypeEntry.getKey().getName();
+            String activityTime = inOfficeTypeEntry.getValue();
+
+            dataRows.add(activityType + COMMA + COMMA + activityTime + COMMA);
+        }
+
+        return dataRows;
     }
 }

@@ -1,5 +1,7 @@
 package com.example.cst8334project.forms.util;
 
+import com.example.cst8334project.domain.Email;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,7 +21,7 @@ public final class FormUtils {
     /**
      * The {@link SimpleDateFormat} used to format the dates for the email attachments.
      */
-    private static final SimpleDateFormat ATTACHMENT_DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    private static final SimpleDateFormat ATTACHMENT_DATE_FORMAT = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
 
     /**
      * The String used to format the hours and minutes displayed for volunteer activity durations.
@@ -29,7 +31,7 @@ public final class FormUtils {
     /**
      * A String that represents the CSV file extension.
      */
-    public static final String CSV_EXTENSION = ".csv";
+    private static final String CSV_EXTENSION = ".csv";
 
     /**
      * A String that represents the new line character.
@@ -44,7 +46,7 @@ public final class FormUtils {
     /**
      * A String that represents a semi colon with a trailing space.
      */
-    public static final String SEMI_COLON = "; ";
+    private static final String SEMI_COLON = "; ";
 
     /**
      * A String that represents a colon with a trailing space.
@@ -68,13 +70,17 @@ public final class FormUtils {
     }
 
     /**
-     * Obtain the CSV file name, including the timestamp, for the given visit type.
+     * Set the subject, csv attachment file name, and the body for the given Email based on the
+     * provided visit type.
      *
-     * @param visitType the type of the visit, as a String
-     * @return a String that represents the CSV file name with the timestamp included
+     * @param email     the {@link Email}
+     * @param visitType the type of the visit
      */
-    public static String getCSVFileName(String visitType) {
-        return "HHH - " + ATTACHMENT_DATE_FORMAT.format(new Date()) + COLON + visitType;
+    public static void setEmailProperties(Email email, String visitType) {
+        String subject = visitType + " - " + ATTACHMENT_DATE_FORMAT.format(new Date());
+        email.setSubject(subject);
+        email.setCsvAttachmentFileName(subject + CSV_EXTENSION);
+        email.setBody("Please find attached a form for a " + visitType + " volunteer visit.");
     }
 
     /**
@@ -96,6 +102,14 @@ public final class FormUtils {
      */
     public static String replaceBooleanWithYesNo(boolean bool) {
         return bool ? "Yes" : "No";
+    }
+
+    public static String convertTimeToString(String timeString) {
+        int hours = Integer.valueOf(timeString.split(":")[0]);
+        int minutes = Integer.valueOf(timeString.split(":")[1]);
+
+        double time = hours + minutes / (60.0);
+        return String.format("%.2f", time);
     }
 
     /**
