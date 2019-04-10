@@ -115,9 +115,7 @@ public class InOfficeActivity extends BaseActivity {
         VisitServiceImpl.INSTANCE.addVisit(visit);
 
         Email email = new Email();
-        email.setSubject("");
-        email.setBody("Please find attached an In Office Form data");
-        email.setCsvAttachmentFileName(email.getSubject() + CSV_EXTENSION);
+        setEmailProperties(email, DirectServiceForm.DirectServiceType.IN_OFFICE.getName());
         email.setAttachmentText(inOfficeForm.getAttachmentText());
 
         new EmailSenderAsyncTask(this).execute(email);
@@ -155,7 +153,8 @@ public class InOfficeActivity extends BaseActivity {
 
         for (int i = 0; i < checkBoxes.length; i++) {
             if (checkBoxes[i].isChecked()) {
-                inOfficeForm.addInOfficeType(InOfficeForm.InOfficeType.values()[i], editTexts[i].getText().toString());
+                String timeEditText = editTexts[i].getText().toString();
+                inOfficeForm.addInOfficeType(InOfficeForm.InOfficeType.values()[i], convertTimeToString(timeEditText));
             }
         }
 

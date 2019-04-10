@@ -87,7 +87,7 @@
     <string name="create_event">Crear evento</string>
     <string name="enter_reminder">Tiempo de recordatorio (en minutos)</string>
     <string name="duration">Duración (horas)</string>
-    <string name="appointmentType">Tipo de cita:</string>
+    <string name="appointmentType">Tipo de cita</string>
     <string name="appointmentDescription">Descripción</string>
 
     <string name="open">abierto</string>
