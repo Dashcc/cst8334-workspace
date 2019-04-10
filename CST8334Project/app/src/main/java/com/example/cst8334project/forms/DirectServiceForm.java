@@ -16,12 +16,12 @@ public class DirectServiceForm extends BaseForm {
         /**
          * An in-home visit.
          */
-        IN_HOME("In-Home"),
+        IN_HOME("InHome"),
 
         /**
          * An in-office visit.
          */
-        IN_OFFICE("In-Office");
+        IN_OFFICE("InOffice");
 
         /**
          * The name, as it is rendered on the CSV file, of this {@link DirectServiceType}
