@@ -44,8 +44,11 @@
             android:layout_height="50sp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
+            android:fontFamily="@font/calibri"
             android:text="@string/timeSheet"
-            android:textColor="@color/Color_Panto" />
+            android:textColor="@color/Color_Panto"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/mainMenuAppointment"
@@ -54,7 +57,10 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:text="@string/appointment"
-            android:textColor="@color/Color_Panto" />
+            android:textColor="@color/Color_Panto"
+            android:fontFamily="@font/calibri"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
 
         <Button
             android:id="@+id/mainMenuHistory"
@@ -63,7 +69,10 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:text="@string/clientHistory"
-            android:textColor="@color/Color_Panto" />
+            android:textColor="@color/Color_Panto"
+            android:fontFamily="@font/calibri"
+            android:textStyle="bold"
+            android:textSize="15sp"/>
     </LinearLayout>
 
     <include layout="@layout/drawer" />
