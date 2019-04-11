@@ -60,6 +60,11 @@ public class DirectServiceForm extends BaseForm {
         return null;
     }
 
+    @Override
+    protected String getType() {
+        return null;
+    }
+
     protected void setDirectServiceType(DirectServiceType directServiceType) {
         this.directServiceType = directServiceType;
     }

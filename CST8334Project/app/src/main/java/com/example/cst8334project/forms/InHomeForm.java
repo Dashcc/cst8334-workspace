@@ -292,4 +292,9 @@ public class InHomeForm extends DirectServiceForm {
 
         return dataRows;
     }
+
+    @Override
+    protected String getType() {
+        return "INHOME";
+    }
 }

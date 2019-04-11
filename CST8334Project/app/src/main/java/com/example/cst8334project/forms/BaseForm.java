@@ -86,7 +86,9 @@ public abstract class BaseForm implements Serializable {
         for (int i = 0; i < numOfRows; i++) {
             String dataLine = getActivitySpecificRows().get(i);
 
-            csvText.append(name)
+            csvText.append(getType())
+                    .append(COMMA)
+                    .append(name)
                     .append(COMMA)
                     .append(date)
                     .append(COMMA)
@@ -127,4 +129,6 @@ public abstract class BaseForm implements Serializable {
     public void setStudentPlacement(boolean studentPlacement) {
         isStudentPlacement = studentPlacement;
     }
+
+    protected abstract String getType();
 }

@@ -77,7 +77,7 @@ public final class FormUtils {
      * @param visitType the type of the visit
      */
     public static void setEmailProperties(Email email, String visitType) {
-        String subject = visitType + " - " + ATTACHMENT_DATE_FORMAT.format(new Date());
+        String subject = "HHH" + " - " + visitType + " - " + ATTACHMENT_DATE_FORMAT.format(new Date());
         email.setSubject(subject);
         email.setCsvAttachmentFileName(subject + CSV_EXTENSION);
         email.setBody("Please find attached a form for a " + visitType + " volunteer visit.");

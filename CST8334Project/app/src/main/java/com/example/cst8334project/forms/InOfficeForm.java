@@ -135,4 +135,9 @@ public class InOfficeForm extends DirectServiceForm {
 
         return dataRows;
     }
+
+    @Override
+    protected String getType() {
+        return "INOFFICE";
+    }
 }

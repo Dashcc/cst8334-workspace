@@ -92,6 +92,11 @@ public class IndirectServiceForm extends BaseForm {
         return Collections.singletonList(data);
     }
 
+    @Override
+    protected String getType() {
+        return "INDIRECT";
+    }
+
     public String getServiceType() {
         return indirectServiceTypePair.getKey().getName();
     }
