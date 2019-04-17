@@ -66,8 +66,8 @@ public class InOfficeActivity extends BaseActivity {
                     }
 
                     final Calendar cal = Calendar.getInstance();
-                    int hour = cal.get(Calendar.HOUR_OF_DAY);
-                    int minutes = cal.get(Calendar.MINUTE);
+                    int hour = 0;//cal.get(Calendar.HOUR_OF_DAY);
+                    int minutes = 0;//cal.get(Calendar.MINUTE);
 
                     TimePickerDialog picker = new TimePickerDialog(InOfficeActivity.this,
                             new TimePickerDialog.OnTimeSetListener() {

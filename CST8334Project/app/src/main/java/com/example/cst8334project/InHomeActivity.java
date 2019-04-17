@@ -99,8 +99,8 @@ public class InHomeActivity extends BaseActivity {
                     return;
                 }
                 final Calendar cal = Calendar.getInstance();
-                int hour = cal.get(Calendar.HOUR_OF_DAY);
-                int minutes = cal.get(Calendar.MINUTE);
+                int hour = 0;//cal.get(Calendar.HOUR_OF_DAY);
+                int minutes = 0;//cal.get(Calendar.MINUTE);
 
                 picker = new TimePickerDialog(InHomeActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
@@ -123,8 +123,8 @@ public class InHomeActivity extends BaseActivity {
                     return;
                 }
                 final Calendar cal = Calendar.getInstance();
-                int hour = cal.get(Calendar.HOUR_OF_DAY);
-                int minutes = cal.get(Calendar.MINUTE);
+                int hour = 0;//cal.get(Calendar.HOUR_OF_DAY);
+                int minutes = 0;//cal.get(Calendar.MINUTE);
 
                 picker = new TimePickerDialog(InHomeActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
@@ -147,8 +147,8 @@ public class InHomeActivity extends BaseActivity {
                     return;
                 }
                 final Calendar cal = Calendar.getInstance();
-                int hour = cal.get(Calendar.HOUR_OF_DAY);
-                int minutes = cal.get(Calendar.MINUTE);
+                int hour = 0;//cal.get(Calendar.HOUR_OF_DAY);
+                int minutes = 0;//cal.get(Calendar.MINUTE);
 
                 picker = new TimePickerDialog(InHomeActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
@@ -171,8 +171,8 @@ public class InHomeActivity extends BaseActivity {
                     return;
                 }
                 final Calendar cal = Calendar.getInstance();
-                int hour = cal.get(Calendar.HOUR_OF_DAY);
-                int minutes = cal.get(Calendar.MINUTE);
+                int hour = 0;//cal.get(Calendar.HOUR_OF_DAY);
+                int minutes = 0;//cal.get(Calendar.MINUTE);
 
                 picker = new TimePickerDialog(InHomeActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
@@ -195,8 +195,8 @@ public class InHomeActivity extends BaseActivity {
                     return;
                 }
                 final Calendar cal = Calendar.getInstance();
-                int hour = cal.get(Calendar.HOUR_OF_DAY);
-                int minutes = cal.get(Calendar.MINUTE);
+                int hour = 0;//cal.get(Calendar.HOUR_OF_DAY);
+                int minutes = 0;//cal.get(Calendar.MINUTE);
 
                 picker = new TimePickerDialog(InHomeActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
@@ -219,8 +219,8 @@ public class InHomeActivity extends BaseActivity {
                     return;
                 }
                 final Calendar cal = Calendar.getInstance();
-                int hour = cal.get(Calendar.HOUR_OF_DAY);
-                int minutes = cal.get(Calendar.MINUTE);
+                int hour = 0;//cal.get(Calendar.HOUR_OF_DAY);
+                int minutes = 0;//cal.get(Calendar.MINUTE);
 
                 picker = new TimePickerDialog(InHomeActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
@@ -243,8 +243,8 @@ public class InHomeActivity extends BaseActivity {
                     return;
                 }
                 final Calendar cal = Calendar.getInstance();
-                int hour = cal.get(Calendar.HOUR_OF_DAY);
-                int minutes = cal.get(Calendar.MINUTE);
+                int hour = 0;//cal.get(Calendar.HOUR_OF_DAY);
+                int minutes = 0;//cal.get(Calendar.MINUTE);
 
                 picker = new TimePickerDialog(InHomeActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {
@@ -267,8 +267,8 @@ public class InHomeActivity extends BaseActivity {
                     return;
                 }
                 final Calendar cal = Calendar.getInstance();
-                int hour = cal.get(Calendar.HOUR_OF_DAY);
-                int minutes = cal.get(Calendar.MINUTE);
+                int hour = 0;//cal.get(Calendar.HOUR_OF_DAY);
+                int minutes = 0;//cal.get(Calendar.MINUTE);
 
                 picker = new TimePickerDialog(InHomeActivity.this,
                         new TimePickerDialog.OnTimeSetListener() {

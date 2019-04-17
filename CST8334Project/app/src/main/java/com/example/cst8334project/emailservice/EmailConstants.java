@@ -5,6 +5,7 @@ import java.util.Properties;
 /**
  * This class defines several constants pertaining to sending emails.
  */
+
 public final class EmailConstants {
 
     /**
@@ -17,12 +18,12 @@ public final class EmailConstants {
      * The password corresponding to the email address that will be used by all volunteers to send
      * emails to the Heart House Hospice.
      */
-    public static final String SENDER_EMAIL_PASSWORD = "hearthousehospice123";
+    public static final String SENDER_EMAIL_PASSWORD = "Heart!Volunteer92730938";
 
     /**
      * The receiving email address belonging to the Heart House Hospice.
      */
-    public static final String RECIPIENT_EMAIL_ADDRESS = "hearthousehospicestaff@gmail.com";
+    public static final String RECIPIENT_EMAIL_ADDRESS = "info@hearthousehospice.com";
 
     /**
      * The email belonging to the Heart House Hospice that is being listened to by this
@@ -33,7 +34,7 @@ public final class EmailConstants {
     /**
      * The password for the email address that listens for new passwords.
      */
-    public static final String PASSWORD_LISTENER_EMAIL_PASSWORD = "hearthousehospice123";
+    public static final String PASSWORD_LISTENER_EMAIL_PASSWORD = "Heart293House019Hospice!1!";
 
     /**
      * The SMTP properties that facilitate sending emails.

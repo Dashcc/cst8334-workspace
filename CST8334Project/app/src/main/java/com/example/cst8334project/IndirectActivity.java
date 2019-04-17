@@ -72,8 +72,8 @@ public class IndirectActivity extends BaseActivity {
                     unCheckOtherRadioButtons(finalI);
 
                     final Calendar cal = Calendar.getInstance();
-                    int hour = cal.get(Calendar.HOUR_OF_DAY);
-                    int minutes = cal.get(Calendar.MINUTE);
+                    int hour = 0;//cal.get(Calendar.HOUR_OF_DAY);
+                    int minutes = 0;//cal.get(Calendar.MINUTE);
 
                     TimePickerDialog picker = new TimePickerDialog(IndirectActivity.this,
                             new TimePickerDialog.OnTimeSetListener() {

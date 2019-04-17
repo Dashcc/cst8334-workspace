@@ -26,7 +26,7 @@ public final class AuthenticationManager {
      * The default password that will be used to authenticate volunteers if an
      * alternate password has not been provided by the client.
      */
-    private static final String DEFAULT_PASSWORD = "123";
+    private static final String DEFAULT_PASSWORD = "HeartHouse123";
 
     /**
      * The username used to authenticate all volunteers.
